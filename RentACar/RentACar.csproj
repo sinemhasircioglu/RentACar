@@ -44,6 +44,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.0.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -51,6 +57,8 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -95,11 +103,137 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\admin\Content\bootstrap-tagsinput.css" />
+    <Content Include="Areas\admin\Content\bootstrap.min.css" />
+    <Content Include="Areas\admin\Content\font-awesome.min.css" />
+    <Content Include="Areas\admin\Content\icheck\minimal%402x.png" />
+    <Content Include="Areas\admin\Content\icheck\minimal.css" />
+    <Content Include="Areas\admin\Content\icheck\minimal.png" />
+    <Content Include="Areas\admin\Content\main.css" />
+    <Content Include="Areas\admin\Content\main.min.css" />
+    <Content Include="Areas\admin\Content\PagedList.css" />
+    <Content Include="Areas\admin\Content\plugins.min.css" />
+    <Content Include="Areas\admin\Content\typicons.min.css" />
+    <Content Include="Areas\admin\fonts\fontawesome-webfontba72.svg" />
+    <Content Include="Areas\admin\fonts\footable.svg" />
+    <Content Include="Areas\admin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\admin\fonts\typicons.svg" />
+    <Content Include="Areas\admin\img\dark_wood.html" />
+    <Content Include="Areas\admin\img\loaders\loader1.gif" />
+    <Content Include="Areas\admin\img\loaders\loader10.gif" />
+    <Content Include="Areas\admin\img\loaders\loader11.gif" />
+    <Content Include="Areas\admin\img\loaders\loader12.gif" />
+    <Content Include="Areas\admin\img\loaders\loader13.gif" />
+    <Content Include="Areas\admin\img\loaders\loader14.gif" />
+    <Content Include="Areas\admin\img\loaders\loader15.gif" />
+    <Content Include="Areas\admin\img\loaders\loader16.gif" />
+    <Content Include="Areas\admin\img\loaders\loader17.gif" />
+    <Content Include="Areas\admin\img\loaders\loader2.gif" />
+    <Content Include="Areas\admin\img\loaders\loader3.gif" />
+    <Content Include="Areas\admin\img\loaders\loader4.gif" />
+    <Content Include="Areas\admin\img\loaders\loader5.gif" />
+    <Content Include="Areas\admin\img\loaders\loader6.gif" />
+    <Content Include="Areas\admin\img\loaders\loader7.gif" />
+    <Content Include="Areas\admin\img\loaders\loader8.gif" />
+    <Content Include="Areas\admin\img\loaders\loader9.gif" />
+    <Content Include="Areas\admin\img\logo.png" />
+    <Content Include="Areas\admin\img\tickc81e.html" />
+    <Content Include="Areas\admin\Scripts\bootstrap-tagsinput.js" />
+    <Content Include="Areas\admin\Scripts\main.js" />
+    <Content Include="Areas\admin\Scripts\page-bootstrap.js" />
+    <Content Include="Areas\admin\Scripts\page-calendar.js" />
+    <Content Include="Areas\admin\Scripts\page-charts.js" />
+    <Content Include="Areas\admin\Scripts\page-dashboard.js" />
+    <Content Include="Areas\admin\Scripts\page-form-elements.js" />
+    <Content Include="Areas\admin\Scripts\plugins\bootstrap.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\calendar\calendar.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\calendar\underscore.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\datepicker\datetimepicker.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\datepicker\moment.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\enscroll.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\flot.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\footable.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\icheck.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\jquery.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\knob.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\modernizr.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\multimenu.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\rickshaw\d3.v3.js" />
+    <Content Include="Areas\admin\Scripts\plugins\rickshaw\rickshaw.min.js" />
+    <Content Include="Areas\admin\Scripts\plugins\sparkline.min.js" />
+    <Content Include="Data\RentACarModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RentACarModel.edmx</DependentUpon>
+      <LastGenOutput>RentACarModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\RentACarModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RentACarModel.edmx</DependentUpon>
+      <LastGenOutput>RentACarModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\HomeController.cs" />
+    <Compile Include="Class\Bootstrapper.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Core\Infrastructure\IAracRepository.cs" />
+    <Compile Include="Core\Infrastructure\IHizmetRepository.cs" />
+    <Compile Include="Core\Infrastructure\IIslemRepository.cs" />
+    <Compile Include="Core\Infrastructure\IKullaniciRepository.cs" />
+    <Compile Include="Core\Infrastructure\IMusteriRepository.cs" />
+    <Compile Include="Core\Infrastructure\IRepository.cs" />
+    <Compile Include="Core\Infrastructure\IResimRepository.cs" />
+    <Compile Include="Core\Infrastructure\IRolRepository.cs" />
+    <Compile Include="Core\Repository\AracRepository.cs" />
+    <Compile Include="Core\Repository\HizmetRepository.cs" />
+    <Compile Include="Core\Repository\IslemRepository.cs" />
+    <Compile Include="Core\Repository\KullaniciRepository.cs" />
+    <Compile Include="Core\Repository\MusteriRepository.cs" />
+    <Compile Include="Core\Repository\ResimRepository.cs" />
+    <Compile Include="Core\Repository\RolRepository.cs" />
+    <Compile Include="Data\Arac.cs">
+      <DependentUpon>RentACarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Hizmet.cs">
+      <DependentUpon>RentACarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Islem.cs">
+      <DependentUpon>RentACarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Kullanici.cs">
+      <DependentUpon>RentACarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Musteri.cs">
+      <DependentUpon>RentACarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RentACarModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentACarModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RentACarModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentACarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RentACarModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentACarModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Resim.cs">
+      <DependentUpon>RentACarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Rol.cs">
+      <DependentUpon>RentACarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagram.cs">
+      <DependentUpon>RentACarModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -107,6 +241,34 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <EntityDeploy Include="Data\RentACarModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RentACarModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\RentACarModel.edmx.diagram">
+      <DependentUpon>RentACarModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\admin\Views\web.config" />
+    <Content Include="Areas\admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\admin\Views\Shared\_Header.cshtml" />
+    <Content Include="Areas\admin\Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Areas\admin\fonts\fontawesome-webfontba72.eot" />
+    <Content Include="Areas\admin\fonts\fontawesome-webfontba72.ttf" />
+    <Content Include="Areas\admin\fonts\fontawesome-webfontba72.woff" />
+    <Content Include="Areas\admin\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Areas\admin\fonts\footable.eot" />
+    <Content Include="Areas\admin\fonts\footable.ttf" />
+    <Content Include="Areas\admin\fonts\footable.woff" />
+    <Content Include="Areas\admin\fonts\footabled41d.eot" />
+    <Content Include="Areas\admin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\admin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\admin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\admin\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Areas\admin\fonts\typicons.eot" />
+    <Content Include="Areas\admin\fonts\typicons.ttf" />
+    <Content Include="Areas\admin\fonts\typicons.woff" />
+    <Content Include="Areas\admin\fonts\typiconsd41d.eot" />
+    <Content Include="Areas\admin\Views\Home\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -117,8 +279,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Areas\admin\Models\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

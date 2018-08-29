@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RentACarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Arac">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Plaka" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Renk" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Yil" Type="int" Nullable="false" />
+          <Property Name="Kilometre" Type="int" Nullable="false" />
+          <Property Name="GunlukFiyat" Type="int" Nullable="false" />
+          <Property Name="MusaitMi" Type="bit" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Yakit" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Sinif" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Vites" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="KoltukSayisi" Type="smallint" Nullable="false" />
+          <Property Name="YasSiniri" Type="smallint" Nullable="false" />
+          <Property Name="EhliyetYasSiniri" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hizmet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Tutar" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Islem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusteriId" Type="int" Nullable="false" />
+          <Property Name="AracId" Type="int" Nullable="false" />
+          <Property Name="Tutar" Type="int" Nullable="false" />
+          <Property Name="AlimTarihi" Type="date" Nullable="false" />
+          <Property Name="TeslimTarihi" Type="date" Nullable="false" />
+          <Property Name="TahminiKm" Type="int" Nullable="false" />
+          <Property Name="Durum" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="RolId" Type="int" Nullable="false" />
+          <Property Name="KayitTarihi" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TcKimlikNo" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Resim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AracId" Type="int" />
+          <Property Name="ResimUrl" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Islem_Arac">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="1" />
+          <End Role="Islem" Type="Self.Islem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Islem">
+              <PropertyRef Name="AracId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islem_Musteri">
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
+          <End Role="Islem" Type="Self.Islem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Islem">
+              <PropertyRef Name="MusteriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kullanici">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resim_Arac">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
+          <End Role="Resim" Type="Self.Resim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Resim">
+              <PropertyRef Name="AracId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RentACarModelStoreContainer">
+          <EntitySet Name="Arac" EntityType="Self.Arac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hizmet" EntityType="Self.Hizmet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Islem" EntityType="Self.Islem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resim" EntityType="Self.Resim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Islem_Arac" Association="Self.FK_Islem_Arac">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="Islem" EntitySet="Islem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islem_Musteri" Association="Self.FK_Islem_Musteri">
+            <End Role="Musteri" EntitySet="Musteri" />
+            <End Role="Islem" EntitySet="Islem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Rol" Association="Self.FK_Kullanici_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Kullanici" EntitySet="Kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resim_Arac" Association="Self.FK_Resim_Arac">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="Resim" EntitySet="Resim" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RentACarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Arac">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Plaka" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Yil" Type="Int32" Nullable="false" />
+          <Property Name="Kilometre" Type="Int32" Nullable="false" />
+          <Property Name="GunlukFiyat" Type="Int32" Nullable="false" />
+          <Property Name="MusaitMi" Type="Boolean" Nullable="false" />
+          <Property Name="Aciklama" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Yakit" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Sinif" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Vites" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KoltukSayisi" Type="Int16" Nullable="false" />
+          <Property Name="YasSiniri" Type="Int16" Nullable="false" />
+          <Property Name="EhliyetYasSiniri" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Islems" Relationship="RentACarModel.FK_Islem_Arac" FromRole="Arac" ToRole="Islem" />
+          <NavigationProperty Name="Resims" Relationship="RentACarModel.FK_Resim_Arac" FromRole="Arac" ToRole="Resim" />
+        </EntityType>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TcKimlikNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adres" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Islems" Relationship="RentACarModel.FK_Islem_Musteri" FromRole="Musteri" ToRole="Islem" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="RentACarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aracs" EntityType="Self.Arac" />
+          <EntitySet Name="Musteris" EntityType="Self.Musteri" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Hizmets" EntityType="RentACarModel.Hizmet" />
+          <EntitySet Name="Islems" EntityType="RentACarModel.Islem" />
+          <EntitySet Name="Kullanicis" EntityType="RentACarModel.Kullanici" />
+          <EntitySet Name="Resims" EntityType="RentACarModel.Resim" />
+          <EntitySet Name="Rols" EntityType="RentACarModel.Rol" />
+          <AssociationSet Name="FK_Islem_Arac" Association="RentACarModel.FK_Islem_Arac">
+            <End Role="Arac" EntitySet="Aracs" />
+            <End Role="Islem" EntitySet="Islems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resim_Arac" Association="RentACarModel.FK_Resim_Arac">
+            <End Role="Arac" EntitySet="Aracs" />
+            <End Role="Resim" EntitySet="Resims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islem_Musteri" Association="RentACarModel.FK_Islem_Musteri">
+            <End Role="Musteri" EntitySet="Musteris" />
+            <End Role="Islem" EntitySet="Islems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Rol" Association="RentACarModel.FK_Kullanici_Rol">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="Kullanici" EntitySet="Kullanicis" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Hizmet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Tutar" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Islem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriId" Type="Int32" Nullable="false" />
+          <Property Name="AracId" Type="Int32" Nullable="false" />
+          <Property Name="Tutar" Type="Int32" Nullable="false" />
+          <Property Name="AlimTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TeslimTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TahminiKm" Type="Int32" Nullable="false" />
+          <Property Name="Durum" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Arac" Relationship="RentACarModel.FK_Islem_Arac" FromRole="Islem" ToRole="Arac" />
+          <NavigationProperty Name="Musteri" Relationship="RentACarModel.FK_Islem_Musteri" FromRole="Islem" ToRole="Musteri" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="RolId" Type="Int32" Nullable="false" />
+          <Property Name="KayitTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Rol" Relationship="RentACarModel.FK_Kullanici_Rol" FromRole="Kullanici" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Resim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AracId" Type="Int32" />
+          <Property Name="ResimUrl" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Arac" Relationship="RentACarModel.FK_Resim_Arac" FromRole="Resim" ToRole="Arac" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kullanicis" Relationship="RentACarModel.FK_Kullanici_Rol" FromRole="Rol" ToRole="Kullanici" />
+        </EntityType>
+        <Association Name="FK_Islem_Arac">
+          <End Type="RentACarModel.Arac" Role="Arac" Multiplicity="1" />
+          <End Type="RentACarModel.Islem" Role="Islem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Islem">
+              <PropertyRef Name="AracId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resim_Arac">
+          <End Type="RentACarModel.Arac" Role="Arac" Multiplicity="0..1" />
+          <End Type="RentACarModel.Resim" Role="Resim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Resim">
+              <PropertyRef Name="AracId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islem_Musteri">
+          <End Type="RentACarModel.Musteri" Role="Musteri" Multiplicity="1" />
+          <End Type="RentACarModel.Islem" Role="Islem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Islem">
+              <PropertyRef Name="MusteriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Rol">
+          <End Type="RentACarModel.Rol" Role="Rol" Multiplicity="1" />
+          <End Type="RentACarModel.Kullanici" Role="Kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kullanici">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RentACarModelStoreContainer" CdmEntityContainer="RentACarEntities">
+          <EntitySetMapping Name="Aracs">
+            <EntityTypeMapping TypeName="RentACarModel.Arac">
+              <MappingFragment StoreEntitySet="Arac">
+                <ScalarProperty Name="EhliyetYasSiniri" ColumnName="EhliyetYasSiniri" />
+                <ScalarProperty Name="YasSiniri" ColumnName="YasSiniri" />
+                <ScalarProperty Name="KoltukSayisi" ColumnName="KoltukSayisi" />
+                <ScalarProperty Name="Vites" ColumnName="Vites" />
+                <ScalarProperty Name="Sinif" ColumnName="Sinif" />
+                <ScalarProperty Name="Yakit" ColumnName="Yakit" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Renk" ColumnName="Renk" />
+                <ScalarProperty Name="Yil" ColumnName="Yil" />
+                <ScalarProperty Name="Kilometre" ColumnName="Kilometre" />
+                <ScalarProperty Name="GunlukFiyat" ColumnName="GunlukFiyat" />
+                <ScalarProperty Name="MusaitMi" ColumnName="MusaitMi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteris">
+            <EntityTypeMapping TypeName="RentACarModel.Musteri">
+              <MappingFragment StoreEntitySet="Musteri">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TcKimlikNo" ColumnName="TcKimlikNo" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RentACarModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hizmets">
+            <EntityTypeMapping TypeName="RentACarModel.Hizmet">
+              <MappingFragment StoreEntitySet="Hizmet">
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Islems">
+            <EntityTypeMapping TypeName="RentACarModel.Islem">
+              <MappingFragment StoreEntitySet="Islem">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="TahminiKm" ColumnName="TahminiKm" />
+                <ScalarProperty Name="TeslimTarihi" ColumnName="TeslimTarihi" />
+                <ScalarProperty Name="AlimTarihi" ColumnName="AlimTarihi" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="AracId" ColumnName="AracId" />
+                <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicis">
+            <EntityTypeMapping TypeName="RentACarModel.Kullanici">
+              <MappingFragment StoreEntitySet="Kullanici">
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resims">
+            <EntityTypeMapping TypeName="RentACarModel.Resim">
+              <MappingFragment StoreEntitySet="Resim">
+                <ScalarProperty Name="ResimUrl" ColumnName="ResimUrl" />
+                <ScalarProperty Name="AracId" ColumnName="AracId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rols">
+            <EntityTypeMapping TypeName="RentACarModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
