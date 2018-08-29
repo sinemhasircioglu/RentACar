@@ -1,0 +1,55 @@
+﻿@model RentACar.Data.Islem
+@{
+    ViewBag.Title = "Kiralama işlem Ekle";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <header class="panel-heading">@ViewBag.Title</header>
+                <div class="panel-body">
+                    <form role="form" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="MusteriId">Müşteri</label>
+                            @Html.DropDownListFor(Model => Model.MusteriId, new SelectList(ViewBag.Musteri, "Id", "AdSoyad"), ("Seçiniz"), new { @class = "form-control", id = "MusteriId" })
+                        </div>
+                        <div class="form-group">
+                            <label for="AracId">Araç</label>
+                            @Html.DropDownListFor(Model => Model.AracId, new SelectList(ViewBag.Arac, "Id", "Plaka"), ("Seçiniz"), new { @class = "form-control", id = "AracId" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">İşlem tutar</label>
+                            @Html.TextBoxFor(x => x.Tutar, new { @class = "form-control", id = "Tutar", placeholder = "İşlem tutarı" })
+                        </div>
+                        <div>
+                            <label for="party-time">Alış Tarihi</label>
+                            <input type="datetime-local" id="AlimTarihi"
+                                   name="AlimTarihi" value="@DateTime.Now"
+                                   min="@DateTime.Now" max="2018-11-14T00:00" class="form-control"/>
+                        </div>
+                        <div>
+                            <label for="party-time">Teslim Tarihi</label>
+                            <input type="datetime-local" id="TeslimTarihi"
+                                   name="TeslimTarihi" value="@DateTime.Now"
+                                   min="@DateTime.Now" max="2018-11-14T00:00" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="Durum">İşlem durumu</label>
+                            @Html.DropDownList("Durum", (new List<SelectListItem>() {
+                            new SelectListItem { Text = "Müşteride", Value = "Müşteride" },
+                            new SelectListItem { Text = "Kesinleşmedi", Value = "Kesinleşmedi" },
+                            new SelectListItem { Text = "Teslim Alındı", Value = "Teslim Alındı" } }), "İşlem Durumu Seçiniz", new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Tahmini yapılacak km</label>
+                            @Html.TextBoxFor(x => x.TahminiKm, new { @class = "form-control", id = "TahminiKm", placeholder = "Tahmini yapılacak km" })
+                        </div>
+                        <button type="submit" class="btn btn-default">Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

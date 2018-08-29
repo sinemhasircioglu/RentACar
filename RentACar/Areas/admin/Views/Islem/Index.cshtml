@@ -1,0 +1,55 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<RentACar.Data.Islem>
+@{
+    ViewBag.Title = "Kiralama İşlem Index";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <header class="panel-heading">@ViewBag.Title</header>
+        <div class="panel-body">
+            @if (TempData["Bilgi"] != null)
+            {
+                <div class="alert alert-success">@TempData["Bilgi"]</div>
+            }
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Müşteri</th>
+                            <th>Araç</th>
+                            <th>Tutar</th>
+                            <th>Durum</th>
+                            <th>Alım Tarihi</th>
+                            <th>Teslim Tarihi</th>
+                            <th>Tahmini Km</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><span class="label label-success">@item.Id</span></td>
+                                <td>@item.Musteri.AdSoyad</td>
+                                <td>@item.Arac.Plaka</td>
+                                <td>@item.Tutar</td>
+                                <td>@item.Durum</td>
+                                <td>@item.AlimTarihi</td>
+                                <td>@item.TeslimTarihi</td>
+                                <td>@item.TahminiKm</td>
+                                <td>
+                                    <a href="@Url.Action("Duzenle","Islem",new { Id=item.Id})" class="btn btn-default btn-sm">Düzenle</a>
+                                    <a href="@Url.Action("Sil","Islem", new { Id=item.Id })" class="btn btn-default btn-sm">Sil</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @Html.PagedListPager(Model, sayfa => Url.Action("Index", new { sayfa }), PagedListRenderOptions.Classic)
+        </div>
+    </div>
+</div>

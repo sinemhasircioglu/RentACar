@@ -43,8 +43,8 @@
           <Property Name="MusteriId" Type="int" Nullable="false" />
           <Property Name="AracId" Type="int" Nullable="false" />
           <Property Name="Tutar" Type="int" Nullable="false" />
-          <Property Name="AlimTarihi" Type="date" Nullable="false" />
-          <Property Name="TeslimTarihi" Type="date" Nullable="false" />
+          <Property Name="AlimTarihi" Type="smalldatetime" Nullable="false" />
+          <Property Name="TeslimTarihi" Type="smalldatetime" Nullable="false" />
           <Property Name="TahminiKm" Type="int" Nullable="false" />
           <Property Name="Durum" Type="nvarchar" MaxLength="25" Nullable="false" />
         </EntityType>
@@ -65,10 +65,10 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TcKimlikNo" Type="nvarchar" MaxLength="11" Nullable="false" />
-          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="55" Nullable="false" />
           <Property Name="Adres" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="Telefon" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="KayitTarihi" Type="date" />
         </EntityType>
         <EntityType Name="Resim">
           <Key>
@@ -132,7 +132,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Resim_Arac">
-          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Resim" Type="Self.Resim" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Arac">
@@ -202,11 +204,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="TcKimlikNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Adres" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Islems" Relationship="RentACarModel.FK_Islem_Musteri" FromRole="Musteri" ToRole="Islem" />
+          <Property Name="AdSoyad" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="KayitTarihi" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -376,10 +378,10 @@
           <EntitySetMapping Name="Musteris">
             <EntityTypeMapping TypeName="RentACarModel.Musteri">
               <MappingFragment StoreEntitySet="Musteri">
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TcKimlikNo" ColumnName="TcKimlikNo" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
                 <ScalarProperty Name="Adres" ColumnName="Adres" />
                 <ScalarProperty Name="Telefon" ColumnName="Telefon" />
               </MappingFragment>

@@ -1,0 +1,101 @@
+﻿@model RentACar.Data.Arac
+@{
+    ViewBag.Title = "Arac Duzenle";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <header class="panel-heading">@ViewBag.Title</header>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Duzenle", "Arac", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary()
+                        @Html.HiddenFor(x => x.Id)
+                        <div class="form-group">
+                            <label for="DetayResim">Detay Resim(ler)</label>
+                            <input type="file" class="form-control" accept="image/*" name="DetayResim" id="DetayResim" multiple>
+                            @foreach (var item in Model.Resims.Where((x => x.AracId == Model.Id)))
+                            {
+                                <img src="@item.ResimUrl" width="100" />
+                                <label><a href="@Url.Action("ResimSil","Arac", new { Id=item.Id})">Resim sil</a></label>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <label for="Baslik">Araç Marka</label>
+                            @Html.TextBoxFor(x => x.Marka, new { @class = "form-control", id = "Marka", placeholder = "Araç marka" })
+                        </div>
+                        <div class="form-group">
+                            <label for="KisaAciklama">Araç Model</label>
+                            @Html.TextBoxFor(x => x.Model, new { @class = "form-control", id = "Model", placeholder = "Araç model" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Araç Plaka</label>
+                            @Html.TextBoxFor(x => x.Plaka, new { @class = "form-control", id = "Plaka", placeholder = "Araç plaka" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Araç Yılı</label>
+                            @Html.TextBoxFor(x => x.Yil, new { @class = "form-control", id = "Yil", placeholder = "Araç yılı" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Araç Rengi</label>
+                            @Html.TextBoxFor(x => x.Renk, new { @class = "form-control", id = "Renk", placeholder = "Araç renk" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Araç Koltuk Sayısı</label>
+                            @Html.TextBoxFor(x => x.KoltukSayisi, new { @class = "form-control", id = "KoltukSayisi", placeholder = "Araç koltuk sayısı" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Araçla yapılan kilometre</label>
+                            @Html.TextBoxFor(x => x.Kilometre, new { @class = "form-control", id = "Kilometre", placeholder = "Araç kilometre" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Sinif">Araç sınıf</label>
+                            @Html.DropDownList("Sinif", (new List<SelectListItem>() {
+                           new SelectListItem { Text = "Ekonomik", Value = "Ekonomik" },
+                           new SelectListItem { Text = "Orta", Value = "Orta" },
+                           new SelectListItem { Text = "Lüks", Value = "Luks" } }), "Sınıf Seçiniz", new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Yakit">Araç yakıtı</label>
+                            @Html.DropDownList("Yakit", (new List<SelectListItem>() {
+                           new SelectListItem { Text = "Benzin", Value = "Benzin" },
+                           new SelectListItem { Text = "Dizel", Value = "Dizel" } }), "Yakıt Seçiniz", new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Yakit">Araç vitesi</label>
+                            @Html.DropDownList("Vites", (new List<SelectListItem>() {
+                           new SelectListItem { Text = "Düz", Value = "Duz" },
+                           new SelectListItem { Text = "Otomatik", Value = "Otomatik" } }), "Vites Seçiniz", new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Araç açıklaması</label>
+                            @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control", id = "Aciklama", placeholder = "Araç açıklaması" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Araç müşteri yaş sınırı</label>
+                            @Html.TextBoxFor(x => x.YasSiniri, new { @class = "form-control", id = "YasSiniri", placeholder = "Araç müşteri yaş sınırı" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Araç müşteri ehliyet yaş sınırı</label>
+                            @Html.TextBoxFor(x => x.EhliyetYasSiniri, new { @class = "form-control", id = "EhliyetYasSiniri", placeholder = "Araç müşteri ehliyet yaş sınırı" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Araçın günlük fiyatı</label>
+                            @Html.TextBoxFor(x => x.GunlukFiyat, new { @class = "form-control", id = "GunlukFiyat", placeholder = "Araç günlük fiyat" })
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                @Html.CheckBoxFor(x => x.MusaitMi, new { @checked = "checked", id = "MusaitMi" }) Müsait Mi
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-default">Kaydet</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

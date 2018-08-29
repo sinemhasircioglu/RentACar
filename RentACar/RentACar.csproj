@@ -57,6 +57,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -110,7 +116,6 @@
     <Content Include="Areas\admin\Content\icheck\minimal.css" />
     <Content Include="Areas\admin\Content\icheck\minimal.png" />
     <Content Include="Areas\admin\Content\main.css" />
-    <Content Include="Areas\admin\Content\main.min.css" />
     <Content Include="Areas\admin\Content\PagedList.css" />
     <Content Include="Areas\admin\Content\plugins.min.css" />
     <Content Include="Areas\admin\Content\typicons.min.css" />
@@ -161,6 +166,7 @@
     <Content Include="Areas\admin\Scripts\plugins\rickshaw\d3.v3.js" />
     <Content Include="Areas\admin\Scripts\plugins\rickshaw\rickshaw.min.js" />
     <Content Include="Areas\admin\Scripts\plugins\sparkline.min.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Data\RentACarModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RentACarModel.edmx</DependentUpon>
@@ -177,7 +183,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\AracController.cs" />
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\admin\Controllers\IslemController.cs" />
     <Compile Include="Class\Bootstrapper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\Infrastructure\IAracRepository.cs" />
@@ -269,6 +277,12 @@
     <Content Include="Areas\admin\fonts\typicons.woff" />
     <Content Include="Areas\admin\fonts\typiconsd41d.eot" />
     <Content Include="Areas\admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Arac\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Arac\Ekle.cshtml" />
+    <Content Include="Areas\admin\Views\Arac\Duzenle.cshtml" />
+    <Content Include="Areas\admin\Views\Islem\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Islem\Ekle.cshtml" />
+    <Content Include="Areas\admin\Views\Islem\Duzenle.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -279,6 +293,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\admin\External\" />
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Home\" />
