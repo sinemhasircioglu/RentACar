@@ -184,8 +184,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\AracController.cs" />
+    <Compile Include="Areas\admin\Controllers\HizmetController.cs" />
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\admin\Controllers\IslemController.cs" />
+    <Compile Include="Areas\admin\Controllers\MusteriController.cs" />
     <Compile Include="Class\Bootstrapper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\Infrastructure\IAracRepository.cs" />
@@ -283,6 +285,10 @@
     <Content Include="Areas\admin\Views\Islem\Index.cshtml" />
     <Content Include="Areas\admin\Views\Islem\Ekle.cshtml" />
     <Content Include="Areas\admin\Views\Islem\Duzenle.cshtml" />
+    <Content Include="Areas\admin\Views\Hizmet\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Hizmet\Ekle.cshtml" />
+    <Content Include="Areas\admin\Views\Hizmet\Duzenle.cshtml" />
+    <Content Include="Areas\admin\Views\Musteri\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

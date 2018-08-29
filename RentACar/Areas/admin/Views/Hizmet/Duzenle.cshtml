@@ -1,0 +1,35 @@
+﻿@model RentACar.Data.Hizmet
+@{
+    ViewBag.Title = "Hizmet Duzenle";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <header class="panel-heading">@ViewBag.Title</header>
+                <div class="panel-body">
+                    <form role="form" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary()
+                        @Html.HiddenFor(x => x.Id)
+                        <div class="form-group">
+                            <label for="Aciklama">Hizmet adı</label>
+                            @Html.TextBoxFor(x => x.Ad, new { @class = "form-control", id = "Ad", placeholder = "Hizmet adı" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Hizmet açıklaması</label>
+                            @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control", id = "Aciklama", placeholder = "Hizmet açıklaması" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Hizmet tutar</label>
+                            @Html.TextBoxFor(x => x.Tutar, new { @class = "form-control", id = "Tutar", placeholder = "Hizmet tutarı" })
+                        </div>
+                        <button type="submit" class="btn btn-default">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
