@@ -87,5 +87,12 @@ namespace RentACar.Areas.admin.Controllers
             TempData["Bilgi"] = "Kiralama işlem düzenlemeniz başarılı.";
             return RedirectToAction("Index", "Islem");
         }
+
+        public ActionResult GecmisIslemler(int sayfa = 1)
+        {
+            int sayfaBoyutu = 5;
+            var gecmisIslemler=_islemRepository.GetMany(x=>x.Durum=="Teslim Alındı").OrderByDescending(x => x.Id).ToPagedList(sayfa, sayfaBoyutu);
+            return View("Index",gecmisIslemler);
+        }
     }
 }

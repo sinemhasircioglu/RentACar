@@ -11,7 +11,6 @@
         <li class="sidebar-group-header">MENÜ</li>
         <li>
             <a href="@Url.Action("Index","Home")"><i class="typcn typcn-home"></i> <span>Anasayfa</span></a>
-            <div class="sidebar-link-addon"><span class="badge bg-green">Yeni</span></div>
         </li>
         <li class="has-submenu">
             <a href="#"><i class="typcn typcn-tabs-outline"></i> <span>Araç Yönetimi</span></a>
@@ -29,7 +28,6 @@
             <!-- Sidebar submenu -->
             <ul class="sidebar-submenu">
                 <li><a href="@Url.Action("Index","Musteri")">Müşteri listele</a></li>
-                <li><a href="@Url.Action("Ekle","Musteri")">Müşteri ekle</a></li>
             </ul>
             <!-- /Sidebar submenu -->
         </li>
@@ -50,6 +48,7 @@
             <ul class="sidebar-submenu">
                 <li><a href="@Url.Action("Index","Islem")">Kiralama işlemleri listele</a></li>
                 <li><a href="@Url.Action("Ekle","Islem")">Kiralama işlemi ekle</a></li>
+                <li><a href="@Url.Action("GecmisIslemler","Islem")">Geçmiş işlemler</a></li>
             </ul>
             <!-- /Sidebar submenu -->
         </li>
@@ -63,6 +62,7 @@
             </ul>
             <!-- /Sidebar submenu -->
         </li>
+
     </ul>
     <!-- /Sidebar group -->
 

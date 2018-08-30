@@ -166,7 +166,18 @@
     <Content Include="Areas\admin\Scripts\plugins\rickshaw\d3.v3.js" />
     <Content Include="Areas\admin\Scripts\plugins\rickshaw\rickshaw.min.js" />
     <Content Include="Areas\admin\Scripts\plugins\sparkline.min.js" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\plugins\animate.css" />
+    <Content Include="Content\plugins\gijgo.css" />
+    <Content Include="Content\plugins\magnific-popup.css" />
+    <Content Include="Content\plugins\owl.carousel.min.css" />
+    <Content Include="Content\plugins\slicknav.min.css" />
+    <Content Include="Content\plugins\vegas.min.css" />
+    <Content Include="Content\reset.css" />
+    <Content Include="Content\responsive.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Data\RentACarModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RentACarModel.edmx</DependentUpon>
@@ -177,17 +188,91 @@
       <DependentUpon>RentACarModel.edmx</DependentUpon>
       <LastGenOutput>RentACarModel.cs</LastGenOutput>
     </Content>
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
+    <Content Include="img\404.png" />
+    <Content Include="img\article\arti-thumb-1.jpg" />
+    <Content Include="img\article\arti-thumb-2.jpg" />
+    <Content Include="img\article\arti-thumb-3.jpg" />
+    <Content Include="img\article\arti-thumb-4.jpg" />
+    <Content Include="img\banner.jpg" />
+    <Content Include="img\caret-cion.png" />
+    <Content Include="img\car\car-1.jpg" />
+    <Content Include="img\car\car-2.jpg" />
+    <Content Include="img\car\car-3.jpg" />
+    <Content Include="img\car\car-4.jpg" />
+    <Content Include="img\car\car-5.jpg" />
+    <Content Include="img\car\car-6.jpg" />
+    <Content Include="img\client\client-pic-1.jpg" />
+    <Content Include="img\client\client-pic-2.jpg" />
+    <Content Include="img\client\client-pic-3.jpg" />
+    <Content Include="img\driver\driver-1.jpg" />
+    <Content Include="img\driver\driver-2.jpg" />
+    <Content Include="img\driver\driver-3.jpg" />
+    <Content Include="img\driver\driver-4.jpg" />
+    <Content Include="img\driver\driver-5.jpg" />
+    <Content Include="img\driver\driver-6.jpg" />
+    <Content Include="img\funfact-bg.jpg" />
+    <Content Include="img\home-2-about.png" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\mobile-app.png" />
+    <Content Include="img\page-title.jpg" />
+    <Content Include="img\partner\partner-logo-1.png" />
+    <Content Include="img\partner\partner-logo-2.png" />
+    <Content Include="img\partner\partner-logo-3.png" />
+    <Content Include="img\partner\partner-logo-4.png" />
+    <Content Include="img\partner\partner-logo-5.png" />
+    <Content Include="img\preloader.gif" />
+    <Content Include="img\pricing-bg.jpg" />
+    <Content Include="img\scroll-top.png" />
+    <Content Include="img\services\service-icon-1.png" />
+    <Content Include="img\services\service-icon-2.png" />
+    <Content Include="img\services\service-icon-3.png" />
+    <Content Include="img\services\service-icon-4.png" />
+    <Content Include="img\services\service-icon-5.png" />
+    <Content Include="img\services\service-icon-6.png" />
+    <Content Include="img\slider-img\slider-img-1.jpg" />
+    <Content Include="img\slider-img\slider-img-2.jpg" />
+    <Content Include="img\slider-img\slider-img-3.jpg" />
+    <Content Include="img\slider-img\slider-img-4.jpg" />
+    <Content Include="img\team\team-mem-1.png" />
+    <Content Include="img\team\team-mem-2.png" />
+    <Content Include="img\team\team-mem-3.png" />
+    <Content Include="img\team\team-mem-4.png" />
+    <Content Include="img\team\team-mem-thumb-1.png" />
+    <Content Include="img\team\team-mem-thumb-2.png" />
+    <Content Include="img\team\team-mem-thumb-3.png" />
+    <Content Include="img\team\team-mem-thumb-4.png" />
+    <Content Include="img\we-do\service1-img.png" />
+    <Content Include="img\we-do\service2-img.png" />
+    <Content Include="img\we-do\service3-img.png" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-migrate.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\plugins\counterup.min.js" />
+    <Content Include="Scripts\plugins\gijgo.js" />
+    <Content Include="Scripts\plugins\isotope.min.js" />
+    <Content Include="Scripts\plugins\magnific-popup.min.js" />
+    <Content Include="Scripts\plugins\mb.YTPlayer.js" />
+    <Content Include="Scripts\plugins\owl.carousel.min.js" />
+    <Content Include="Scripts\plugins\slicknav.min.js" />
+    <Content Include="Scripts\plugins\vegas.min.js" />
+    <Content Include="Scripts\plugins\waypoints.min.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\admin\Controllers\AracController.cs" />
     <Compile Include="Areas\admin\Controllers\HizmetController.cs" />
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\admin\Controllers\IslemController.cs" />
+    <Compile Include="Areas\admin\Controllers\KullaniciController.cs" />
     <Compile Include="Areas\admin\Controllers\MusteriController.cs" />
+    <Compile Include="Areas\admin\Models\ViewModels\AdminDashboardViewModel.cs" />
     <Compile Include="Class\Bootstrapper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\Infrastructure\IAracRepository.cs" />
@@ -289,7 +374,16 @@
     <Content Include="Areas\admin\Views\Hizmet\Ekle.cshtml" />
     <Content Include="Areas\admin\Views\Hizmet\Duzenle.cshtml" />
     <Content Include="Areas\admin\Views\Musteri\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Kullanici\Index.cshtml" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -300,10 +394,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\External\" />
-    <Folder Include="Areas\admin\Models\" />
+    <Folder Include="Areas\admin\Views\Account\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
