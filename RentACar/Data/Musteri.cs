@@ -22,10 +22,11 @@ namespace RentACar.Data
     
         public int Id { get; set; }
         public string TcKimlikNo { get; set; }
-        public string Adres { get; set; }
         public string Telefon { get; set; }
         public string AdSoyad { get; set; }
         public Nullable<System.DateTime> KayitTarihi { get; set; }
+        public string Email { get; set; }
+        public string Sifre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Islem> Islems { get; set; }

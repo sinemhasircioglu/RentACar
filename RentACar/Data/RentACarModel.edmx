@@ -66,9 +66,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TcKimlikNo" Type="nvarchar" MaxLength="11" Nullable="false" />
           <Property Name="AdSoyad" Type="nvarchar" MaxLength="55" Nullable="false" />
-          <Property Name="Adres" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="16" Nullable="false" />
           <Property Name="Telefon" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="KayitTarihi" Type="date" />
+          <Property Name="Email" Type="nvarchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="Resim">
           <Key>
@@ -204,11 +205,12 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="TcKimlikNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Adres" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Islems" Relationship="RentACarModel.FK_Islem_Musteri" FromRole="Musteri" ToRole="Islem" />
           <Property Name="AdSoyad" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
           <Property Name="KayitTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -378,11 +380,12 @@
           <EntitySetMapping Name="Musteris">
             <EntityTypeMapping TypeName="RentACarModel.Musteri">
               <MappingFragment StoreEntitySet="Musteri">
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
                 <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TcKimlikNo" ColumnName="TcKimlikNo" />
-                <ScalarProperty Name="Adres" ColumnName="Adres" />
                 <ScalarProperty Name="Telefon" ColumnName="Telefon" />
               </MappingFragment>
             </EntityTypeMapping>

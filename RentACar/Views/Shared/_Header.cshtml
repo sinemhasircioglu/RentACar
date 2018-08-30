@@ -87,6 +87,18 @@
                                 </ul>
                             </li>
                             <li><a href="contact.html">Contact</a></li>
+                            @*<li><a href="@Url.Action("Duzenle","Account", new {id=(int)Session["KullaniciId"]})">Üye ol / Giriş yap</a></li>*@
+                            <li>@*<a href="@Url.Action("Login","Account", new {area="admin"})">Üye ol / Giriş yap</a>*@</li>
+                            <li>
+                                @if (Session["KullaniciId"] == null)
+                                {
+                                    <a href="@Url.Action("Login","Account", new {area="admin"})">Giriş Yap</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Login","Account", new {area="admin"})">Çıkış Yap</a>
+                                }
+                            </li>
                         </ul>
                     </nav>
                 </div>
