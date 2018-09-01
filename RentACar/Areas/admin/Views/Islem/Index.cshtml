@@ -41,8 +41,8 @@
                                 <td>@item.TeslimTarihi</td>
                                 <td>@item.TahminiKm</td>
                                 <td>
-                                    <a href="@Url.Action("Duzenle","Islem",new { Id=item.Id})" class="btn btn-default btn-sm">Düzenle</a>
-                                    <a href="@Url.Action("Sil","Islem", new { Id=item.Id })" class="btn btn-default btn-sm">Sil</a>
+                                    @Html.ActionLink("Düzenle", "Duzenle", "Islem", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
+                                    @Html.ActionLink("Sil", "Sil", "Islem", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
                                 </td>
                             </tr>
                         }

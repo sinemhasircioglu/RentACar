@@ -346,7 +346,7 @@
     </Content>
     <Content Include="Areas\admin\Views\web.config" />
     <Content Include="Areas\admin\Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Areas\admin\Views\Shared\_Header.cshtml" />
+    <Content Include="Areas\admin\Views\Shared\_HeaderAdmin.cshtml" />
     <Content Include="Areas\admin\Views\Shared\_Sidebar.cshtml" />
     <Content Include="Areas\admin\fonts\fontawesome-webfontba72.eot" />
     <Content Include="Areas\admin\fonts\fontawesome-webfontba72.ttf" />
@@ -380,6 +380,8 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\admin\Views\Account\Register.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
@@ -397,7 +399,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\External\" />
-    <Folder Include="Areas\admin\Views\Account\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

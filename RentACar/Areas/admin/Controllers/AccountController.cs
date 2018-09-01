@@ -32,60 +32,78 @@ namespace RentACar.Areas.admin.Controllers
                 if (KullaniciVarMi.Rol.Ad == "Admin" || KullaniciVarMi.Rol.Ad == "Editör" )
                 {
                     Session["KullaniciId"] = KullaniciVarMi.Id;
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Index");
                 }
-                else if (KullaniciVarMi.Rol.Ad == "Üye")
-                {
-                    Session["KullaniciId"] = KullaniciVarMi.Id;
-                    return RedirectToAction("Index", "Home");
-                }
-                ViewBag.Mesaj = "Yetkisiz kullanıcı";
+                TempData["Bilgi"] = "Yetkisiz kullanıcı";
                 return View();
             }
-            ViewBag.Mesaj = "Geçersiz Email/Şifre girdiniz!";
+            TempData["Bilgi"] = "Geçersiz Email/Şifre girdiniz!";
             return View();
         }
 
-        //[HttpGet]
-        //public ActionResult Register()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
 
-        //[HttpPost]
-        //public ActionResult Register(Kullanici kullanici)
-        //{
-        //    var KullaniciVarMi = _kullaniciRepository.GetMany(x => x.Email == kullanici.Email).SingleOrDefault();
-        //    if (KullaniciVarMi != null)
-        //    {
-        //        ViewBag.Mesaj = "Bu email kullanılmış !";
-        //        return View();
-        //    }
-        //    Kullanici yeniKullanici = new Kullanici
-        //    {
-        //        AdSoyad = kullanici.AdSoyad,
-        //        Email = kullanici.Email,
-        //        Sifre = kullanici.Sifre,
-        //        RolId = 3,
-        //        KayitTarihi = DateTime.Now
-        //    };
+        [HttpPost]
+        public ActionResult Register(Kullanici kullanici)
+        {
+            var KullaniciVarMi = _kullaniciRepository.GetMany(x => x.Email == kullanici.Email).SingleOrDefault();
+            if (KullaniciVarMi != null)
+            {
+                TempData["Bilgi"] = "Bu email kullanılmış !";
+                return View();
+            }
+            Kullanici yeniKullanici = new Kullanici
+            {
+                AdSoyad = kullanici.AdSoyad,
+                Email = kullanici.Email,
+                Sifre = kullanici.Sifre,
+                RolId = 2,
+                KayitTarihi = DateTime.Now
+            };
 
-        //    try
-        //    {
-        //        _kullaniciRepository.Insert(yeniKullanici);
-        //        _kullaniciRepository.Save();
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return View();
-        //    }
-        //}
+            try
+            {
+                _kullaniciRepository.Insert(yeniKullanici);
+                _kullaniciRepository.Save();
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception)
+            {
+                return View();
+            }
+        }
 
         public ActionResult LogOut()
         {
             Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
+
+        //[HttpGet]
+        //[AdminEditorYazarAuth]
+        //public ActionResult Duzenle(int id)
+        //{
+        //    Kullanici gelenKullanici = _kullaniciRepository.GetById(id);
+        //    if (gelenKullanici == null)
+        //        TempData["Bilgi"] = "Kullanıcı bulunamadı!";
+        //    return View(gelenKullanici);
+        //}
+
+        //[HttpPost]
+        //[AdminEditorYazarAuth]
+        //public ActionResult Duzenle(Kullanici kullanici)
+        //{
+        //    Kullanici dbKullanici = _kullaniciRepository.GetById(kullanici.Id);
+        //    dbKullanici.AdSoyad = kullanici.AdSoyad;
+        //    dbKullanici.Email = kullanici.Email;
+        //    dbKullanici.Sifre = kullanici.Sifre;
+        //    _kullaniciRepository.Save();
+        //    TempData["Bilgi"] = "Kullanıcı düzenleme işleminiz başarılı.";
+        //    return RedirectToAction("Duzenle", "Account");
+        //}
     }
 }

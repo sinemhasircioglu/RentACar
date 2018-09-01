@@ -1,0 +1,38 @@
+﻿
+<nav class="header-site">
+    <div class="container-fluid">
+        <!-- Page title and breadcrumb navigation -->
+        <div class="page-title">
+            <h4><a href="#" id="toggle-menu"><i class="typcn typcn-th-menu"></i></a> <span>Rent A Car - Yönetim Sayfası</span></h4>
+            <nav>
+                @Html.ActionLink("Anasayfa", "Index", "Home", new { area = "admin" })
+                <span class="typcn typcn-chevron-right"></span>
+                <a href="#">@ViewBag.Title</a>
+            </nav>
+        </div>
+        <!-- /Page title and breadcrumb navigation -->
+        <!-- Header navigation / icons -->
+        <ul class="header-nav navbar-right">
+            <!-- Profile -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="External/avatar.png" alt="User avatar"></a>
+                <ul class="dropdown-menu dropdown-arrow pull-right">
+                    <li>
+                        @Html.ActionLink("Profil düzenle", "Duzenle", "Account", new { area = "admin"}, new { @class = "typcn typcn-edit" })
+                        @*<a href="@Url.Action("Duzenle","Account", new {id=(int)Session["KullaniciId"]})"><span class="typcn typcn-edit"></span> Profil düzenle</a>*@
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        @Html.ActionLink("Siteye git", "Index", "Home", new { area = "" }, new { @class = "typcn typcn-cog" })
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        @Html.ActionLink("Çıkış yap", "LogOut", "Account", new { area = "admin" }, new { @class = "typcn typcn-power" })
+                    </li>
+                </ul>
+            </li>
+            <!-- /Profile -->
+        </ul>
+        <!-- /Header navigation / icons -->
+    </div>
+</nav>

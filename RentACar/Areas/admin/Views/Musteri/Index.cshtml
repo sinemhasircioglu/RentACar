@@ -39,7 +39,7 @@
                             <td>@item.Sifre</td>
                             <td>@item.KayitTarihi</td>
                             <td>
-                                <a href="@Url.Action("Sil","Musteri", new { Id=item.Id })" class="btn btn-default btn-sm">Sil</a>
+                                @Html.ActionLink("Sil", "Sid", "Musteri", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
                             </td>
                         </tr>
                         }

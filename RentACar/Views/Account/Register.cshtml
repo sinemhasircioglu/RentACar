@@ -12,6 +12,10 @@
                 <div class="login-page-content">
                     <div class="login-form">
                         <h3>Sign Up</h3>
+                        @if (TempData["Bilgi"] != null)
+                        {
+                            <div class="alert alert-success">@TempData["Bilgi"]</div>
+                        }
                         @using (Html.BeginForm("Register", "Account", FormMethod.Post))
                         {
                             <div class="name">
@@ -19,7 +23,7 @@
                                     <div class="col-md-12">
                                         <input type="text" placeholder="First Name" name="AdSoyad">
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div class="username">

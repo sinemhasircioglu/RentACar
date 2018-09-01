@@ -39,8 +39,8 @@
                             <td>@item.Yil</td>
                             <td>@item.GunlukFiyat</td>
                             <td>
-                                <a href="@Url.Action("Duzenle","Arac",new { Id=item.Id})" class="btn btn-default btn-sm">Düzenle</a>
-                                <a href="@Url.Action("Sil","Arac", new { Id=item.Id })" class="btn btn-default btn-sm">Sil</a>
+                                @Html.ActionLink("Düzenle", "Duzenle", "Arac", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
+                                @Html.ActionLink("Sil", "Sil", "Arac", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
                             </td>
                         </tr>
                         }

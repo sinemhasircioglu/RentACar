@@ -11,6 +11,10 @@
                 <div class="login-page-content">
                     <div class="login-form">
                         <h3>Giriş yap</h3>
+                        @if (TempData["Bilgi"] != null)
+                        {
+                            <div class="alert alert-success">@TempData["Bilgi"]</div>
+                        }
                         @using (Html.BeginForm("Login", "Account", FormMethod.Post))
                         {
                             <div class="username">
@@ -31,7 +35,7 @@
                         <a href="#" class="login-with-btn google"><i class="fa fa-google"></i> Login With Google</a>
                     </div>
                     <div class="create-ac">
-                        <p>Don't have an account? <a href="register.html">Sign Up</a></p>
+                        <p>Don't have an account? <a href="@Url.Action("Register","Account")">Sign Up</a></p>
                     </div>
                     <div class="login-menu">
                         <a href="about.html">About</a>

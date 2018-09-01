@@ -17,8 +17,8 @@
             <div class="sidebar-link-addon"><i class="typcn typcn-plus"></i></div>
             <!-- Sidebar submenu -->
             <ul class="sidebar-submenu">
-                <li><a href="@Url.Action("Index","Arac")">Araç listele</a></li>
-                <li><a href="@Url.Action("Ekle","Arac")">Araç ekle</a></li>
+                <li> @Html.ActionLink("Araç listele", "Index", "Arac") </li>
+                <li> @Html.ActionLink("Araç ekle", "Ekle", "Arac") </li>
             </ul>
             <!-- /Sidebar submenu -->
         </li>
@@ -27,7 +27,8 @@
             <div class="sidebar-link-addon"><i class="typcn typcn-plus"></i></div>
             <!-- Sidebar submenu -->
             <ul class="sidebar-submenu">
-                <li><a href="@Url.Action("Index","Musteri")">Müşteri listele</a></li>
+                <li>  @Html.ActionLink("Müşteri listele", "Index", "Musteri") </li>
+                <li>  @Html.ActionLink("Müşteri ekle", "Ekle", "Musteri") </li>
             </ul>
             <!-- /Sidebar submenu -->
         </li>
@@ -36,8 +37,8 @@
             <div class="sidebar-link-addon"><i class="typcn typcn-plus"></i></div>
             <!-- Sidebar submenu -->
             <ul class="sidebar-submenu">
-                <li><a href="@Url.Action("Index","Hizmet")">Hizmet listele</a></li>
-                <li><a href="@Url.Action("Ekle","Hizmet")">Hizmet ekle</a></li>
+                <li> @Html.ActionLink("Hizmet listele", "Index", "Hizmet") </li>
+                <li> @Html.ActionLink("Hizmet ekle", "Ekle", "Hizmet") </li>
             </ul>
             <!-- /Sidebar submenu -->
         </li>
@@ -46,9 +47,9 @@
             <div class="sidebar-link-addon"><i class="typcn typcn-plus"></i></div>
             <!-- Sidebar submenu -->
             <ul class="sidebar-submenu">
-                <li><a href="@Url.Action("Index","Islem")">Kiralama işlemleri listele</a></li>
-                <li><a href="@Url.Action("Ekle","Islem")">Kiralama işlemi ekle</a></li>
-                <li><a href="@Url.Action("GecmisIslemler","Islem")">Geçmiş işlemler</a></li>
+                <li> @Html.ActionLink("Kiralama işlemleri listele", "Index", "Islem") </li>
+                <li> @Html.ActionLink("Kiralama işlemi ekle", "Ekle", "Islem") </li>
+                <li> @Html.ActionLink("Geçmiş kiralama işlemleri", "GecmisIslemler", "Islem") </li>
             </ul>
             <!-- /Sidebar submenu -->
         </li>
@@ -57,13 +58,12 @@
             <div class="sidebar-link-addon"><i class="typcn typcn-plus"></i></div>
             <!-- Sidebar submenu -->
             <ul class="sidebar-submenu">
-                <li><a href="@Url.Action("Index","Kullanici")">Kullanıcı listele</a></li>
-                <li><a href="@Url.Action("Ekle","Kullanici")">Kullanıcı ekle</a></li>
+                <li> @Html.ActionLink("Kullanıcı listele", "Index", "Kullanici") </li>
+                <li> @Html.ActionLink("Kullanıcı ekle", "Ekle", "Kullanici") </li>
             </ul>
             <!-- /Sidebar submenu -->
         </li>
 
     </ul>
     <!-- /Sidebar group -->
-
 </aside>

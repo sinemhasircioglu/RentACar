@@ -33,7 +33,7 @@ namespace RentACar.Controllers
                 return RedirectToAction("Index", "Home");
 
             }
-            ViewBag.Mesaj = "Geçersiz Email/Şifre girdiniz!";
+            TempData["Bilgi"] = "Geçersiz Email/Şifre girdiniz!";
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace RentACar.Controllers
             var KullaniciVarMi = _musteriRepository.GetMany(x => x.Email == musteri.Email).SingleOrDefault();
             if (KullaniciVarMi != null)
             {
-                ViewBag.Mesaj = "Bu email kullanılmış !";
+                TempData["Bilgi"] = "Bu email kullanılmış !";
                 return View();
             }
             Musteri yeniMusteri = new Musteri
@@ -58,8 +58,8 @@ namespace RentACar.Controllers
                 Email = musteri.Email,
                 Sifre = musteri.Sifre,
                 KayitTarihi = DateTime.Now,
-                Telefon="null",
-                TcKimlikNo="null"
+                Telefon=" ",
+                TcKimlikNo=" "
             };
 
             try

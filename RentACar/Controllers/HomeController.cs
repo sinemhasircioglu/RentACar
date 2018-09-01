@@ -13,5 +13,10 @@ namespace RentACar.Controllers
         {
             return View();
         }
+
+        public ActionResult Iletisim()
+        {
+            return View();
+        }
     }
 }
