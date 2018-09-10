@@ -1,110 +1,112 @@
-﻿<header id="header-area" class="fixed-top">
-    <!--== Header Top Start ==-->
-    <div id="header-top" class="d-none d-xl-block">
-        <div class="container">
-            <div class="row">
-                <!--== Single HeaderTop Start ==-->
-                <div class="col-lg-3 text-left">
-                    <i class="fa fa-map-marker"></i> 802/2, Mirpur, Dhaka
-                </div>
-                <!--== Single HeaderTop End ==-->
-                <!--== Single HeaderTop Start ==-->
-                <div class="col-lg-3 text-center">
-                    <i class="fa fa-mobile"></i> +1 800 345 678
-                </div>
-                <!--== Single HeaderTop End ==-->
-                <!--== Single HeaderTop Start ==-->
-                <div class="col-lg-3 text-center">
-                    <i class="fa fa-clock-o"></i> Mon-Fri 09.00 - 17.00
-                </div>
-                <!--== Single HeaderTop End ==-->
-                <!--== Social Icons Start ==-->
-                <div class="col-lg-3 text-right">
-                    <div class="header-social-icons">
-                        <a href="#"><i class="fa fa-behance"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
+﻿<nav class="navbar navbar-default ct-navbar ct-shadow ct-shadow--type1">
+
+    <div class="navbar-header">
+        <a class="ct-logoDark" href="index-2.html"><img src="assets/images/demo-content/logo.png" alt="" /></a>
+        <a class="ct-logoWhite" href="index-2.html"><img src="assets/images/demo-content/logo2.png" alt="" /></a>
+    </div>
+
+    <div class="container">
+        <div class="ct-navbarBox">
+            <a href="login.html" class="ct-login"><span>Login</span><i class="fa fa-lock"></i></a>
+            <div class="ct-navbarBox-meta">
+                <div class="ct-navSearch-box">
+                    <a class="ct-js-navSearch ct-navSearch" href="#"><i class="fa fa-search"></i></a> <!-- Navbar Search  -->
+                    <div class="ct-navbar-search">
+                        <form role="form">
+                            <div class="form-group  ct-input--type2">
+                                <input id="searchM" required="" type="text" name="field[]" placeholder="Search website..." class="form-control">
+                                <label for="searchM"><span>Search</span></label>
+                                <button class="ct-navbar-search-button" type="submit">
+                                    <i class="fa fa-search fa-fw"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <!--== Social Icons End ==-->
-            </div>
-        </div>
-    </div>
-    <!--== Header Top End ==-->
-    <!--== Header Bottom Start ==-->
-    <div id="header-bottom">
-        <div class="container">
-            <div class="row">
-                <!--== Logo Start ==-->
-                <div class="col-lg-4">
-                    <a href="index.html" class="logo">
-                        <img src="assets/img/logo.png" alt="JSOFT">
-                    </a>
-                </div>
-                <!--== Logo End ==-->
-                <!--== Main Menu Start ==-->
-                <div class="col-lg-8 d-none d-xl-block">
-                    <nav class="mainmenu alignright">
-                        <ul>
-                            <li class="active">
-                                <a href="#">Home</a>
-                                <ul>
-                                    <li><a href="index.html">Home 1</a></li>
-                                    <li><a href="index2.html">Home 2</a></li>
-                                    <li><a href="index3.html">Home 3</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="services.html">services</a></li>
-                            <li>
-                                <a href="#">Cars</a>
-                                <ul>
-                                    <li><a href="car-left-sidebar.html">Car Left Sidebar</a></li>
-                                    <li><a href="car-right-sidebar.html">Car Right Sidebar</a></li>
-                                    <li><a href="car-without-sidebar.html">Car Without Sidebar</a></li>
-                                    <li><a href="car-details.html">Car Details</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="index.html">Pages</a>
-                                <ul>
-                                    <li><a href="package.html">Pricing</a></li>
-                                    <li><a href="driver.html">Driver</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li><a href="help-desk.html">Help Desk</a></li>
-                                    <li><a href="login.html">Log In</a></li>
-                                    <li><a href="register.html">Register</a></li>
-                                    <li><a href="404.html">404</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Blog</a>
-                                <ul>
-                                    <li><a href="article.html">Blog Page</a></li>
-                                    <li><a href="article-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
-                            @*<li><a href="@Url.Action("Duzenle","Account", new {id=(int)Session["KullaniciId"]})">Üye ol / Giriş yap</a></li>*@
-                            <li>@*<a href="@Url.Action("Login","Account", new {area="admin"})">Üye ol / Giriş yap</a>*@</li>
-                            <li>
-                                @if (Session["KullaniciId"] == null)
-                                {
-                                    <a href="@Url.Action("Login","Account", new {area="admin"})">Giriş Yap</a>
-                                }
-                                else
-                                {
-                                    <a href="@Url.Action("Login","Account", new {area="admin"})">Çıkış Yap</a>
-                                }
-                            </li>
+                <div class="ct-langPicker">
+                    <div class="ct-langPicker-content">
+                        <a href="#"><img src="assets/images/demo-content/flag-01.jpg" alt="" /></a>
+                        <ul class="ct-langPicker-list">
+                            <li><a href="#">English <img src="assets/images/demo-content/flag-01.jpg" alt="" /></a></li>
+                            <li><a href="#">Español <img src="assets/images/demo-content/flag-03.jpg" alt="" /></a></li>
+                            <li><a href="#">Italiano <img src="assets/images/demo-content/flag-02.jpg" alt="" /></a></li>
                         </ul>
-                    </nav>
-                </div>
-                <!--== Main Menu End ==-->
+                    </div>
+                </div> <!-- Flags -->
             </div>
+
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
+
+        <ul class="nav navbar-nav ct-navbar--fadeIn">
+            <!--=========================================================================-->
+            <li class="active"><a href="index-2.html"><div class="ct-textEffect"><span data-content="Home">Home</span></div></a></li>
+            <!--=========================================================================-->
+            <li class="dropdown">
+                <a href="about.html"><div class="ct-textEffect"><span data-content="About Us">About Us</span></div></a>
+                <ul class="dropdown-menu">
+                    <li><a href="about.html"><span>About us</span></a></li>
+                    <li><a href="gallery.html"><span>Our gallery</span></a></li>
+                </ul>
+            </li>
+            <!--=========================================================================-->
+            <li><a href="services.html"><div class="ct-textEffect"><span data-content="Services">Services</span></div></a></li>
+            <li class="dropdown">
+                <a href="rent-now.html"><div class="ct-textEffect"><span data-content="Rent Now">Rent Now</span></div></a>
+                <ul class="dropdown-menu">
+                    <li><a href="rent-now.html"><span>Rent Now</span></a></li>
+                    <li><a href="rent-item.html"><span>Rent Item</span></a></li>
+                    <li class="ct-subDropdown">
+                        <a href="rent-page-variation-1.html">Rent Page</a>
+                        <ul class="ct-submenu dropdown-menu">
+                            <li><a href="rent-page-variation-1.html"><span>Rent Page v1</span></a></li>
+                            <li><a href="rent-page-variation-2.html"><span>Rent Page v2</span></a></li>
+                            <li><a href="rent-paypal.html"><span>Rent with Paypal integration</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <!--=========================================================================-->
+            <li class="dropdown">
+                <a href="blog.html"><div class="ct-textEffect"><span data-content="Blog">Blog</span></div></a>
+                <ul class="dropdown-menu">
+                    <li><a href="blog.html"><span>Blog</span></a></li>
+                    <li><a href="blog-single.html"><span>Blog Single</span></a></li>
+                    <li><a href="blog-archive.html"><span>Blog Archive</span></a></li>
+                </ul>
+            </li>
+            <!--=========================================================================-->
+            <li class="dropdown">
+                <a href="events.html"><div class="ct-textEffect"><span data-content="Events">Events</span></div></a>
+                <ul class="dropdown-menu">
+                    <li><a href="events.html"><span>Events</span></a></li>
+                    <li class="ct-subDropdown">
+                        <a href="event-single.html">Event Single</a>
+                        <ul class="ct-submenu dropdown-menu">
+                            <li><a href="event-single.html"><span>Event Single 1</span></a></li>
+                            <li><a href="event-single2.html"><span>Event Single 2</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <!--=========================================================================-->
+            <li class="dropdown">
+                <a href="account.html"><div class="ct-textEffect"><span data-content="Pages">Pages</span></div></a>
+                <ul class="dropdown-menu">
+                    <li><a href="account.html"><span>My Account</span></a></li>
+                    <li><a href="login.html"><span>Login</span></a></li>
+
+                    <li><a href="404.html"><span>404</span></a></li>
+                </ul>
+            </li>
+            <!--=========================================================================-->
+            <li><a href="contact.html"><div class="ct-textEffect"><span data-content="Contact">Contact</span></div></a></li>
+        </ul>
+
     </div>
-    <!--== Header Bottom End ==-->
-</header>
+</nav>
