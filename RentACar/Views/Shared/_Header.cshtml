@@ -1,112 +1,165 @@
-﻿<nav class="navbar navbar-default ct-navbar ct-shadow ct-shadow--type1">
+﻿<header>
+    <div class="r-header r-header-inner r-header-strip-02">
+        <div class="r-header-strip">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="r-logo">
+                            <a href="#" class="d-inline-block"><img src="~/assets/images/footer-logo.png" class="img-fluid d-block" alt=""></a>
+                        </div>
+                        <a href="javaScript:void(0)" class="menu-icon"> <i class="fa fa-bars"></i> </a>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12 pr-0">
+                        <div class="r-header-action float-right">
+                            <a href="login-register.html"> <i class="fa fa-lock"></i> <span>Login</span></a>
+                            <a href="#" class="r-search"> <i class="fa fa-search"></i>  <span>Search</span></a>
 
-    <div class="navbar-header">
-        <a class="ct-logoDark" href="index-2.html"><img src="assets/images/demo-content/logo.png" alt="" /></a>
-        <a class="ct-logoWhite" href="index-2.html"><img src="assets/images/demo-content/logo2.png" alt="" /></a>
-    </div>
-
-    <div class="container">
-        <div class="ct-navbarBox">
-            <a href="login.html" class="ct-login"><span>Login</span><i class="fa fa-lock"></i></a>
-            <div class="ct-navbarBox-meta">
-                <div class="ct-navSearch-box">
-                    <a class="ct-js-navSearch ct-navSearch" href="#"><i class="fa fa-search"></i></a> <!-- Navbar Search  -->
-                    <div class="ct-navbar-search">
-                        <form role="form">
-                            <div class="form-group  ct-input--type2">
-                                <input id="searchM" required="" type="text" name="field[]" placeholder="Search website..." class="form-control">
-                                <label for="searchM"><span>Search</span></label>
-                                <button class="ct-navbar-search-button" type="submit">
-                                    <i class="fa fa-search fa-fw"></i>
-                                </button>
-                            </div>
-                        </form>
+                            <div class="r-search-wrapper">
+                                <div class="r-search-inner">
+                                    <form>
+                                        <input type="text" class="r-search-field" placeholder="Search" />
+                                        <button type="submit" class="r-search-btn">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div> <!-- /r-search-wrapper -->
+                        </div>
+                        <div class="r-nav-section float-right">
+                            <nav>
+                                <ul>
+                                    <li class="r-has-child">
+                                        <a href="index-2.html">HOME</a>
+                                        <ul class="pl-0 ml-0">
+                                            <li><a href="index-2.html">Home 01</a></li>
+                                            <li><a href="index-02.html">Home 02</a></li>
+                                            <li><a href="index-03.html">Home 03</a></li>
+                                            <li><a href="index-04.html">Home 04</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="r-has-child">
+                                        <a href="about.html">ABOUT US</a>
+                                        <ul class="pl-0 ml-0">
+                                            <li><a href="faq.html">Faq</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="r-has-child">
+                                        <a href="car-listing.html">VEHICLES</a>
+                                        <ul class="pl-0 ml-0">
+                                            <li><a href="car-list-map.html">Car List Map</a></li>
+                                            <li><a href="car-booking.html">Car Booking</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="gallery.html">GALLERY</a></li>
+                                    <li><a href="drivers.html">DRIVERS</a></li>
+                                    <li><a href="contact.html">CONTACT US</a></li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
-                <div class="ct-langPicker">
-                    <div class="ct-langPicker-content">
-                        <a href="#"><img src="assets/images/demo-content/flag-01.jpg" alt="" /></a>
-                        <ul class="ct-langPicker-list">
-                            <li><a href="#">English <img src="assets/images/demo-content/flag-01.jpg" alt="" /></a></li>
-                            <li><a href="#">Español <img src="assets/images/demo-content/flag-03.jpg" alt="" /></a></li>
-                            <li><a href="#">Italiano <img src="assets/images/demo-content/flag-02.jpg" alt="" /></a></li>
-                        </ul>
+            </div>
+        </div>
+        <div class="r-slider r-slider-02">
+            <div class="r-slider owl-carousel" id="defaultHomeSlider">
+                <div class="r-slider-item">
+                    <img src="~/assets/images/main-slider-01.jpg" class="img-fluid d-block m-auto" alt="">
+                    <div class="container">
+                        <div class="r-slider-top-content">
+                            <h1 class="animated fadeInDown">Kia Rio <span>z</span></h1>
+                            <h4 class="animated fadeInLeft">FOR RENT <strong>$50</strong> PER DAY</h4>
+                            <a href="#" class="btn btn-outlined animated fadeInUp"> Reserve Now </a>
+                        </div>
                     </div>
-                </div> <!-- Flags -->
+                </div>
+                <div class="r-slider-item">
+                    <img src="~/assets/images/main-slider-04.jpg" class="img-fluid d-block m-auto" alt="">
+                    <div class="container">
+                        <div class="r-slider-top-content">
+                            <h1>BMW <span>3</span></h1>
+                            <h4>FOR RENT <strong>$150</strong> PER DAY</h4>
+                            <a href="#" class="btn btn-outlined"> Reserve Now </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="r-slider-item">
+                    <img src="~/assets/images/main-slider-05.jpg" class="img-fluid d-block m-auto" alt="">
+                    <div class="container">
+                        <div class="r-slider-top-content">
+                            <h1>Audi <span>A4</span></h1>
+                            <h4>FOR RENT <strong>$100</strong> PER DAY</h4>
+                            <a href="#" class="btn btn-outlined"> Reserve Now </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+
         </div>
-
-        <ul class="nav navbar-nav ct-navbar--fadeIn">
-            <!--=========================================================================-->
-            <li class="active"><a href="index-2.html"><div class="ct-textEffect"><span data-content="Home">Home</span></div></a></li>
-            <!--=========================================================================-->
-            <li class="dropdown">
-                <a href="about.html"><div class="ct-textEffect"><span data-content="About Us">About Us</span></div></a>
-                <ul class="dropdown-menu">
-                    <li><a href="about.html"><span>About us</span></a></li>
-                    <li><a href="gallery.html"><span>Our gallery</span></a></li>
-                </ul>
-            </li>
-            <!--=========================================================================-->
-            <li><a href="services.html"><div class="ct-textEffect"><span data-content="Services">Services</span></div></a></li>
-            <li class="dropdown">
-                <a href="rent-now.html"><div class="ct-textEffect"><span data-content="Rent Now">Rent Now</span></div></a>
-                <ul class="dropdown-menu">
-                    <li><a href="rent-now.html"><span>Rent Now</span></a></li>
-                    <li><a href="rent-item.html"><span>Rent Item</span></a></li>
-                    <li class="ct-subDropdown">
-                        <a href="rent-page-variation-1.html">Rent Page</a>
-                        <ul class="ct-submenu dropdown-menu">
-                            <li><a href="rent-page-variation-1.html"><span>Rent Page v1</span></a></li>
-                            <li><a href="rent-page-variation-2.html"><span>Rent Page v2</span></a></li>
-                            <li><a href="rent-paypal.html"><span>Rent with Paypal integration</span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <!--=========================================================================-->
-            <li class="dropdown">
-                <a href="blog.html"><div class="ct-textEffect"><span data-content="Blog">Blog</span></div></a>
-                <ul class="dropdown-menu">
-                    <li><a href="blog.html"><span>Blog</span></a></li>
-                    <li><a href="blog-single.html"><span>Blog Single</span></a></li>
-                    <li><a href="blog-archive.html"><span>Blog Archive</span></a></li>
-                </ul>
-            </li>
-            <!--=========================================================================-->
-            <li class="dropdown">
-                <a href="events.html"><div class="ct-textEffect"><span data-content="Events">Events</span></div></a>
-                <ul class="dropdown-menu">
-                    <li><a href="events.html"><span>Events</span></a></li>
-                    <li class="ct-subDropdown">
-                        <a href="event-single.html">Event Single</a>
-                        <ul class="ct-submenu dropdown-menu">
-                            <li><a href="event-single.html"><span>Event Single 1</span></a></li>
-                            <li><a href="event-single2.html"><span>Event Single 2</span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <!--=========================================================================-->
-            <li class="dropdown">
-                <a href="account.html"><div class="ct-textEffect"><span data-content="Pages">Pages</span></div></a>
-                <ul class="dropdown-menu">
-                    <li><a href="account.html"><span>My Account</span></a></li>
-                    <li><a href="login.html"><span>Login</span></a></li>
-
-                    <li><a href="404.html"><span>404</span></a></li>
-                </ul>
-            </li>
-            <!--=========================================================================-->
-            <li><a href="contact.html"><div class="ct-textEffect"><span data-content="Contact">Contact</span></div></a></li>
-        </ul>
-
+        <div class="r-slider-serach form-search dark">
+            <form action="#">
+                <div class="form-title form-title-large">
+                    <span class="r-form-icon"><img src="~/assets/images/footer-form-icon.png" alt=""></span>
+                    <h2>Search Your <b>Best Cars</b></h2>
+                    <small> 120+ CARS TYPE &amp; BRANDS </small>
+                </div>
+                <div class="row row-inputs">
+                    <div class="col-sm-12">
+                        <div class="form-group has-icon has-label">
+                            <label>Picking Up Location</label>
+                            <input type="text" class="form-control" id="formSearchUpLocation" placeholder="Airport or Anywhere">
+                            <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-inputs">
+                    <div class="col-sm-12">
+                        <div class="form-group has-icon has-label">
+                            <label>Dropping Off Location</label>
+                            <input type="text" class="form-control" id="formSearchOffLocation" placeholder="Airport or Anywhere">
+                            <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-inputs">
+                    <div class="col-sm-6">
+                        <div class="form-group has-icon has-label label" id="datetimepicker2" data-target-input="nearest">
+                            <label>Picking Up Date</label>
+                            <input type="text" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="dd/mm/yyyy">
+                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group has-icon has-label date" id="datetimepicker3" data-target-input="nearest">
+                            <label>Picking Up Hour</label>
+                            <input type="text" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="20:00 AM">
+                            <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-inputs">
+                    <div class="col-sm-6">
+                        <div class="form-group has-icon has-label label" id="datetimepicker4" data-target-input="nearest">
+                            <label>Dropping Off Date</label>
+                            <input type="text" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker4" placeholder="dd/mm/yyyy">
+                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group has-icon has-label date" id="datetimepicker5" data-target-input="nearest">
+                            <label>Dropping Off Hour</label>
+                            <input type="text" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker5" placeholder="20:00 AM">
+                            <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <div class="inner clearfix">
+                        <a href="#" class="float-left"><i class="fa fa-plus-circle"></i>Advanced Search</a>
+                        <button type="submit" class="btn m-auto d-block btn-full">Find Car</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</nav>
+</header>
