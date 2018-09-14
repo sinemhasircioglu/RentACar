@@ -8,23 +8,23 @@ using System.Web.Mvc;
 
 namespace RentACar.Controllers
 {
-    public class AccountController : Controller
+    public class HesapController : Controller
     {
         private readonly IMusteriRepository _musteriRepository;
 
-        public AccountController(IMusteriRepository musteriRepository)
+        public HesapController(IMusteriRepository musteriRepository)
         {
             _musteriRepository = musteriRepository;
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult LoginRegister()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(Musteri musteri) //giriş yap butonuna basınca çalışacak kodlar
+        public ActionResult Login(Musteri musteri) 
         {
             var KullaniciVarMi = _musteriRepository.GetMany(x => x.Email == musteri.Email && x.Sifre == musteri.Sifre).SingleOrDefault();
             if (KullaniciVarMi != null)
@@ -34,12 +34,6 @@ namespace RentACar.Controllers
 
             }
             TempData["Bilgi"] = "Geçersiz Email/Şifre girdiniz!";
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Register()
-        {
             return View();
         }
 
@@ -58,15 +52,16 @@ namespace RentACar.Controllers
                 Email = musteri.Email,
                 Sifre = musteri.Sifre,
                 KayitTarihi = DateTime.Now,
-                Telefon=" ",
-                TcKimlikNo=" "
+                Telefon = musteri.Telefon,
+                TcKimlikNo = " "
             };
 
             try
             {
                 _musteriRepository.Insert(yeniMusteri);
                 _musteriRepository.Save();
-                return RedirectToAction("Index", "Home");
+                TempData["Bilgi"] = "Kayıt oldunuz lütfen giriş yapın.";
+                return RedirectToAction("LoginRegister", "Hesap");
             }
             catch (Exception)
             {

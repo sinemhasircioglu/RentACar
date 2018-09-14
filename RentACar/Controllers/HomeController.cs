@@ -32,31 +32,34 @@ namespace RentACar.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult KiralamaFiltrele(int fiyatMax, string arabaSinif, string arabaVites, string arabaYakit, string siralama, DateTime tarihBaslangic, DateTime tarihBitis)
-        //{
-        //    return RedirectToAction("Kiralama");
-        //}
+        public ActionResult Galeri()
+        {
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Araclar()
         {
             var Araclar = _aracRepository.GetAll().ToList();
-            return View("Araclar",Araclar);
+            return View("Araclar", Araclar);
         }
 
         [HttpPost]
-        public ActionResult Araclar(string Sinif, string Vites, string Siralama)
+        public ActionResult Araclar(string TeslimAlmaNoktasi, string TeslimEtmeNoktasi, string TeslimAlmaTarihi, string TeslimAlmaSaati,
+            string TeslimEtmeTarihi, string TeslimEtmeSaati, string ArabaSinif, string ArabaVites)
         {
-            var filtrelenmisAraclar = new List<Arac>();
-            if (Siralama == "Artan")
-            {
-                filtrelenmisAraclar = _aracRepository.GetMany(x => x.Sinif == Sinif && x.Vites == Vites).OrderBy(x => x.GunlukFiyat).ToList();
-            } else
-            {
-                filtrelenmisAraclar = _aracRepository.GetMany(x => x.Sinif == Sinif && x.Vites == Vites).OrderByDescending(x => x.GunlukFiyat).ToList();
-            }
-            return View(filtrelenmisAraclar);
+
+            var arabalar = _aracRepository.GetMany(x => x.Sinif == ArabaSinif && x.Vites == ArabaVites).ToList();
+
+            //var filtrelenmisAraclar = new List<Arac>();
+            //if (Siralama == "Artan")
+            //{
+            //    filtrelenmisAraclar = _aracRepository.GetMany(x => x.Sinif == Sinif && x.Vites == Vites).OrderBy(x => x.GunlukFiyat).ToList();
+            //} else
+            //{
+            //    filtrelenmisAraclar = _aracRepository.GetMany(x => x.Sinif == Sinif && x.Vites == Vites).OrderByDescending(x => x.GunlukFiyat).ToList();
+            //}
+            return View(arabalar);
         }
     }
 }

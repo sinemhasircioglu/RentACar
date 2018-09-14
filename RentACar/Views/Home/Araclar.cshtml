@@ -19,8 +19,8 @@
                                 <div class="col-sm-12">
                                     <div class="form-group has-icon has-label">
                                         <label>Teslim alma noktası</label>
-                                        @Html.DropDownList("Vites", (new List<SelectListItem>() {
-                            new SelectListItem { Text = "Malatya ofis", Value = "Otomatik" } }), "Teslim alma noktası", new { @class = "form-control", style = "border-style:solid; border-width:0.75px; border-radius:5px;" })
+                                        @Html.DropDownList("TeslimAlmaNoktasi", (new List<SelectListItem>() {
+                            new SelectListItem { Text = "Malatya ofis", Value = "Malatya ofis" } }), "Teslim alma noktası", new { @class = "form-control", style = "border-style:solid; border-width:0.75px; border-radius:5px;" })
                                         <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                     </div>
                                 </div>
@@ -29,8 +29,8 @@
                                 <div class="col-sm-12">
                                     <div class="form-group has-icon has-label">
                                         <label>Teslim etme noktası</label>
-                                        @Html.DropDownList("Vites", (new List<SelectListItem>() {
-                            new SelectListItem { Text = "Malatya ofis", Value = "Otomatik" } }), "Teslim etme noktası", new { @class = "form-control", style= "border-style:solid; border-width:1px; border-radius:5px;" })
+                                        @Html.DropDownList("TeslimEtmeNoktasi", (new List<SelectListItem>() {
+                            new SelectListItem { Text = "Malatya ofis", Value = "Malatya ofis" } }), "Teslim etme noktası", new { @class = "form-control", style= "border-style:solid; border-width:1px; border-radius:5px;" })
                                         <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                     </div>
                                 </div>
@@ -39,14 +39,14 @@
                                 <div class="col-sm-6">
                                     <div class="form-group has-icon has-label label" id="datetimepicker2" data-target-input="nearest">
                                         <label>Teslim alma tarihi</label>
-                                        <input type="text" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="dd/mm/yyyy">
+                                        <input type="text" name="TeslimAlmaTarihi" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="dd/mm/yyyy">
                                         <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group has-icon has-label date" id="datetimepicker3" data-target-input="nearest">
                                         <label>Teslim alma saati</label>
-                                        <input type="text" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="20:00 AM">
+                                        <input type="text" name="TeslimAlmaSaati" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="20:00 AM">
                                         <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
                                     </div>
                                 </div>
@@ -55,14 +55,14 @@
                                 <div class="col-sm-6">
                                     <div class="form-group has-icon has-label label" id="datetimepicker4" data-target-input="nearest">
                                         <label>Teslim etme tarihi</label>
-                                        <input type="text" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker4" placeholder="dd/mm/yyyy">
+                                        <input type="text" name="TeslimEtmeTarihi" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker4" placeholder="dd/mm/yyyy">
                                         <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group has-icon has-label date" id="datetimepicker5" data-target-input="nearest">
                                         <label>Teslim etme saati</label>
-                                        <input type="text" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker5" placeholder="20:00 AM">
+                                        <input type="text" name="TeslimEtmeSaati" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker5" placeholder="20:00 AM">
                                         <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group has-icon has-label">
                                         <label>ARABA SINIF</label>
-                                        @Html.DropDownList("Sinif", (new List<SelectListItem>() {
+                                        @Html.DropDownList("ArabaSinif", (new List<SelectListItem>() {
                             new SelectListItem { Text = "Ekonomik", Value = "Ekonomik" },
                             new SelectListItem { Text = "Lüks", Value = "Lüks" },
                             new SelectListItem { Text = "Orta", Value = "Orta" },
@@ -84,7 +84,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group has-icon has-label">
                                         <label>ARABA VİTES</label>
-                                        @Html.DropDownList("Vites", (new List<SelectListItem>() {
+                                        @Html.DropDownList("ArabaVites", (new List<SelectListItem>() {
                             new SelectListItem { Text = "Otomatik", Value = "Otomatik" },
                             new SelectListItem { Text = "Düz", Value = "Düz" },
                             new SelectListItem { Text = "Düz-Otomatik", Value = "Düz-Otomatik" } }), "Araba vitesi seçin", new { @class = "form-control", style = "border-style:solid; border-width:1px; border-radius:5px;" })
@@ -105,6 +105,9 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <span class="r-filter-text">?? sonuçtan ?? gösteriliyor</span>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <span class="r-filter-text">sıralama yapılacak</span>
                             </div>
                         </div>
                     </div>

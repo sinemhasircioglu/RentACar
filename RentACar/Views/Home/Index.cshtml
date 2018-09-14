@@ -17,7 +17,14 @@
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12 pr-0">
                         <div class="r-header-action float-right">
-                            <a href="login-register.html"> <i class="fa fa-lock"></i> <span>Giriş yap</span></a>                            
+                            @if (Session["KullaniciId"] == null)
+                            {
+                                <a href="/Hesap/LoginRegister"> <img src="~/assets/images/icon-lock.png" alt=""> <span>Giriş yap</span></a>
+                            }
+                            else
+                            {
+                                <a href="/Hesap/LogOut"> <img src="~/assets/images/icon-lock.png" alt=""> <span>Çıkış yap</span></a>
+                            }
                         </div>
                         <div class="r-nav-section float-right">
                             <nav>
@@ -32,10 +39,7 @@
                                         @Html.ActionLink("Araçlar", "Araclar", "Home", new { area = "" }, null)
                                     </li>
                                     <li>
-                                        <a href="car-list-map.html">Araçlar H</a>
-                                    </li>
-                                    <li>
-                                        <a href="gallery.html">Galeri</a>
+                                        @Html.ActionLink("Galeri", "Galeri", "Home", new { area = "" }, null)
                                     </li>
                                     <li>
                                         @Html.ActionLink("İletişim", "Iletisim", "Home", new { area = "" }, null)

@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "LoginRegister";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="r-login-register">
+    <div class="r-login-register">
+        <div class="r-login-register-in">
+            <div class="r-auth-or">
+                <span><small>veya</small></span>
+            </div>
+            @if (TempData["Bilgi"] != null)
+            {
+                <div class="alert alert-success">@TempData["Bilgi"]</div>
+            }
+            <div class="clearfix">
+                <div class="r-auth-outer r-login">
+                    <div class="r-auth-head">
+                        <h2><b>Giriş</b> yapın</h2>
+                        <span>Login to our website</span>
+                    </div>
+                    <div class="r-auth-form">
+                        @using (Html.BeginForm("Login", "Hesap", FormMethod.Post, new { @class = "comment-form" }))
+                        {
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Email" name="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Şifre" name="Sifre">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-full">Giriş yap</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="r-auth-outer r-register">
+                    <div class="r-auth-head">
+                        <h2><b>Kayıt</b> olun</h2>
+                        <span>Required information for account creation</span>
+                    </div>
+                    <div class="r-auth-form">
+                        @using (Html.BeginForm("Register", "Hesap", FormMethod.Post, new { @class = "comment-form" }))
+                        {
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Adınız soyadınız" name="AdSoyad">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email adresiniz" name="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Telefon numaranız (0 olmadan)" name="Telefon">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Şifre" name="Sifre">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Şifre tekrar" name="SifreTekrar">
+                            </div>
+
+                            <div class="form-group">
+                                @* BURAYA DAHA SONRA RECAPTCHA EKLENECEK -----------*@
+                                <img src="~/assets/images/recaptcha.jpg" class="img-fluid d-block m-auto" alt="">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-full">Kayıt ol</button>
+                            </div>
+                            <div class="r-from-inof">
+                                <p class="text-center">
+                                    * Denotes mandatory field. <br>
+                                    ** At least one telephone number is required.
+                                </p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

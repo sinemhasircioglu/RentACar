@@ -1,17 +1,24 @@
 ﻿<header>
-    <div class="r-header r-header-inner r-header-strip-02">
+    <div class="r-header r-header-inner">
         <div class="r-header-strip">
             <div class="container">
                 <div class="row clearfix">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="r-logo">
-                            <a href="#" class="d-inline-block"><img src="~/assets/images/footer-logo.png" class="img-fluid d-block" alt=""></a>
+                            <a href="index-2.html" class="d-inline-block"><img src="~/assets/images/logo.png" class="img-fluid d-block" alt=""></a>
                         </div>
                         <a href="javaScript:void(0)" class="menu-icon"> <i class="fa fa-bars"></i> </a>
                     </div>
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12 pr-0">
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-xs-12">
                         <div class="r-header-action float-right">
-                            <a href="login-register.html"> <i class="fa fa-lock"></i> <span>Giriş yap</span></a>                           
+                            @if (Session["KullaniciId"] == null)
+                            {
+                            <a href="/Hesap/LoginRegister"> <img src="~/assets/images/icon-lock.png" alt=""> <span>Giriş yap</span></a>
+                            }
+                            else
+                            {
+                            <a href="/Hesap/LogOut"> <img src="~/assets/images/icon-lock.png" alt=""> <span>Çıkış yap</span></a>
+                            }                            
                         </div>
                         <div class="r-nav-section float-right">
                             <nav>
@@ -26,10 +33,7 @@
                                         @Html.ActionLink("Araçlar", "Araclar", "Home", new { area = "" }, null)
                                     </li>
                                     <li>
-                                        <a href="car-list-map.html">Araçlar H</a>
-                                    </li>
-                                    <li>
-                                        <a href="gallery.html">Galeri</a>
+                                        @Html.ActionLink("Galeri", "Galeri", "Home", new { area = "" }, null)
                                     </li>
                                     <li>
                                         @Html.ActionLink("İletişim", "Iletisim", "Home", new { area = "" }, null)
@@ -43,11 +47,11 @@
         </div>
         <div class="r-header-inner-banner">
             <div class="r-header-in-over">
-                <h1>Royal Cars<b> bulunduğumuz sayfa</b> </h1>
+                <h1>-Royal Cars<b> -bulunduğumuz sayfa-?</b> </h1>
                 <div class="r-breadcrum">
                     <ul>
                         <li><a href="#">HOME</a></li>
-                        <li><span>bulunduğumuz sayfa</span></li>
+                        <li><span>@ViewBag.Title</span></li>
                     </ul>
                 </div>
             </div>
