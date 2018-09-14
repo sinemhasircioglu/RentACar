@@ -5,7 +5,7 @@
                 <div class="row clearfix">
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="r-logo">
-                            <a href="index-2.html" class="d-inline-block"><img src="~/assets/images/logo.png" class="img-fluid d-block" alt=""></a>
+                            <a href="/Home" class="d-inline-block"><img src="~/assets/images/logo.png" class="img-fluid d-block" alt=""></a>
                         </div>
                         <a href="javaScript:void(0)" class="menu-icon"> <i class="fa fa-bars"></i> </a>
                     </div>
@@ -13,12 +13,13 @@
                         <div class="r-header-action float-right">
                             @if (Session["KullaniciId"] == null)
                             {
-                            <a href="/Hesap/LoginRegister"> <img src="~/assets/images/icon-lock.png" alt=""> <span>Giriş yap</span></a>
+                                <a href="/Hesap/LoginRegister"> <img src="~/assets/images/icon-lock.png" alt=""> <span>Giriş yap</span></a>
                             }
                             else
                             {
-                            <a href="/Hesap/LogOut"> <img src="~/assets/images/icon-lock.png" alt=""> <span>Çıkış yap</span></a>
-                            }                            
+                                <a href="@Url.Action("Duzenle","Hesap", new {id=(int)Session["KullaniciId"]})"><i class="fa fa-user"></i><span>Profili düzenle</span></a>
+                                <a href="/Hesap/LogOut"> <i class="fa fa-lock"> </i><span>Çıkış yap</span></a>
+                            }
                         </div>
                         <div class="r-nav-section float-right">
                             <nav>
@@ -47,10 +48,10 @@
         </div>
         <div class="r-header-inner-banner">
             <div class="r-header-in-over">
-                <h1>-Royal Cars<b> -bulunduğumuz sayfa-?</b> </h1>
+                <h1>@ViewBag.Aciklama</h1>
                 <div class="r-breadcrum">
                     <ul>
-                        <li><a href="#">HOME</a></li>
+                        <li><a href="/Home">ANASAYFA</a></li>
                         <li><span>@ViewBag.Title</span></li>
                     </ul>
                 </div>

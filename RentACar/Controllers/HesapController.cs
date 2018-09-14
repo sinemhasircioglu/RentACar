@@ -31,6 +31,7 @@ namespace RentACar.Controllers
             {
                 Session["KullaniciId"] = KullaniciVarMi.Id;
                 return RedirectToAction("Index", "Home");
+                //$$$$$$$$$$$$
 
             }
             TempData["Bilgi"] = "Geçersiz Email/Şifre girdiniz!";
@@ -73,6 +74,28 @@ namespace RentACar.Controllers
         {
             Session.Abandon();
             return RedirectToAction("Index", "Home");
+        }
+
+
+        [HttpGet]
+        public ActionResult Duzenle(int id)
+        {
+            Musteri gelenMusteri = _musteriRepository.GetById(id);
+            if (gelenMusteri == null)
+                TempData["Bilgi"] = "Profil bulunamadı!";
+            return View(gelenMusteri);
+        }
+
+        [HttpPost]
+        public ActionResult Duzenle(Musteri musteri)
+        {
+            Musteri dbMusteri = _musteriRepository.GetById(musteri.Id);
+            dbMusteri.AdSoyad = musteri.AdSoyad;
+            dbMusteri.Email = musteri.Email;
+            dbMusteri.Sifre = musteri.Sifre;
+            _musteriRepository.Save();
+            TempData["Bilgi"] = "Profil düzenleme işleminiz başarılı.";
+            return RedirectToAction("Duzenle", "Hesap");
         }
     }
 }

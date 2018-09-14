@@ -448,6 +448,7 @@
     <Content Include="Views\Home\Araclar.cshtml" />
     <Content Include="Views\Home\Galeri.cshtml" />
     <Content Include="Views\Hesap\LoginRegister.cshtml" />
+    <Content Include="Views\Hesap\Duzenle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

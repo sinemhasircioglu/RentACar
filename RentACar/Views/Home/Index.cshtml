@@ -19,11 +19,12 @@
                         <div class="r-header-action float-right">
                             @if (Session["KullaniciId"] == null)
                             {
-                                <a href="/Hesap/LoginRegister"> <img src="~/assets/images/icon-lock.png" alt=""> <span>Giriş yap</span></a>
+                                <a href="/Hesap/LoginRegister"> <i class="fa fa-lock"></i> <span>Giriş yap</span></a>
                             }
                             else
                             {
-                                <a href="/Hesap/LogOut"> <img src="~/assets/images/icon-lock.png" alt=""> <span>Çıkış yap</span></a>
+                                <a href="@Url.Action("Duzenle","Hesap", new {id=(int)Session["KullaniciId"]})"><i class="fa fa-user"></i><span>Profili düzenle</span></a>
+                                <a href="/Hesap/LogOut"> <i class="fa fa-lock"> </i><span>Çıkış yap</span></a>
                             }
                         </div>
                         <div class="r-nav-section float-right">
@@ -88,18 +89,18 @@
         </div>
 
         <div class="r-slider-serach form-search dark">
-            @using (Html.BeginForm("YorumYap", "Home", FormMethod.Post, new { @class = "comment-form" }))
+            @using (Html.BeginForm("AracBul", "Home", FormMethod.Post, new { @class = "comment-form" }))
             {
                 <div class="form-title form-title-large">
                     <span class="r-form-icon"><img src="~/assets/images/footer-form-icon.png" alt=""></span>
-                    <h2>Search Your <b>Best Cars</b></h2>
-                    <small> 120+ CARS TYPE &amp; BRANDS </small>
+                    <h2>Aradığınız <b>arabayı </b>bulun</h2> <br />
                 </div>
                 <div class="row row-inputs">
                     <div class="col-sm-12">
                         <div class="form-group has-icon has-label">
-                            <label>Picking Up Location</label>
-                            <input type="text" class="form-control" id="formSearchUpLocation" placeholder="Airport or Anywhere">
+                            <label>Teslim alma noktası</label>
+                            @Html.DropDownList("TeslimAlmaNoktasi", (new List<SelectListItem>() {
+                new SelectListItem { Text = "Malatya ofis", Value = "Malatya ofis" } }), "Teslim alma noktası", new { @class = "form-control", style = "border-style:solid; border-width:0.75px; border-radius:5px;" })
                             <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                         </div>
                     </div>
@@ -107,8 +108,9 @@
                 <div class="row row-inputs">
                     <div class="col-sm-12">
                         <div class="form-group has-icon has-label">
-                            <label>Dropping Off Location</label>
-                            <input type="text" class="form-control" id="formSearchOffLocation" placeholder="Airport or Anywhere">
+                            <label>Teslim etme noktası</label>
+                            @Html.DropDownList("TeslimEtmeNoktasi", (new List<SelectListItem>() {
+                new SelectListItem { Text = "Malatya ofis", Value = "Malatya ofis" } }), "Teslim etme noktası", new { @class = "form-control", style= "border-style:solid; border-width:1px; border-radius:5px;" })
                             <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                         </div>
                     </div>
@@ -116,15 +118,15 @@
                 <div class="row row-inputs">
                     <div class="col-sm-6">
                         <div class="form-group has-icon has-label label" id="datetimepicker2" data-target-input="nearest">
-                            <label>Picking Up Date</label>
-                            <input type="text" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="dd/mm/yyyy">
+                            <label>Teslim alma tarihi</label>
+                            <input type="text" name="TeslimAlmaTarihi" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="dd/mm/yyyy">
                             <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group has-icon has-label date" id="datetimepicker3" data-target-input="nearest">
-                            <label>Picking Up Hour</label>
-                            <input type="text" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="20:00 AM">
+                            <label>Teslim alma saati</label>
+                            <input type="text" name="TeslimAlmaSaati" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="20:00 AM">
                             <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
                         </div>
                     </div>
@@ -132,22 +134,22 @@
                 <div class="row row-inputs">
                     <div class="col-sm-6">
                         <div class="form-group has-icon has-label label" id="datetimepicker4" data-target-input="nearest">
-                            <label>Dropping Off Date</label>
-                            <input type="text" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker4" placeholder="dd/mm/yyyy">
+                            <label>Teslim etme tarihi</label>
+                            <input type="text" name="TeslimEtmeTarihi" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker4" placeholder="dd/mm/yyyy">
                             <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group has-icon has-label date" id="datetimepicker5" data-target-input="nearest">
-                            <label>Dropping Off Hour</label>
-                            <input type="text" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker5" placeholder="20:00 AM">
+                            <label>Teslim etme saati</label>
+                            <input type="text" name="TeslimEtmeSaati" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker5" placeholder="20:00 AM">
                             <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
                         </div>
                     </div>
                 </div>
                 <div class="form-footer">
                     <div class="inner clearfix">
-                        <button type="submit" class="btn m-auto d-block btn-full">Find Car</button>
+                        <button type="submit" class="btn m-auto d-block btn-full">Araç bul</button>
                     </div>
                 </div>
             }

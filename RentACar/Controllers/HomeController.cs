@@ -41,25 +41,38 @@ namespace RentACar.Controllers
         public ActionResult Araclar()
         {
             var Araclar = _aracRepository.GetAll().ToList();
+            ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).ToList();
             return View("Araclar", Araclar);
         }
 
         [HttpPost]
-        public ActionResult Araclar(string TeslimAlmaNoktasi, string TeslimEtmeNoktasi, string TeslimAlmaTarihi, string TeslimAlmaSaati,
-            string TeslimEtmeTarihi, string TeslimEtmeSaati, string ArabaSinif, string ArabaVites)
+        public ActionResult AracBul(string TeslimAlmaNoktasi, string TeslimEtmeNoktasi, string TeslimAlmaTarihi, 
+            string TeslimAlmaSaati, string TeslimEtmeTarihi, string TeslimEtmeSaati)
         {
+            return View("Araclar");
+        }
 
-            var arabalar = _aracRepository.GetMany(x => x.Sinif == ArabaSinif && x.Vites == ArabaVites).ToList();
+        [HttpPost]
+        public ActionResult Araclar(string ArabaSinif, string ArabaVites, string Siralama)
+        {
+            ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).ToList();
+            var filtrelenmisAraclar = new List<Arac>();
+            if (Siralama == "Artan")
+            {
+                filtrelenmisAraclar = _aracRepository.GetMany(x => x.Sinif == ArabaSinif && x.Vites == ArabaVites).OrderBy(x => x.GunlukFiyat).ToList();
+            }
+            else
+            {
+                filtrelenmisAraclar = _aracRepository.GetMany(x => x.Sinif == ArabaSinif && x.Vites == ArabaVites).OrderByDescending(x => x.GunlukFiyat).ToList();
+            }
+            return View(filtrelenmisAraclar);
+        }
 
-            //var filtrelenmisAraclar = new List<Arac>();
-            //if (Siralama == "Artan")
-            //{
-            //    filtrelenmisAraclar = _aracRepository.GetMany(x => x.Sinif == Sinif && x.Vites == Vites).OrderBy(x => x.GunlukFiyat).ToList();
-            //} else
-            //{
-            //    filtrelenmisAraclar = _aracRepository.GetMany(x => x.Sinif == Sinif && x.Vites == Vites).OrderByDescending(x => x.GunlukFiyat).ToList();
-            //}
-            return View(arabalar);
+        public ActionResult MarkayaGoreAraclar(string marka)
+        {
+            ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).ToList();
+            var filtrelenmisAraclar = _aracRepository.GetMany(x => x.Marka == marka).OrderBy(x => x.GunlukFiyat).ToList();
+            return View("Araclar", filtrelenmisAraclar);
         }
     }
 }

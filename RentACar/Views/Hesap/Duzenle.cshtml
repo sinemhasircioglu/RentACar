@@ -1,0 +1,71 @@
+﻿@model RentACar.Data.Musteri
+@{
+    ViewBag.Title = "Duzenle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="r-login-register">
+    <div class="r-login-register">
+        <div class="r-login-register-in">
+            @if (TempData["Bilgi"] != null)
+            {
+                <div class="alert alert-success">@TempData["Bilgi"]</div>
+            }
+            <div class="clearfix">               
+                <div>
+                    <div class="r-auth-head">
+                        <h2>Profiliniz</h2>                        
+                    </div>
+                    <div class="r-auth-form">
+                        @using (Html.BeginForm("Duzenle", "Hesap", FormMethod.Post, new { @class = "comment-form" }))
+                        {
+                            @*<div class="form-group">
+                                <input type="text" class="form-control" placeholder="Adınız soyadınız" name="AdSoyad">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email adresiniz" name="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Telefon numaranız (0 olmadan)" name="Telefon">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Şifre" name="Sifre">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Şifre tekrar" name="SifreTekrar">
+                            </div>
+                            <div class="form-group">
+                                @* BURAYA DAHA SONRA RECAPTCHA EKLENECEK mi_? -----------*@
+                                @*<img src="~/assets/images/recaptcha.jpg" class="img-fluid d-block m-auto" alt="">
+                            </div>*@
+
+
+
+                            <div class="form-group">
+                                <label for="kategoriAdi">Adınız Soyadınız</label>
+                                @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control", id = "AdSoyad", placeholder = "Ad Soyad" })
+                            </div>
+                            <div class="form-group">
+                                <label for="kategoriUrl">Email adresiniz</label>
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", id = "Email", placeholder = "Email" })
+                            </div>
+                            <div class="form-group">
+                                <label for="kategoriUrl">Sifreniz</label>
+                                @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control", id = "Sifre", placeholder = "Sifre" })
+                            </div>
+                            <div class="form-group">
+                                @* BURAYA DAHA SONRA RECAPTCHA EKLENECEK -----------*@
+                                <img src="~/assets/images/recaptcha.jpg" class="img-fluid d-block m-auto" alt="">
+                            </div>
+
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-full">Değişiklikleri kaydet</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
