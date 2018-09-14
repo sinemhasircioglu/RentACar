@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="r-contact-part" class="r-contact-part">
+    <div class="container clearfix">
+        <div class="contact-head">
+            <span>Ofisimiz</span>
+            <h2>Contact <b>Royal Cars</b> for<br> More Information. </h2>
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="r-contact-address">
+                    <div class="head">Ana Ofis</div>
+                    <div class="r-contact-img"><img src="~/assets/images/contact-img01.jpg" class="img-fluid d-block m-auto" alt=""></div>
+                    <div class="address address-cnt"><i class="fa fa-map-marker"></i>  Malatya, TÜRKİYE</div>
+                    <div class="call address-cnt"><i class="fa fa-phone"></i><b>+90</b>541 882 6065</div>
+                    <div class="mail address-cnt"><i class="fa fa-envelope"></i>sinemhasircioglu@gmail.com</div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="r-contact-address">
+                    <div class="head">Diğer ofis</div>
+                    <div class="r-contact-img"><img src="~/assets/images/contact-img02.jpg" class="img-fluid d-block m-auto" alt=""></div>
+                    <div class="address address-cnt"><i class="fa fa-map-marker"></i> Malatya, TÜRKİYE</div>
+                    <div class="call address-cnt"><i class="fa fa-phone"></i><b>+90</b>541 882 6065</div>
+                    <div class="mail address-cnt"><i class="fa fa-envelope"></i>sinemhasircioglu@gmail.com</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="r-get-in-touch">
+    <div class="r-get-in-touch">
+        <div class="container">
+            <div class="r-get-header">
+                <span>Bizimle iletişime geçin.</span>
+                <h2>Keep <b>In Touch.</b></h2>
+            </div>
+            <div class="r-get-form">
+                <div class="clearfix">
+                    <div class="form-group"><input required="" name="userName" id="userName" type="text" placeholder="User name"></div>
+                    <div class="form-group"><input required="" name="userEmail" id="userEmail" type="email" placeholder="Email Address"></div>
+                </div>
+                <div class="form-group"><input type="text" required="" name="subject" id="subject" placeholder="Title Message"></div>
+                <div class="form-group">
+                    <textarea placeholder="Message" name="content" required="" id="content"></textarea>
+                </div>
+                <div class="text-center">
+                    <button onclick="sendContact();" class="btn btn-full">SEND MESSAGE NOW</button>
+                </div>
+                <div class="mt-4 text-uppercase text-white text-center" id="mail-status"></div>
+            </div>
+        </div>
+    </div>
+</section>

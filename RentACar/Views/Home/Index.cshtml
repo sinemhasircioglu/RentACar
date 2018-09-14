@@ -1,8 +1,155 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_IndexLayout.cshtml";
 }
+
+<header>
+    <div class="r-header r-header-inner r-header-strip-02">
+        <div class="r-header-strip">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="r-logo">
+                            <a href="#" class="d-inline-block"><img src="~/assets/images/footer-logo.png" class="img-fluid d-block" alt=""></a>
+                        </div>
+                        <a href="javaScript:void(0)" class="menu-icon"> <i class="fa fa-bars"></i> </a>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12 pr-0">
+                        <div class="r-header-action float-right">
+                            <a href="login-register.html"> <i class="fa fa-lock"></i> <span>Giriş yap</span></a>                            
+                        </div>
+                        <div class="r-nav-section float-right">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("Anasayfa", "Index", "Home", new { area = "" }, null)
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Hakkımızda", "Hakkimizda", "Home", new { area = "" }, null)
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Araçlar", "Araclar", "Home", new { area = "" }, null)
+                                    </li>
+                                    <li>
+                                        <a href="car-list-map.html">Araçlar H</a>
+                                    </li>
+                                    <li>
+                                        <a href="gallery.html">Galeri</a>
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("İletişim", "Iletisim", "Home", new { area = "" }, null)
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="r-slider r-slider-02">
+            <div class="r-slider owl-carousel" id="defaultHomeSlider">
+                <div class="r-slider-item">
+                    <img src="~/assets/images/main-slider-01.jpg" class="img-fluid d-block m-auto" alt="">
+                    <div class="container">
+                        <div class="r-slider-top-content">
+                            <h1 class="animated fadeInDown">Kia Rio <span>z</span></h1>
+                            <h4 class="animated fadeInLeft">FOR RENT <strong>$50</strong> PER DAY</h4>
+                            <a href="#" class="btn btn-outlined animated fadeInUp"> Reserve Now </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="r-slider-item">
+                    <img src="~/assets/images/main-slider-04.jpg" class="img-fluid d-block m-auto" alt="">
+                    <div class="container">
+                        <div class="r-slider-top-content">
+                            <h1>BMW <span>3</span></h1>
+                            <h4>FOR RENT <strong>$150</strong> PER DAY</h4>
+                            <a href="#" class="btn btn-outlined"> Reserve Now </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="r-slider-item">
+                    <img src="~/assets/images/main-slider-05.jpg" class="img-fluid d-block m-auto" alt="">
+                    <div class="container">
+                        <div class="r-slider-top-content">
+                            <h1>Audi <span>A4</span></h1>
+                            <h4>FOR RENT <strong>$100</strong> PER DAY</h4>
+                            <a href="#" class="btn btn-outlined"> Reserve Now </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="r-slider-serach form-search dark">
+            @using (Html.BeginForm("YorumYap", "Home", FormMethod.Post, new { @class = "comment-form" }))
+            {
+                <div class="form-title form-title-large">
+                    <span class="r-form-icon"><img src="~/assets/images/footer-form-icon.png" alt=""></span>
+                    <h2>Search Your <b>Best Cars</b></h2>
+                    <small> 120+ CARS TYPE &amp; BRANDS </small>
+                </div>
+                <div class="row row-inputs">
+                    <div class="col-sm-12">
+                        <div class="form-group has-icon has-label">
+                            <label>Picking Up Location</label>
+                            <input type="text" class="form-control" id="formSearchUpLocation" placeholder="Airport or Anywhere">
+                            <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-inputs">
+                    <div class="col-sm-12">
+                        <div class="form-group has-icon has-label">
+                            <label>Dropping Off Location</label>
+                            <input type="text" class="form-control" id="formSearchOffLocation" placeholder="Airport or Anywhere">
+                            <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-inputs">
+                    <div class="col-sm-6">
+                        <div class="form-group has-icon has-label label" id="datetimepicker2" data-target-input="nearest">
+                            <label>Picking Up Date</label>
+                            <input type="text" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="dd/mm/yyyy">
+                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group has-icon has-label date" id="datetimepicker3" data-target-input="nearest">
+                            <label>Picking Up Hour</label>
+                            <input type="text" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="20:00 AM">
+                            <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-inputs">
+                    <div class="col-sm-6">
+                        <div class="form-group has-icon has-label label" id="datetimepicker4" data-target-input="nearest">
+                            <label>Dropping Off Date</label>
+                            <input type="text" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker4" placeholder="dd/mm/yyyy">
+                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group has-icon has-label date" id="datetimepicker5" data-target-input="nearest">
+                            <label>Dropping Off Hour</label>
+                            <input type="text" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker5" placeholder="20:00 AM">
+                            <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <div class="inner clearfix">
+                        <button type="submit" class="btn m-auto d-block btn-full">Find Car</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</header>
 
 <section id="r-advantages-part" class="r-advantages-part">
     <div class="r-advantage-main-part r-advantage-main-part-white">

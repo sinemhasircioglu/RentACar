@@ -11,48 +11,29 @@
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12 pr-0">
                         <div class="r-header-action float-right">
-                            <a href="login-register.html"> <i class="fa fa-lock"></i> <span>Login</span></a>
-                            <a href="#" class="r-search"> <i class="fa fa-search"></i>  <span>Search</span></a>
-
-                            <div class="r-search-wrapper">
-                                <div class="r-search-inner">
-                                    <form>
-                                        <input type="text" class="r-search-field" placeholder="Search" />
-                                        <button type="submit" class="r-search-btn">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div> <!-- /r-search-wrapper -->
+                            <a href="login-register.html"> <i class="fa fa-lock"></i> <span>Giriş yap</span></a>                           
                         </div>
                         <div class="r-nav-section float-right">
                             <nav>
                                 <ul>
-                                    <li class="r-has-child">
-                                        <a href="index-2.html">HOME</a>
-                                        <ul class="pl-0 ml-0">
-                                            <li><a href="index-2.html">Home 01</a></li>
-                                            <li><a href="index-02.html">Home 02</a></li>
-                                            <li><a href="index-03.html">Home 03</a></li>
-                                            <li><a href="index-04.html">Home 04</a></li>
-                                        </ul>
+                                    <li>
+                                        @Html.ActionLink("Anasayfa", "Index", "Home", new { area = "" }, null)
                                     </li>
-                                    <li class="r-has-child">
-                                        <a href="about.html">ABOUT US</a>
-                                        <ul class="pl-0 ml-0">
-                                            <li><a href="faq.html">Faq</a></li>
-                                        </ul>
+                                    <li>
+                                        @Html.ActionLink("Hakkımızda", "Hakkimizda", "Home", new { area = "" }, null)
                                     </li>
-                                    <li class="r-has-child">
-                                        <a href="car-listing.html">VEHICLES</a>
-                                        <ul class="pl-0 ml-0">
-                                            <li><a href="car-list-map.html">Car List Map</a></li>
-                                            <li><a href="car-booking.html">Car Booking</a></li>
-                                        </ul>
+                                    <li>
+                                        @Html.ActionLink("Araçlar", "Araclar", "Home", new { area = "" }, null)
                                     </li>
-                                    <li><a href="gallery.html">GALLERY</a></li>
-                                    <li><a href="drivers.html">DRIVERS</a></li>
-                                    <li><a href="contact.html">CONTACT US</a></li>
+                                    <li>
+                                        <a href="car-list-map.html">Araçlar H</a>
+                                    </li>
+                                    <li>
+                                        <a href="gallery.html">Galeri</a>
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("İletişim", "Iletisim", "Home", new { area = "" }, null)
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -60,106 +41,16 @@
                 </div>
             </div>
         </div>
-        <div class="r-slider r-slider-02">
-            <div class="r-slider owl-carousel" id="defaultHomeSlider">
-                <div class="r-slider-item">
-                    <img src="~/assets/images/main-slider-01.jpg" class="img-fluid d-block m-auto" alt="">
-                    <div class="container">
-                        <div class="r-slider-top-content">
-                            <h1 class="animated fadeInDown">Kia Rio <span>z</span></h1>
-                            <h4 class="animated fadeInLeft">FOR RENT <strong>$50</strong> PER DAY</h4>
-                            <a href="#" class="btn btn-outlined animated fadeInUp"> Reserve Now </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="r-slider-item">
-                    <img src="~/assets/images/main-slider-04.jpg" class="img-fluid d-block m-auto" alt="">
-                    <div class="container">
-                        <div class="r-slider-top-content">
-                            <h1>BMW <span>3</span></h1>
-                            <h4>FOR RENT <strong>$150</strong> PER DAY</h4>
-                            <a href="#" class="btn btn-outlined"> Reserve Now </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="r-slider-item">
-                    <img src="~/assets/images/main-slider-05.jpg" class="img-fluid d-block m-auto" alt="">
-                    <div class="container">
-                        <div class="r-slider-top-content">
-                            <h1>Audi <span>A4</span></h1>
-                            <h4>FOR RENT <strong>$100</strong> PER DAY</h4>
-                            <a href="#" class="btn btn-outlined"> Reserve Now </a>
-                        </div>
-                    </div>
+        <div class="r-header-inner-banner">
+            <div class="r-header-in-over">
+                <h1>Royal Cars<b> bulunduğumuz sayfa</b> </h1>
+                <div class="r-breadcrum">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li><span>bulunduğumuz sayfa</span></li>
+                    </ul>
                 </div>
             </div>
-
-
-        </div>
-        <div class="r-slider-serach form-search dark">
-            <form action="#">
-                <div class="form-title form-title-large">
-                    <span class="r-form-icon"><img src="~/assets/images/footer-form-icon.png" alt=""></span>
-                    <h2>Search Your <b>Best Cars</b></h2>
-                    <small> 120+ CARS TYPE &amp; BRANDS </small>
-                </div>
-                <div class="row row-inputs">
-                    <div class="col-sm-12">
-                        <div class="form-group has-icon has-label">
-                            <label>Picking Up Location</label>
-                            <input type="text" class="form-control" id="formSearchUpLocation" placeholder="Airport or Anywhere">
-                            <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row-inputs">
-                    <div class="col-sm-12">
-                        <div class="form-group has-icon has-label">
-                            <label>Dropping Off Location</label>
-                            <input type="text" class="form-control" id="formSearchOffLocation" placeholder="Airport or Anywhere">
-                            <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row-inputs">
-                    <div class="col-sm-6">
-                        <div class="form-group has-icon has-label label" id="datetimepicker2" data-target-input="nearest">
-                            <label>Picking Up Date</label>
-                            <input type="text" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="dd/mm/yyyy">
-                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group has-icon has-label date" id="datetimepicker3" data-target-input="nearest">
-                            <label>Picking Up Hour</label>
-                            <input type="text" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="20:00 AM">
-                            <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row-inputs">
-                    <div class="col-sm-6">
-                        <div class="form-group has-icon has-label label" id="datetimepicker4" data-target-input="nearest">
-                            <label>Dropping Off Date</label>
-                            <input type="text" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker4" placeholder="dd/mm/yyyy">
-                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group has-icon has-label date" id="datetimepicker5" data-target-input="nearest">
-                            <label>Dropping Off Hour</label>
-                            <input type="text" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker5" placeholder="20:00 AM">
-                            <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-footer">
-                    <div class="inner clearfix">
-                        <a href="#" class="float-left"><i class="fa fa-plus-circle"></i>Advanced Search</a>
-                        <button type="submit" class="btn m-auto d-block btn-full">Find Car</button>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
 </header>
