@@ -19,28 +19,6 @@
                     <div class="r-auth-form">
                         @using (Html.BeginForm("Duzenle", "Hesap", FormMethod.Post, new { @class = "comment-form" }))
                         {
-                            @*<div class="form-group">
-                                <input type="text" class="form-control" placeholder="Adınız soyadınız" name="AdSoyad">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email adresiniz" name="Email">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Telefon numaranız (0 olmadan)" name="Telefon">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Şifre" name="Sifre">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Şifre tekrar" name="SifreTekrar">
-                            </div>
-                            <div class="form-group">
-                                @* BURAYA DAHA SONRA RECAPTCHA EKLENECEK mi_? -----------*@
-                                @*<img src="~/assets/images/recaptcha.jpg" class="img-fluid d-block m-auto" alt="">
-                            </div>*@
-
-
-
                             <div class="form-group">
                                 <label for="kategoriAdi">Adınız Soyadınız</label>
                                 @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control", id = "AdSoyad", placeholder = "Ad Soyad" })
@@ -49,16 +27,32 @@
                                 <label for="kategoriUrl">Email adresiniz</label>
                                 @Html.TextBoxFor(x => x.Email, new { @class = "form-control", id = "Email", placeholder = "Email" })
                             </div>
-                            <div class="form-group">
-                                <label for="kategoriUrl">Sifreniz</label>
-                                @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control", id = "Sifre", placeholder = "Sifre" })
-                            </div>
-                            <div class="form-group">
-                                @* BURAYA DAHA SONRA RECAPTCHA EKLENECEK -----------*@
-                                <img src="~/assets/images/recaptcha.jpg" class="img-fluid d-block m-auto" alt="">
-                            </div>
 
-
+                            <div class="form-group">
+                                <div class="r-accordion">
+                                    <div class="r-accordion-heading">
+                                        <span class="r-accordion-toggle">
+                                            <i class="fa-arrow-circle-down fa"></i>
+                                        </span>
+                                        Şifremi değiştirmek istiyorum
+                                    </div>
+                                    <div class="r-accordion-body">
+                                        <div class="form-group">
+                                            <label for="kategoriUrl">Eski şifreniz</label>
+                                            <input type="text" class="form-control" placeholder="Eski şifreniz" name="EskiSifre">
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="kategoriUrl">Yeni şifreniz</label>
+                                            <input type="text" class="form-control" placeholder="Yeni şifreniz" name="YeniSifre">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="kategoriUrl">Yeni şifreniz tekrar</label>
+                                            <input type="text" class="form-control" placeholder="Yeni şifreniz tekrar" name="YeniSifreTekrar">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-full">Değişiklikleri kaydet</button>
                             </div>

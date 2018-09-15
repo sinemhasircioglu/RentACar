@@ -87,12 +87,18 @@ namespace RentACar.Controllers
         }
 
         [HttpPost]
-        public ActionResult Duzenle(Musteri musteri)
+        public ActionResult Duzenle(Musteri musteri, string EskiSifre, string YeniSifre, string YeniSifreTekrar)
         {
             Musteri dbMusteri = _musteriRepository.GetById(musteri.Id);
             dbMusteri.AdSoyad = musteri.AdSoyad;
             dbMusteri.Email = musteri.Email;
-            dbMusteri.Sifre = musteri.Sifre;
+            if(EskiSifre != null && EskiSifre == dbMusteri.Sifre)
+            {
+                if (YeniSifre == YeniSifreTekrar)
+                {
+                    dbMusteri.Sifre = YeniSifre;
+                }
+            }
             _musteriRepository.Save();
             TempData["Bilgi"] = "Profil düzenleme işleminiz başarılı.";
             return RedirectToAction("Duzenle", "Hesap");

@@ -1,4 +1,5 @@
 ﻿using PagedList;
+using RentACar.Areas.admin.Class;
 using RentACar.Core.Infrastructure;
 using RentACar.Data;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 
 namespace RentACar.Areas.admin.Controllers
 {
+    [AdminPersonelAuth]
     public class HizmetController : Controller
     {
         private readonly IHizmetRepository _hizmetRepository;

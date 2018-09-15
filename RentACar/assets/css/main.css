@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -12874,8 +12874,9 @@ a:focus {
     margin-bottom: 40px; }
 
 .r-accordion {
-  background: #fff;
-  margin-bottom: 20px; }
+    background: #f8f4da;
+    margin-bottom: 20px;
+}
   .r-accordion .r-accordion-heading {
     font-size: 20px;
     font-weight: 600;
@@ -14941,7 +14942,7 @@ a:focus {
 
 .r-slider-serach.form-search .form-title {
   background: #000;
-  color: #ffffff;
+  color: #000000;
   padding: 16px 20px;
   margin-bottom: 24px;
   position: relative; }

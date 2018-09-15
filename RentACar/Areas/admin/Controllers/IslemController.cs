@@ -1,4 +1,5 @@
 ﻿using PagedList;
+using RentACar.Areas.admin.Class;
 using RentACar.Core.Infrastructure;
 using RentACar.Data;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace RentACar.Areas.admin.Controllers
         }
 
         [HttpGet]
+        [AdminPersonelAuth]
         public ActionResult Index(int sayfa = 1)
         {
             int sayfaBoyutu = 5;
@@ -28,6 +30,7 @@ namespace RentACar.Areas.admin.Controllers
         }
 
         [HttpGet]
+        [AdminPersonelAuth]
         public ActionResult Ekle()
         {
             ViewBag.Musteri = _musteriRepository.GetAll().ToList();
@@ -37,6 +40,7 @@ namespace RentACar.Areas.admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
+        [AdminPersonelAuth]
         public ActionResult Ekle(Islem islem, int MusteriId, int AracId)
         {
             islem.MusteriId = MusteriId;
@@ -47,6 +51,7 @@ namespace RentACar.Areas.admin.Controllers
             return RedirectToAction("Index", "Islem");
         }
 
+        [AdminAuth]
         public ActionResult Sil(int id)
         {
             Islem islem = _islemRepository.GetById(id);
@@ -60,6 +65,7 @@ namespace RentACar.Areas.admin.Controllers
 
         [HttpGet]
         [ValidateInput(false)]
+        [AdminPersonelAuth]
         public ActionResult Duzenle(int id)
         {
             Islem gelenIslem = _islemRepository.GetById(id);
@@ -72,6 +78,7 @@ namespace RentACar.Areas.admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
+        [AdminPersonelAuth]
         public ActionResult Duzenle(Islem islem)
         {
             Islem gelenIslem = _islemRepository.GetById(islem.Id);
@@ -88,6 +95,7 @@ namespace RentACar.Areas.admin.Controllers
             return RedirectToAction("Index", "Islem");
         }
 
+        [AdminPersonelAuth]
         public ActionResult GecmisIslemler(int sayfa = 1)
         {
             int sayfaBoyutu = 5;

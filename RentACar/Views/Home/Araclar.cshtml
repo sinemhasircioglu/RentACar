@@ -5,64 +5,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="r-car-search">
-    <div class="container">
-        @using (Html.BeginForm("Araclar", "Home", FormMethod.Post, new { @class = "comment-form" }))
-        {
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label> Araba sınıf </label>
-                        @Html.DropDownList("ArabaSinif", (new List<SelectListItem>() {
-                                new SelectListItem { Text = "Ekonomik", Value = "Ekonomik" },
-                                new SelectListItem { Text = "Lüks", Value = "Lüks" },
-                                new SelectListItem { Text = "Orta", Value = "Orta" },
-                                new SelectListItem { Text = "Spor", Value = "Spor" } }), "Araba sınıfı seçin", new { @class = "form-control"})
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label> Araba Vites </label>
-                        @Html.DropDownList("ArabaVites", (new List<SelectListItem>() {
-                                new SelectListItem { Text = "Otomatik", Value = "Otomatik" },
-                                new SelectListItem { Text = "Düz", Value = "Düz" },
-                                new SelectListItem { Text = "Düz-Otomatik", Value = "Düz-Otomatik" } }), "Araba vitesi seçin", new { @class = "form-control"})
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label> Fiyata göre sıralama </label>
-                        @Html.DropDownList("Siralama", (new List<SelectListItem>() {
-                                new SelectListItem { Text = "Fiyata göre artan", Value = "Artan" },
-                                new SelectListItem { Text = "Fiyata göre azalan", Value = "Azalan" } }), "Fiyata göre sıralama", new { @class = "form-control"})
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <input type="submit" class="form-control btn-primary" value="Filtrele">
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</div>
-
 <section class="r-car-showcase-wrapper">
     <div class="r-best-vehicles">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-12">
                     <h2 class="heading"> Araba markaları </h2>
-                    <div class="r-best-vehicle-list-outer">                        
-                            <div class="r-best-leftbar">
-                                <ul class="pl-0 mb-0 r-best-vehicle-types">
-                                    <li class="r-best-vehicle-acitve"><a href="@Url.Action("Araclar","Home")"><span>Tüm markalar</span></a></li>
-                                    @foreach (var item in ViewBag.Markalar)
-                                    {
-                                        <li><a href="@Url.Action("MarkayaGoreAraclar","Home", new { Marka=item })" class="btn btn-lg">@item</a></li>                                       
-                                    }
-                                </ul>
-                            </div>                       
+                    <div class="r-best-vehicle-list-outer">
+                        <div class="r-best-leftbar">
+                            <ul class="pl-0 mb-0 r-best-vehicle-types">
+                                <li class="r-best-vehicle-acitve"><a href="@Url.Action("Araclar","Home")"><span>Tüm markalar</span></a></li>
+                                @foreach (var item in ViewBag.Markalar)
+                                {
+                                    <li><a href="@Url.Action("MarkayaGoreAraclar","Home", new { Marka=item })" class="btn btn-lg">@item</a></li>
+                                }
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-8 col-sm-12">
@@ -97,7 +55,7 @@
                                                 </ul>
                                             </div>
                                             <div class="r-offer-rewst-this">
-                                                <span class="text-uppercase">Bu arabayı kirala</span>
+                                                <a href="@Url.Action("AracDetay","Home", new { Id=item.Id })"><span class="text-uppercase">Bu aracı incele</span></a>
                                             </div>
                                         </div>
                                     </div>

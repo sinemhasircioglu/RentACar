@@ -17,7 +17,7 @@
                             }
                             else
                             {
-                                <a href="@Url.Action("Duzenle","Hesap", new {id=(int)Session["KullaniciId"]})"><i class="fa fa-user"></i><span>Profili düzenle</span></a>
+                                <a href="@Url.Action("Duzenle","Hesap", new {id=(int)Session["KullaniciId"]})"><i class="fa fa-user"></i><span>Profil</span></a>
                                 <a href="/Hesap/LogOut"> <i class="fa fa-lock"> </i><span>Çıkış yap</span></a>
                             }
                         </div>
@@ -29,6 +29,9 @@
                                     </li>
                                     <li>
                                         @Html.ActionLink("Hakkımızda", "Hakkimizda", "Home", new { area = "" }, null)
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Online Rezarvasyon", "OnlineRezarvasyon", "Home", new { area = "" }, null)
                                     </li>
                                     <li>
                                         @Html.ActionLink("Araçlar", "Araclar", "Home", new { area = "" }, null)

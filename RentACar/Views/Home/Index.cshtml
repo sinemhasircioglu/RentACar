@@ -5,26 +5,26 @@
 }
 
 <header>
-    <div class="r-header r-header-inner r-header-strip-02">
-        <div class="r-header-strip">
+    <div class="r-header r-header-inner r-header-strip-01">
+        <div class="r-header-strip r-header-strip-01">
             <div class="container">
                 <div class="row clearfix">
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="r-logo">
-                            <a href="#" class="d-inline-block"><img src="~/assets/images/footer-logo.png" class="img-fluid d-block" alt=""></a>
+                            <a href="#" class="d-inline-block"><img src="~/assets/images/logo-white.png" class="img-fluid d-block" alt=""></a>
                         </div>
                         <a href="javaScript:void(0)" class="menu-icon"> <i class="fa fa-bars"></i> </a>
                     </div>
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12 pr-0">
-                        <div class="r-header-action float-right">
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                        <div class="r-header-action float-left">
                             @if (Session["KullaniciId"] == null)
                             {
-                                <a href="/Hesap/LoginRegister"> <i class="fa fa-lock"></i> <span>Giriş yap</span></a>
+                                <a href="/Hesap/LoginRegister"><i class="fa fa-lock"></i><span>Giriş yap</span></a>
                             }
                             else
                             {
-                                <a href="@Url.Action("Duzenle","Hesap", new {id=(int)Session["KullaniciId"]})"><i class="fa fa-user"></i><span>Profili düzenle</span></a>
-                                <a href="/Hesap/LogOut"> <i class="fa fa-lock"> </i><span>Çıkış yap</span></a>
+                                <a href="@Url.Action("Duzenle","Hesap", new {id=(int)Session["KullaniciId"]})"><i class="fa fa-user"></i><span>Profil</span></a>
+                                <a href="/Hesap/LogOut"> <i class="fa fa-lock"></i><span>Çıkış yap</span></a>
                             }
                         </div>
                         <div class="r-nav-section float-right">
@@ -35,6 +35,9 @@
                                     </li>
                                     <li>
                                         @Html.ActionLink("Hakkımızda", "Hakkimizda", "Home", new { area = "" }, null)
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Online Rezarvasyon", "OnlineRezarvasyon", "Home", new { area = "" }, null)
                                     </li>
                                     <li>
                                         @Html.ActionLink("Araçlar", "Araclar", "Home", new { area = "" }, null)
@@ -52,111 +55,40 @@
                 </div>
             </div>
         </div>
-
-        <div class="r-slider r-slider-02">
-            <div class="r-slider owl-carousel" id="defaultHomeSlider">
-                <div class="r-slider-item">
-                    <img src="~/assets/images/main-slider-01.jpg" class="img-fluid d-block m-auto" alt="">
-                    <div class="container">
-                        <div class="r-slider-top-content">
-                            <h1 class="animated fadeInDown">Kia Rio <span>z</span></h1>
-                            <h4 class="animated fadeInLeft">FOR RENT <strong>$50</strong> PER DAY</h4>
-                            <a href="#" class="btn btn-outlined animated fadeInUp"> Reserve Now </a>
-                        </div>
+        <div class="r-slider owl-carousel" id="defaultHomeSlider">
+            <div class="r-slider-item">
+                <img src="~/assets/images/main-slider-01.jpg" class="img-fluid d-block m-auto" alt="">
+                <div class="container">
+                    <div class="r-slider-top-content">
+                        <h1 class="animated fadeInDown">Kia Rio <span>z</span></h1>
+                        <h4 class="animated fadeInLeft">FOR RENT <strong>$50</strong> PER DAY</h4>
+                        <a href="#" class="btn btn-outlined animated fadeInUp"> Reserve Now </a>
                     </div>
                 </div>
-                <div class="r-slider-item">
-                    <img src="~/assets/images/main-slider-04.jpg" class="img-fluid d-block m-auto" alt="">
-                    <div class="container">
-                        <div class="r-slider-top-content">
-                            <h1>BMW <span>3</span></h1>
-                            <h4>FOR RENT <strong>$150</strong> PER DAY</h4>
-                            <a href="#" class="btn btn-outlined"> Reserve Now </a>
-                        </div>
+            </div>
+            <div class="r-slider-item">
+                <img src="~/assets/images/main-slider-04.jpg" class="img-fluid d-block m-auto" alt="">
+                <div class="container">
+                    <div class="r-slider-top-content">
+                        <h1>BMW <span>3</span></h1>
+                        <h4>FOR RENT <strong>$150</strong> PER DAY</h4>
+                        <a href="#" class="btn btn-outlined"> Reserve Now </a>
                     </div>
                 </div>
-                <div class="r-slider-item">
-                    <img src="~/assets/images/main-slider-05.jpg" class="img-fluid d-block m-auto" alt="">
-                    <div class="container">
-                        <div class="r-slider-top-content">
-                            <h1>Audi <span>A4</span></h1>
-                            <h4>FOR RENT <strong>$100</strong> PER DAY</h4>
-                            <a href="#" class="btn btn-outlined"> Reserve Now </a>
-                        </div>
+            </div>
+            <div class="r-slider-item">
+                <img src="~/assets/images/main-slider-05.jpg" class="img-fluid d-block m-auto" alt="">
+                <div class="container">
+                    <div class="r-slider-top-content">
+                        <h1>Audi <span>A4</span></h1>
+                        <h4>FOR RENT <strong>$100</strong> PER DAY</h4>
+                        <a href="#" class="btn btn-outlined"> Reserve Now </a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="r-slider-serach form-search dark">
-            @using (Html.BeginForm("AracBul", "Home", FormMethod.Post, new { @class = "comment-form" }))
-            {
-                <div class="form-title form-title-large">
-                    <span class="r-form-icon"><img src="~/assets/images/footer-form-icon.png" alt=""></span>
-                    <h2>Aradığınız <b>arabayı </b>bulun</h2> <br />
-                </div>
-                <div class="row row-inputs">
-                    <div class="col-sm-12">
-                        <div class="form-group has-icon has-label">
-                            <label>Teslim alma noktası</label>
-                            @Html.DropDownList("TeslimAlmaNoktasi", (new List<SelectListItem>() {
-                new SelectListItem { Text = "Malatya ofis", Value = "Malatya ofis" } }), "Teslim alma noktası", new { @class = "form-control", style = "border-style:solid; border-width:0.75px; border-radius:5px;" })
-                            <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row-inputs">
-                    <div class="col-sm-12">
-                        <div class="form-group has-icon has-label">
-                            <label>Teslim etme noktası</label>
-                            @Html.DropDownList("TeslimEtmeNoktasi", (new List<SelectListItem>() {
-                new SelectListItem { Text = "Malatya ofis", Value = "Malatya ofis" } }), "Teslim etme noktası", new { @class = "form-control", style= "border-style:solid; border-width:1px; border-radius:5px;" })
-                            <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row-inputs">
-                    <div class="col-sm-6">
-                        <div class="form-group has-icon has-label label" id="datetimepicker2" data-target-input="nearest">
-                            <label>Teslim alma tarihi</label>
-                            <input type="text" name="TeslimAlmaTarihi" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="dd/mm/yyyy">
-                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group has-icon has-label date" id="datetimepicker3" data-target-input="nearest">
-                            <label>Teslim alma saati</label>
-                            <input type="text" name="TeslimAlmaSaati" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="20:00 AM">
-                            <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row-inputs">
-                    <div class="col-sm-6">
-                        <div class="form-group has-icon has-label label" id="datetimepicker4" data-target-input="nearest">
-                            <label>Teslim etme tarihi</label>
-                            <input type="text" name="TeslimEtmeTarihi" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker4" placeholder="dd/mm/yyyy">
-                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group has-icon has-label date" id="datetimepicker5" data-target-input="nearest">
-                            <label>Teslim etme saati</label>
-                            <input type="text" name="TeslimEtmeSaati" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker5" placeholder="20:00 AM">
-                            <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-footer">
-                    <div class="inner clearfix">
-                        <button type="submit" class="btn m-auto d-block btn-full">Araç bul</button>
-                    </div>
-                </div>
-            }
-        </div>
     </div>
 </header>
-
 <section id="r-advantages-part" class="r-advantages-part">
     <div class="r-advantage-main-part r-advantage-main-part-white">
         <div class="container clearfix">
@@ -371,52 +303,6 @@
         </div>
     </div>
 </section>
-<div id="r-quote">
-    <div class="r-quote">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12" data-wow-delay="0.2s">
-                    <div id="r-quote-carousel" class="carousel slide">
-                        <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item">
-                                <p>“This was our first time renting from Royal Cars and we were very pleased with the whole experience. Your price was lower than other companies. Our rental experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
-                            </div>
-                            <div class="carousel-item active">
-                                <p>“This was our first time renting from Royal Cars and we were very pleased with the whole experience. Your price was lower than other companies. Our rental experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
-                            </div>
-                            <div class="carousel-item">
-                                <p>“This was our first time renting from Royal Cars and we were very pleased with the whole experience. Your price was lower than other companies. Our rental experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
-                            </div>
-                        </div>
-                        <ol class="carousel-indicators">
-                            <li data-target="#r-quote-carousel" data-slide-to="0">
-                                <img class="img-fluid d-block" src="assets/images/user-02.jpg" alt="">
-                                <span>
-                                    <b>Robertho Garcia</b> <br>
-                                    Graphic Designer
-                                </span>
-                            </li>
-                            <li data-target="#r-quote-carousel" data-slide-to="1" class="active text-center">
-                                <img class="img-fluid d-block" src="assets/images/user-01.png" alt="">
-                                <span>
-                                    <b>Robertho Garcia</b> <br>
-                                    Graphic Designer
-                                </span>
-                            </li>
-                            <li data-target="#r-quote-carousel" data-slide-to="2">
-                                <img class="img-fluid d-block" src="assets/images/user-03.jpg" alt="">
-                                <span>
-                                    <b>Robertho Garcia</b> <br>
-                                    Graphic Designer
-                                </span>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div id="r-newsletter-suscribe">
     <div class="r-newsletter-suscribe">
         <div class="container">
@@ -432,63 +318,6 @@
                         <button class="btn btn-full">SUBSCRIBE NOW</button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="r-counter-section r-counter-with-bg m-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="r-counter-box">
-                    <div class="r-counter-icon">
-                        <img src="assets/images/icon-happy-customer-white.png" alt="" class="img-fluid">
-                    </div>
-                    <div class="r-counts" data-count="172700">
-                        <!-- 1.172.700 -->
-                        <span class="r-count">0</span>
-                    </div>
-                    <span class="r-count-title"> HAPPY CUSTOMERS </span>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="r-counter-box">
-                    <div class="r-counter-icon">
-                        <img src="assets/images/icon-cars-count-white.png" alt="" class="img-fluid">
-                    </div>
-                    <div class="r-counts" data-count="2450">
-                        <!-- 2.450 -->
-                        <span class="r-count">0</span>
-                    </div>
-                    <span class="r-count-title"> CARS IN GARAGE </span>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="r-counter-box">
-                    <div class="r-counter-icon">
-                        <img src="assets/images/icon-total-km-white.png" alt="" class="img-fluid">
-                    </div>
-                    <div class="r-counts" data-count="1211100">
-                        <!-- 1.211.100 -->
-                        <span class="r-count">0</span>
-                    </div>
-                    <span class="r-count-title"> TOTAL KILOMETER/MIL </span>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="r-counter-box">
-                    <div class="r-counter-icon">
-                        <img src="assets/images/icon-car-center-white.png" alt="" class="img-fluid">
-                    </div>
-                    <div class="r-counts" data-count="47250">
-                        <!-- 47.250 -->
-                        <span class="r-count">0</span>
-                    </div>
-                    <span class="r-count-title"> CAR CENTER SOLUTIONS </span>
-                </div>
             </div>
         </div>
     </div>
@@ -596,45 +425,6 @@
         </div>
     </div>
 </section>
-<section id="r-latest-news">
-    <div class="r-latest-news r-latest-news-light">
-        <div class="r-sec-head r-sec-head-b">
-            <span>ARTICLES FROM BLOG</span>
-            <h2>Our <b>Latest News.</b></h2>
-        </div>
-        <div class="container">
-            <div class="owl-carousel r-latest-news-list" id="r-latest-news-slider">
-                <div class="r-latest-news-single">
-                    <a href="#" class="d-inline-block"><img src="assets/images/latest-news-01.jpg" class="img-fluid d-block m-auto" alt=""></a>
-                    <div class="r-latest-news-content">
-                        <span class="r-date">27 JUNE 2018</span>
-                        <h4><a href="#">What To Do if Your Rental Car Has Met With An Accident.</a></h4>
-                        <a href="#" class="r-read-more">READ ARTICLE</a>
-                    </div>
-                </div>
-
-                <div class="r-latest-news-single">
-                    <a href="#" class="d-inline-block"><img src="assets/images/latest-news-02.jpg" class="img-fluid d-block m-auto" alt=""></a>
-                    <div class="r-latest-news-content">
-                        <span class="r-date">27 JUNE 2018</span>
-                        <h4><a href="#">What To Do if Your Rental Car Has Met With An Accident.</a></h4>
-                        <a href="#" class="r-read-more">READ ARTICLE</a>
-                    </div>
-                </div>
-
-                <div class="r-latest-news-single">
-                    <a href="#" class="d-inline-block"><img src="assets/images/latest-news-03.jpg" class="img-fluid d-block m-auto" alt=""></a>
-                    <div class="r-latest-news-content">
-                        <span class="r-date">27 JUNE 2018</span>
-                        <h4><a href="#">What To Do if Your Rental Car Has Met With An Accident.</a></h4>
-                        <a href="#" class="r-read-more">READ ARTICLE</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
 <section id="r-new-member">
     <div class="r-new-member">
         <div class="container">
@@ -710,60 +500,6 @@
         </div>
     </div>
 </section>
-<div class="content-area">
-    <div class="google-map r-map-large">
-        <div id="map-canvas"></div>
-    </div>
-    <div class="r-car-search r-search-map-over r-search-map-full">
-        <div class="container">
-            <div class="r-search-map-over-in">
-                <div class="r-top-form-title">
-                    <h3>Find Car on Map</h3>
-                </div>
-                <form>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label> Car Brand </label>
-                                <select class="form-control">
-                                    <option>Any Brands</option>
-                                    <option>Any Brands</option>
-                                    <option>Any Brands</option>
-                                    <option>Any Brands</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label> Car Type </label>
-                                <select class="form-control">
-                                    <option>Any Type</option>
-                                    <option>Any Type</option>
-                                    <option>Any Type</option>
-                                    <option>Any Type</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label> Car Price </label>
-                                <select class="form-control">
-                                    <option>Price Low to High</option>
-                                    <option>Price High to Low</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <input type="submit" class="form-control btn-primary" value="Search Car Now">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 <div id="r-gallery-part">
     <div class="r-gallery-part r-gallery-part-home py-0">
         <ul class="clearfix">

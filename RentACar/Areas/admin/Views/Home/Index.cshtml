@@ -11,6 +11,10 @@
         <div class="col-md-3">
             <div class="panel panel-stat">
                 <div class="panel-body">
+                    @if (TempData["Bilgi"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["Bilgi"]</div>
+                    }
                     <div class="clearfix">
                         <div class="stat-icon bg-dark pull-left"><i class="typcn typcn-user"></i></div>
                         <div class="stat-info pull-left"><h4><small>Müsait Araçlar</small><br>@Model.MusaitAracSayisi</h4></div>

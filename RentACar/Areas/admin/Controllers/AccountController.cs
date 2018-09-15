@@ -1,4 +1,5 @@
-﻿using RentACar.Core.Infrastructure;
+﻿using RentACar.Areas.admin.Class;
+using RentACar.Core.Infrastructure;
 using RentACar.Data;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace RentACar.Areas.admin.Controllers
 {
+    [AdminPersonelAuth]
     public class AccountController : Controller
     {
         private readonly IKullaniciRepository _kullaniciRepository;
@@ -29,10 +31,10 @@ namespace RentACar.Areas.admin.Controllers
             var KullaniciVarMi = _kullaniciRepository.GetMany(x => x.Email == kullanici.Email && x.Sifre == kullanici.Sifre ).SingleOrDefault();
             if (KullaniciVarMi != null)
             {
-                if (KullaniciVarMi.Rol.Ad == "Admin" || KullaniciVarMi.Rol.Ad == "Editör" )
+                if (KullaniciVarMi.Rol.Ad == "Admin" || KullaniciVarMi.Rol.Ad == "Personel" )
                 {
                     Session["KullaniciId"] = KullaniciVarMi.Id;
-                    return RedirectToAction("Index");
+                    return Redirect("/admin/Home/Index");
                 }
                 TempData["Bilgi"] = "Yetkisiz kullanıcı";
                 return View();
@@ -80,7 +82,7 @@ namespace RentACar.Areas.admin.Controllers
         public ActionResult LogOut()
         {
             Session.Abandon();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //[HttpGet]

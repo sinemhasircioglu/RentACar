@@ -1,4 +1,5 @@
-﻿using RentACar.Areas.admin.Models.ViewModels;
+﻿using RentACar.Areas.admin.Class;
+using RentACar.Areas.admin.Models.ViewModels;
 using RentACar.Core.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace RentACar.Areas.admin.Controllers
 {
+    [AdminPersonelAuth]
     public class HomeController : Controller
     {
         private readonly IIslemRepository _islemRepository;
@@ -21,7 +23,7 @@ namespace RentACar.Areas.admin.Controllers
 
         [HttpGet]
         public ActionResult Index()
-        {
+        {           
             AdminDashboardViewModel model = new AdminDashboardViewModel()
             {
                 MusaitAracSayisi = _aracRepository.GetMany(x => x.MusaitMi == true).Count(),

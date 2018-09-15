@@ -1,0 +1,113 @@
+﻿@model RentACar.Data.Arac
+@{
+    ViewBag.Title = "AracDetay";
+    ViewBag.Aciklama = Model.Marka +" "+ Model.Model;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="r-car-info-wrapper">
+    <div class="container">
+        <div class="r-car-info-header clearfix">
+            <div class="r-car-top-info">
+                <div class="r-car-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <span class="r-rating-text"> CAR RATING: 5/5 </span>
+                </div>
+                <h2 class="r-car-name"> @Model.Marka <span>@Model.Model</span> </h2>
+            </div>
+            <div class="r-car-offer">
+                <div class="r-offer-cost">
+                    <span class="fa fa-usd r-currency"></span> @Model.GunlukFiyat <small> günlük</small>
+                </div>
+                <span class="r-tax-info"> INCLUDED TAXES &amp; CHECKUP </span>
+            </div>
+        </div>
+        <div class="r-car-whole-info">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+                    <div class="r-car-product-carousel-wrapper">
+                        <div class="r-car-product-carousel owl-carousel owl-loaded" data-slider-id="r-product-slider" id="productSlider">
+                            <div class="owl-stage-outer">
+                                <div class="owl-stage" style="transform: translate3d(-1060px, 0px, 0px); transition: all 0s ease 0s; width: 4240px;">
+                                    <div class="owl-item cloned" style="width: 530px;">
+                                        <div class="item">
+                                            <img src="~/assets/images/car-slider-img-3.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div><div class="owl-item cloned" style="width: 530px;">
+                                        <div class="item">
+                                            <img src="~/assets/images/car-slider-img-4.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div><div class="owl-item active" style="width: 530px;">
+                                        <div class="item">
+                                            <img src="~/assets/images/car-slider-img-1.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div><div class="owl-item" style="width: 530px;">
+                                        <div class="item">
+                                            <img src="~/assets/images/car-slider-img-2.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div><div class="owl-item" style="width: 530px;">
+                                        <div class="item">
+                                            <img src="~/assets/images/car-slider-img-3.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div><div class="owl-item" style="width: 530px;">
+                                        <div class="item">
+                                            <img src="~/assets/images/car-slider-img-4.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div><div class="owl-item cloned" style="width: 530px;">
+                                        <div class="item">
+                                            <img src="~/assets/images/car-slider-img-1.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div><div class="owl-item cloned" style="width: 530px;">
+                                        <div class="item">
+                                            <img src="~/assets/images/car-slider-img-2.jpg" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="owl-nav disabled"><div class="owl-prev"></div><div class="owl-next"></div></div><div class="owl-dots disabled"></div>
+                        </div>
+
+                        <ul class="owl-thumbs r-car-product-carousel-thumb" data-slider-id="r-product-slider">
+                            <li class="owl-thumb-item active"> <img src="assets/images/car-slider-img-1.jpg" alt="" class="img-fluid"> </li>
+                            <li class="owl-thumb-item"> <img src="assets/images/car-slider-img-2.jpg" alt="" class="img-fluid"> </li>
+                            <li class="owl-thumb-item"> <img src="assets/images/car-slider-img-3.jpg" alt="" class="img-fluid"> </li>
+                            <li class="owl-thumb-item"> <img src="assets/images/car-slider-img-4.jpg" alt="" class="img-fluid"> </li>
+                        </ul>
+                    </div> 
+                </div>
+                <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+                    <div class="r-car-info-content">
+                        <span class="r-reg-year">Registered 2016</span>
+                        <h2 class="r-product-name"> @Model.Marka <span>@Model.Model</span> </h2>
+                        <p class="r-product-description">@Model.Aciklama.</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>@Model.Kilometre km</td>
+                                        <td>@Model.KoltukSayisi </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Model.Renk</td>
+                                        <td>@Model.Sinif</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Model.Vites</td>
+                                        <td>@Model.Yakit</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Body Type Sedan Sport</td>
+                                        <td>5 Years Service Include</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div> 
+    </div>
+</section>

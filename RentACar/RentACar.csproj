@@ -314,6 +314,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Class\AdminAuth.cs" />
+    <Compile Include="Areas\admin\Class\AdminPersonelAuth.cs" />
     <Compile Include="Areas\admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\admin\Controllers\AracController.cs" />
     <Compile Include="Areas\admin\Controllers\HizmetController.cs" />
@@ -382,6 +384,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\KiralamaDetayViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -449,6 +452,9 @@
     <Content Include="Views\Home\Galeri.cshtml" />
     <Content Include="Views\Hesap\LoginRegister.cshtml" />
     <Content Include="Views\Hesap\Duzenle.cshtml" />
+    <Content Include="Views\Home\KiralamaDetay.cshtml" />
+    <Content Include="Views\Home\OnlineRezarvasyon.cshtml" />
+    <Content Include="Views\Home\AracDetay.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -459,7 +465,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\External\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

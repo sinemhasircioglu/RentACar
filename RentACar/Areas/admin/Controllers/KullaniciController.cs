@@ -1,4 +1,5 @@
 ﻿using PagedList;
+using RentACar.Areas.admin.Class;
 using RentACar.Core.Infrastructure;
 using RentACar.Data;
 using System;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace RentACar.Areas.admin.Controllers
 {
+    [AdminAuth]
     public class KullaniciController : Controller
     {
         private readonly IKullaniciRepository _kullaniciRepository;
