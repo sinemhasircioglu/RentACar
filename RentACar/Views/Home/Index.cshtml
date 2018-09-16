@@ -17,13 +17,13 @@
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
                         <div class="r-header-action float-left">
-                            @if (Session["KullaniciId"] == null)
+                            @if (Session["MusteriId"] == null)
                             {
                                 <a href="/Hesap/LoginRegister"><i class="fa fa-lock"></i><span>Giriş yap</span></a>
                             }
                             else
                             {
-                                <a href="@Url.Action("Duzenle","Hesap", new {id=(int)Session["KullaniciId"]})"><i class="fa fa-user"></i><span>Profil</span></a>
+                                <a href="@Url.Action("Duzenle","Hesap", new {id=(int)Session["MusteriId"]})"><i class="fa fa-user"></i><span>Profil</span></a>
                                 <a href="/Hesap/LogOut"> <i class="fa fa-lock"></i><span>Çıkış yap</span></a>
                             }
                         </div>

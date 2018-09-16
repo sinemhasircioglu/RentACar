@@ -29,7 +29,7 @@ namespace RentACar.Controllers
             var KullaniciVarMi = _musteriRepository.GetMany(x => x.Email == musteri.Email && x.Sifre == musteri.Sifre).SingleOrDefault();
             if (KullaniciVarMi != null)
             {
-                Session["KullaniciId"] = KullaniciVarMi.Id;
+                Session["MusteriId"] = KullaniciVarMi.Id;
                 return RedirectToAction("Index", "Home");
                 //$$$$$$$$$$$$
 

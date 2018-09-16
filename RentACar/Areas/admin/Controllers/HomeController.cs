@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace RentACar.Areas.admin.Controllers
 {
-    [AdminPersonelAuth]
+    
     public class HomeController : Controller
     {
         private readonly IIslemRepository _islemRepository;
@@ -22,6 +22,7 @@ namespace RentACar.Areas.admin.Controllers
         }
 
         [HttpGet]
+        [AdminPersonelAuth]
         public ActionResult Index()
         {           
             AdminDashboardViewModel model = new AdminDashboardViewModel()

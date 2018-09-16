@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace RentACar.Areas.admin.Class
 {
@@ -23,8 +24,9 @@ namespace RentACar.Areas.admin.Class
             HttpContextWrapper wrapper = new HttpContextWrapper(HttpContext.Current);
             //Kullanıcı giriş yapmamışsa login sayfasına at
             var SessionControl = wrapper.Session["KullaniciId"];
-            if (SessionControl == null)
+            if (SessionControl == null && !string.IsNullOrEmpty(httpContext.Request.RawUrl) && httpContext.Request.RawUrl.Contains("admin"))
             {
+                //new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { action = "Login", controller = "Account" }));
                 httpContext.Response.Redirect("/admin/Account/Login");
             }
             else

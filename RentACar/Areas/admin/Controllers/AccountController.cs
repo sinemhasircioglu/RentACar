@@ -9,7 +9,6 @@ using System.Web.Mvc;
 
 namespace RentACar.Areas.admin.Controllers
 {
-    [AdminPersonelAuth]
     public class AccountController : Controller
     {
         private readonly IKullaniciRepository _kullaniciRepository;

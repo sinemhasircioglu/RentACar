@@ -1,4 +1,5 @@
-﻿using RentACar.Core.Infrastructure;
+﻿using PagedList;
+using RentACar.Core.Infrastructure;
 using RentACar.Data;
 using RentACar.Models.ViewModels;
 using System;
@@ -41,12 +42,12 @@ namespace RentACar.Controllers
         [HttpGet]
         public ActionResult OnlineRezarvasyon()
         {
-            
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult OnlineRezarvasyon(string TeslimAlmaNoktasi, string TeslimEtmeNoktasi, string TeslimAlmaTarihi, 
+        public ActionResult OnlineRezarvasyon(string TeslimAlmaNoktasi, string TeslimEtmeNoktasi, string TeslimAlmaTarihi,
             string TeslimAlmaSaati, string TeslimEtmeTarihi, string TeslimEtmeSaati, string ArabaSinif, string ArabaVites, string Siralama)
         {
             ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).ToList();
@@ -65,17 +66,19 @@ namespace RentACar.Controllers
         }
 
         [HttpGet]
-        public ActionResult Araclar()
+        public ActionResult Araclar(int sayfa = 1)
         {
-            var Araclar = _aracRepository.GetAll().ToList();
+            int sayfaBoyutu = 6;
+            var Araclar = _aracRepository.GetAll().OrderByDescending(x => x.Id).ToPagedList(sayfa, sayfaBoyutu);
             ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).ToList();
             return View("Araclar", Araclar);
         }
 
-        public ActionResult MarkayaGoreAraclar(string marka)
+        public ActionResult MarkayaGoreAraclar(string marka, int sayfa = 1)
         {
+            int sayfaBoyutu = 6;
             ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).ToList();
-            var filtrelenmisAraclar = _aracRepository.GetMany(x => x.Marka == marka).OrderBy(x => x.GunlukFiyat).ToList();
+            var filtrelenmisAraclar = _aracRepository.GetMany(x => x.Marka == marka).OrderBy(x => x.GunlukFiyat).ToPagedList(sayfa, sayfaBoyutu);
             return View("Araclar", filtrelenmisAraclar);
         }
 
@@ -85,7 +88,7 @@ namespace RentACar.Controllers
             {
                 BenzerAraclar = _aracRepository.GetAll().ToList(),
                 Arac = _aracRepository.GetById(id)
-        };
+            };
             return View(model);
         }
 
