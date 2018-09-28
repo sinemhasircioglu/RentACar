@@ -28,6 +28,7 @@ namespace RentACar.Class
             builder.RegisterType<HizmetRepository>().As<IHizmetRepository>();
             builder.RegisterType<IslemRepository>().As<IIslemRepository>();
             builder.RegisterType<MusteriRepository>().As<IMusteriRepository>();
+            builder.RegisterType<OdemeRepository>().As<IOdemeRepository>();
 
             var container = builder.Build();
 

@@ -15,12 +15,14 @@ namespace RentACar.Controllers
         private readonly IAracRepository _aracRepository;
         private readonly IIslemRepository _islemRepository;
         private readonly IHizmetRepository _hizmetRepository;
+        private readonly IResimRepository _resimRepository;
 
-        public HomeController(IAracRepository aracRepository, IIslemRepository islemRepository, IHizmetRepository hizmetRepository)
+        public HomeController(IAracRepository aracRepository, IIslemRepository islemRepository, IHizmetRepository hizmetRepository, IResimRepository resimRepository)
         {
             _aracRepository = aracRepository;
             _islemRepository = islemRepository;
             _hizmetRepository = hizmetRepository;
+            _resimRepository = resimRepository;
         }
 
         public ActionResult Index()
@@ -40,7 +42,8 @@ namespace RentACar.Controllers
 
         public ActionResult Galeri()
         {
-            return View();
+            var resimler = _resimRepository.GetAll().Take(9).ToList();
+            return View(resimler);
         }
 
         [HttpGet]

@@ -53,8 +53,6 @@ namespace RentACar.Controllers
                 Email = musteri.Email,
                 Sifre = musteri.Sifre,
                 KayitTarihi = DateTime.Now,
-                Telefon = musteri.Telefon,
-                TcKimlikNo = " "
             };
 
             try

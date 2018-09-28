@@ -318,6 +318,7 @@
     <Compile Include="Core\Infrastructure\IIslemRepository.cs" />
     <Compile Include="Core\Infrastructure\IKullaniciRepository.cs" />
     <Compile Include="Core\Infrastructure\IMusteriRepository.cs" />
+    <Compile Include="Core\Infrastructure\IOdemeRepository.cs" />
     <Compile Include="Core\Infrastructure\IRepository.cs" />
     <Compile Include="Core\Infrastructure\IResimRepository.cs" />
     <Compile Include="Core\Infrastructure\IRolRepository.cs" />
@@ -326,6 +327,7 @@
     <Compile Include="Core\Repository\IslemRepository.cs" />
     <Compile Include="Core\Repository\KullaniciRepository.cs" />
     <Compile Include="Core\Repository\MusteriRepository.cs" />
+    <Compile Include="Core\Repository\OdemeRepository.cs" />
     <Compile Include="Core\Repository\ResimRepository.cs" />
     <Compile Include="Core\Repository\RolRepository.cs" />
     <Compile Include="Data\Arac.cs">
