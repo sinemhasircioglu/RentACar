@@ -26,46 +26,40 @@
                 </div>
                 <span class="r-tax-info"> KDV dahil </span>
             </div>
-        </div> <!-- /r-car-info-header -->
+        </div>
 
         <div class="r-car-whole-info">
             <div class="row">
                 <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                     <div class="r-car-product-carousel-wrapper">
                         <div class="r-car-product-carousel owl-carousel" data-slider-id="r-product-slider" id="productSlider">
-                            <div class="item">
-                                <img src="assets/images/car-slider-img-1.jpg" alt="" class="img-fluid" />
-                            </div>
-                            <div class="item">
-                                <img src="assets/images/car-slider-img-2.jpg" alt="" class="img-fluid" />
-                            </div>
-                            <div class="item">
-                                <img src="assets/images/car-slider-img-3.jpg" alt="" class="img-fluid" />
-                            </div>
-                            <div class="item">
-                                <img src="assets/images/car-slider-img-4.jpg" alt="" class="img-fluid" />
-                            </div>
+                            @foreach (var item in Model.Arac.Resims)
+                            {
+                                <div class="item">
+                                    <img src="@item.ResimUrl" alt="@item.ResimUrl" class="img-fluid" />
+                                </div>
+                            }
                         </div>
 
                         <ul class="owl-thumbs r-car-product-carousel-thumb" data-slider-id="r-product-slider">
-                            <li class="owl-thumb-item"> <img src="assets/images/car-slider-img-1.jpg" alt="" class="img-fluid" /> </li>
-                            <li class="owl-thumb-item"> <img src="assets/images/car-slider-img-2.jpg" alt="" class="img-fluid" /> </li>
-                            <li class="owl-thumb-item"> <img src="assets/images/car-slider-img-3.jpg" alt="" class="img-fluid" /> </li>
-                            <li class="owl-thumb-item"> <img src="assets/images/car-slider-img-4.jpg" alt="" class="img-fluid" /> </li>
+                            @foreach (var item in Model.Arac.Resims)
+                            {
+                                <li class="owl-thumb-item"> <img src="@item.ResimUrl" alt="" class="@item.ResimUrl" /> </li>
+                            }
                         </ul>
-                    </div> <!-- /r-car-product-carousel-wrapper -->
+                    </div>
                 </div>
 
                 <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
                     <div class="r-car-info-content">
-                        <span class="r-reg-year">Registered 2016</span>
+                        <span class="r-reg-year">Registered @Model.Arac.Yil</span>
                         <h2 class="r-product-name">@Model.Arac.Marka <span>@Model.Arac.Model</span> </h2>
                         <p class="r-product-description">@Model.Arac.Aciklama</p>
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td>@Model.Arac.Kilometre</td>
-                                    <td>@Model.Arac.KoltukSayisi </td>
+                                    <td>@Model.Arac.Kilometre km</td>
+                                    <td>@Model.Arac.KoltukSayisi kişi </td>
                                 </tr>
                                 <tr>
                                     <td>@Model.Arac.Renk</td>
@@ -74,10 +68,6 @@
                                 <tr>
                                     <td>@Model.Arac.Vites</td>
                                     <td>@Model.Arac.Yakit</td>
-                                </tr>
-                                <tr>
-                                    <td>Body Type Sedan Sport</td>
-                                    <td>5 Years Service Include</td>
                                 </tr>
                             </table>
                         </div>
@@ -105,8 +95,8 @@
                 </div>
 
                 <div class="r-product-discount">
-                    <span class="r-discount">DISCOUNT 50%</span>
-                    <p class="r-discount-content"> Special Offers For <strong>Black Friday.</strong> </p>
+                    <span class="r-discount">%5 İNDİRİM</span>
+                    <p class="r-discount-content"> Sitemize<strong> üye olan</strong> müşterilerimze özel.</p>
                 </div>
             </div>
 
@@ -144,8 +134,7 @@
                                     <div class="form-group">
                                         <label>Teslim alma tarihi</label>
                                         <div class="input-group">
-                                            @*<input type="text" class="form-control" placeholder="dd.mm.yy" />*@
-                                            <input type="text" name="TeslimAlmaTarihi" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="dd/mm/yyyy">
+                                            <input type="datetime-local" name="TeslimAlmaTarihi" class="form-control datepicker" placeholder="dd/mm/yyyy">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                         </div>
                                     </div>
@@ -154,28 +143,7 @@
                                     <div class="form-group">
                                         <label>Teslim etme tarihi</label>
                                         <div class="input-group">
-                                            @*<input type="text" class="form-control" placeholder="dd.mm.yy" />*@
-                                            <input type="text" name="TeslimEtmeTarihi" class="form-control datepicker" data-toggle="datetimepicker" data-target="#datetimepicker4" placeholder="dd/mm/yyyy">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <label>Teslim alma saati</label>
-                                        <div class="input-group">
-                                            @*<input type="text" class="form-control" placeholder="12.00AM" />*@
-                                            <input type="text" name="TeslimAlmaSaati" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="20:00 AM">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <label>Teslim etme saati</label>
-                                        <div class="input-group">
-                                            @*<input type="text" class="form-control" placeholder="12.00PM" />*@
-                                            <input type="text" name="TeslimEtmeSaati" class="form-control" data-toggle="datetimepicker" data-target="#datetimepicker5" placeholder="20:00 AM">
+                                            <input type="datetime-local" name="TeslimEtmeTarihi" class="form-control datepicker" placeholder="dd/mm/yyyy">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                         </div>
                                     </div>
@@ -194,91 +162,19 @@
                         <form>
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    @*6 yı 12 yap sonra dene*@
                                     <ul class="r-fee-list">
-                                        <li class="clearfix r-site-checkbox">
-                                            <label>
-                                                Exsess Protection
-                                                <span class="r-extra-fee">$14.00</span>
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                        </li>
-                                        <li class="clearfix r-site-checkbox">
-                                            <label>
-                                                Navigation
-                                                <span class="r-extra-fee">$10.00</span>
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                        </li>
-                                        <li class="clearfix r-site-checkbox">
-                                            <label>
-                                                Baby Seat
-                                                <span class="r-extra-fee">$8.00</span>
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                        </li>
-                                        <li class="clearfix r-site-checkbox">
-                                            <label>
-                                                Car Seat For Childrens
-                                                <span class="r-extra-fee">$10.15</span>
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                        </li>
-                                        <li class="clearfix r-site-checkbox">
-                                            <label>
-                                                Additional Driver
-                                                <span class="r-extra-fee">$14.25</span>
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <ul class="r-fee-list">
-                                        <li class="clearfix r-site-checkbox">
-                                            <label>
-                                                Exsess Protection
-                                                <span class="r-extra-fee">$14.00</span>
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                        </li>
-                                        <li class="clearfix r-site-checkbox">
-                                            <label>
-                                                Navigation
-                                                <span class="r-extra-fee">$10.00</span>
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                        </li>
-                                        <li class="clearfix r-site-checkbox">
-                                            <label>
-                                                Baby Seat
-                                                <span class="r-extra-fee">$8.00</span>
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                        </li>
-                                        <li class="clearfix r-site-checkbox">
-                                            <label>
-                                                Car Seat For Childrens
-                                                <span class="r-extra-fee">$10.15</span>
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                        </li>
-                                        <li class="clearfix r-site-checkbox">
-                                            <label>
-                                                Additional Driver
-                                                <span class="r-extra-fee">$14.25</span>
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                        </li>
+                                        @foreach (var item in Model.EkHizmetler)
+                                        {
+                                            <li class="clearfix r-site-checkbox">
+                                                <label>
+                                                    @item.Ad
+                                                    <span class="r-extra-fee"> @item.Tutar TL</span>
+                                                    <input type="checkbox" />
+                                                    <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
+                                                </label>
+                                            </li>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -295,23 +191,6 @@
                     <div class="r-accordion-body">
                         <form>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <div class="r-site-checkbox">
-                                            <label>
-                                                Mr.
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                            <label>
-                                                Mrs.
-                                                <input type="checkbox" />
-                                                <span class="r-site-checkbox-icon"> <i class="fa fa-check-square"></i> </span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>Full Name</label>

@@ -29,7 +29,7 @@ namespace RentACar.Areas.admin.Controllers
             {
                 MusaitAracSayisi = _aracRepository.GetMany(x => x.MusaitMi == true).Count(),
                 DoluAracSayisi = _aracRepository.GetMany(x => x.MusaitMi == false).Count(),
-                YeniRezervasyonSayi = _islemRepository.GetMany(x => x.Durum == "Yeni").Count(),
+                YeniRezervasyonSayi = _islemRepository.GetAll().Count(),
                 ToplamKiralamaBuguneKadar = _islemRepository.Count()
             };
             return View(model);

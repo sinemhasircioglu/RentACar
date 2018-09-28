@@ -23,7 +23,7 @@
                 <div class="r-offer-cost">
                     <span class="fa fa-usd r-currency"></span> @Model.GunlukFiyat <small> günlük</small>
                 </div>
-                <span class="r-tax-info"> INCLUDED TAXES &amp; CHECKUP </span>
+                <span class="r-tax-info"> KDV dahil </span>
             </div>
         </div>
         <div class="r-car-whole-info">
@@ -71,10 +71,10 @@
                         </div>
 
                         <ul class="owl-thumbs r-car-product-carousel-thumb" data-slider-id="r-product-slider">
-                            <li class="owl-thumb-item active"> <img src="assets/images/car-slider-img-1.jpg" alt="" class="img-fluid"> </li>
-                            <li class="owl-thumb-item"> <img src="assets/images/car-slider-img-2.jpg" alt="" class="img-fluid"> </li>
-                            <li class="owl-thumb-item"> <img src="assets/images/car-slider-img-3.jpg" alt="" class="img-fluid"> </li>
-                            <li class="owl-thumb-item"> <img src="assets/images/car-slider-img-4.jpg" alt="" class="img-fluid"> </li>
+                            @foreach (var item in Model.Resims)
+                            {
+                                <li class="owl-thumb-item"> <img src="@item.ResimUrl" alt="" class="img-fluid"> </li> @*<li class="owl-thumb-item active"> olabilir birincissi*@
+                            }
                         </ul>
                     </div> 
                 </div>
@@ -88,7 +88,7 @@
                                 <tbody>
                                     <tr>
                                         <td>@Model.Kilometre km</td>
-                                        <td>@Model.KoltukSayisi </td>
+                                        <td>@Model.KoltukSayisi kişi</td>
                                     </tr>
                                     <tr>
                                         <td>@Model.Renk</td>
@@ -97,10 +97,6 @@
                                     <tr>
                                         <td>@Model.Vites</td>
                                         <td>@Model.Yakit</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Body Type Sedan Sport</td>
-                                        <td>5 Years Service Include</td>
                                     </tr>
                                 </tbody>
                             </table>

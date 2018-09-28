@@ -10,7 +10,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Plaka" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Marka" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Renk" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -46,7 +45,7 @@
           <Property Name="AlimTarihi" Type="smalldatetime" Nullable="false" />
           <Property Name="TeslimTarihi" Type="smalldatetime" Nullable="false" />
           <Property Name="TahminiKm" Type="int" Nullable="false" />
-          <Property Name="Durum" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="RezervasyonTarihi" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Kullanici">
           <Key>
@@ -64,12 +63,22 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TcKimlikNo" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="TcKimlikNo" Type="nvarchar" MaxLength="11" />
           <Property Name="AdSoyad" Type="nvarchar" MaxLength="55" Nullable="false" />
           <Property Name="Sifre" Type="nvarchar" MaxLength="16" Nullable="false" />
-          <Property Name="Telefon" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="15" />
           <Property Name="KayitTarihi" Type="date" />
           <Property Name="Email" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Odeme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IslemId" Type="int" />
+          <Property Name="TeslimAlinmaTarihi" Type="smalldatetime" />
+          <Property Name="Tutar" Type="int" />
+          <Property Name="ÖdemeTarihi" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Resim">
           <Key>
@@ -132,6 +141,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Odeme_Islem">
+          <End Role="Islem" Type="Self.Islem" Multiplicity="0..1" />
+          <End Role="Odeme" Type="Self.Odeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Islem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Odeme">
+              <PropertyRef Name="IslemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Resim_Arac">
           <End Role="Arac" Type="Self.Arac" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -152,6 +173,7 @@
           <EntitySet Name="Islem" EntityType="Self.Islem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Odeme" EntityType="Self.Odeme" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Resim" EntityType="Self.Resim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -167,6 +189,10 @@
             <End Role="Rol" EntitySet="Rol" />
             <End Role="Kullanici" EntitySet="Kullanici" />
           </AssociationSet>
+          <AssociationSet Name="FK_Odeme_Islem" Association="Self.FK_Odeme_Islem">
+            <End Role="Islem" EntitySet="Islem" />
+            <End Role="Odeme" EntitySet="Odeme" />
+          </AssociationSet>
           <AssociationSet Name="FK_Resim_Arac" Association="Self.FK_Resim_Arac">
             <End Role="Arac" EntitySet="Arac" />
             <End Role="Resim" EntitySet="Resim" />
@@ -181,7 +207,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Plaka" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -204,8 +229,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="TcKimlikNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TcKimlikNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Islems" Relationship="RentACarModel.FK_Islem_Musteri" FromRole="Musteri" ToRole="Islem" />
           <Property Name="AdSoyad" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
           <Property Name="KayitTarihi" Type="DateTime" Precision="0" />
@@ -247,6 +272,11 @@
             <End Role="Rol" EntitySet="Rols" />
             <End Role="Kullanici" EntitySet="Kullanicis" />
           </AssociationSet>
+          <EntitySet Name="Odemes" EntityType="RentACarModel.Odeme" />
+          <AssociationSet Name="FK_Odeme_Islem" Association="RentACarModel.FK_Odeme_Islem">
+            <End Role="Islem" EntitySet="Islems" />
+            <End Role="Odeme" EntitySet="Odemes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Hizmet">
           <Key>
@@ -268,9 +298,10 @@
           <Property Name="AlimTarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TeslimTarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TahminiKm" Type="Int32" Nullable="false" />
-          <Property Name="Durum" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Arac" Relationship="RentACarModel.FK_Islem_Arac" FromRole="Islem" ToRole="Arac" />
           <NavigationProperty Name="Musteri" Relationship="RentACarModel.FK_Islem_Musteri" FromRole="Islem" ToRole="Musteri" />
+          <Property Name="RezervasyonTarihi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Odemes" Relationship="RentACarModel.FK_Odeme_Islem" FromRole="Islem" ToRole="Odeme" />
         </EntityType>
         <EntityType Name="Kullanici">
           <Key>
@@ -349,6 +380,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Odeme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IslemId" Type="Int32" />
+          <Property Name="TeslimAlinmaTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Tutar" Type="Int32" />
+          <Property Name="ÖdemeTarihi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Islem" Relationship="RentACarModel.FK_Odeme_Islem" FromRole="Odeme" ToRole="Islem" />
+        </EntityType>
+        <Association Name="FK_Odeme_Islem">
+          <End Type="RentACarModel.Islem" Role="Islem" Multiplicity="0..1" />
+          <End Type="RentACarModel.Odeme" Role="Odeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Islem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Odeme">
+              <PropertyRef Name="IslemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -366,7 +420,6 @@
                 <ScalarProperty Name="Yakit" ColumnName="Yakit" />
                 <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Plaka" ColumnName="Plaka" />
                 <ScalarProperty Name="Marka" ColumnName="Marka" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Renk" ColumnName="Renk" />
@@ -414,7 +467,7 @@
           <EntitySetMapping Name="Islems">
             <EntityTypeMapping TypeName="RentACarModel.Islem">
               <MappingFragment StoreEntitySet="Islem">
-                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="RezervasyonTarihi" ColumnName="RezervasyonTarihi" />
                 <ScalarProperty Name="TahminiKm" ColumnName="TahminiKm" />
                 <ScalarProperty Name="TeslimTarihi" ColumnName="TeslimTarihi" />
                 <ScalarProperty Name="AlimTarihi" ColumnName="AlimTarihi" />
@@ -450,6 +503,17 @@
             <EntityTypeMapping TypeName="RentACarModel.Rol">
               <MappingFragment StoreEntitySet="Rol">
                 <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Odemes">
+            <EntityTypeMapping TypeName="RentACarModel.Odeme">
+              <MappingFragment StoreEntitySet="Odeme">
+                <ScalarProperty Name="ÖdemeTarihi" ColumnName="ÖdemeTarihi" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="TeslimAlinmaTarihi" ColumnName="TeslimAlinmaTarihi" />
+                <ScalarProperty Name="IslemId" ColumnName="IslemId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -96,7 +96,6 @@ namespace RentACar.Areas.admin.Controllers
             gelenArac.Aciklama = arac.Aciklama;
             gelenArac.Marka = arac.Marka;
             gelenArac.Model = arac.Model;
-            gelenArac.Plaka = arac.Plaka;
             gelenArac.Renk = arac.Renk;
             gelenArac.Yil = arac.Yil;
             gelenArac.Kilometre = arac.Kilometre;

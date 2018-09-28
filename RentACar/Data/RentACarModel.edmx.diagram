@@ -8,15 +8,17 @@
         <EntityTypeShape EntityType="RentACarModel.Arac" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentACarModel.Musteri" Width="1.5" PointX="3.125" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="RentACarModel.sysdiagram" Width="1.5" PointX="0.5" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentACarModel.Hizmet" Width="1.5" PointX="8" PointY="2.75" />
+        <EntityTypeShape EntityType="RentACarModel.Hizmet" Width="1.5" PointX="7.875" PointY="3.5" />
         <EntityTypeShape EntityType="RentACarModel.Islem" Width="1.5" PointX="5.375" PointY="1" />
         <EntityTypeShape EntityType="RentACarModel.Kullanici" Width="1.5" PointX="8" PointY="6" />
-        <EntityTypeShape EntityType="RentACarModel.Resim" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="RentACarModel.Resim" Width="1.5" PointX="3.125" PointY="6.625" />
         <EntityTypeShape EntityType="RentACarModel.Rol" Width="1.5" PointX="5.75" PointY="6.375" />
         <AssociationConnector Association="RentACarModel.FK_Islem_Arac" />
         <AssociationConnector Association="RentACarModel.FK_Resim_Arac" />
         <AssociationConnector Association="RentACarModel.FK_Islem_Musteri" />
         <AssociationConnector Association="RentACarModel.FK_Kullanici_Rol" />
+        <EntityTypeShape EntityType="RentACarModel.Odeme" Width="1.5" PointX="7.625" PointY="0.75" />
+        <AssociationConnector Association="RentACarModel.FK_Odeme_Islem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

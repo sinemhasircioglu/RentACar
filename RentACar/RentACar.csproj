@@ -143,7 +143,6 @@
     <Content Include="Areas\admin\img\loaders\loader9.gif" />
     <Content Include="Areas\admin\img\logo.png" />
     <Content Include="Areas\admin\img\tickc81e.html" />
-    <Content Include="Areas\admin\Scripts\bootstrap-tagsinput.js" />
     <Content Include="Areas\admin\Scripts\main.js" />
     <Content Include="Areas\admin\Scripts\page-bootstrap.js" />
     <Content Include="Areas\admin\Scripts\page-calendar.js" />
@@ -200,21 +199,12 @@
     <Content Include="assets\images\car-1.png" />
     <Content Include="assets\images\car-3.png" />
     <Content Include="assets\images\car-6.png" />
-    <Content Include="assets\images\car-slider-img-1.jpg" />
-    <Content Include="assets\images\car-slider-img-2.jpg" />
-    <Content Include="assets\images\car-slider-img-3.jpg" />
-    <Content Include="assets\images\car-slider-img-4.jpg" />
     <Content Include="assets\images\contact-img01.jpg" />
     <Content Include="assets\images\contact-img02.jpg" />
     <Content Include="assets\images\discount-bg.jpg" />
     <Content Include="assets\images\discount-car-01.jpg" />
     <Content Include="assets\images\discount-car-02.jpg" />
     <Content Include="assets\images\discount-car-03.jpg" />
-    <Content Include="assets\images\driver-bg-dark.jpg" />
-    <Content Include="assets\images\driver-blog-img-2.jpg" />
-    <Content Include="assets\images\driver-blog-img-3.jpg" />
-    <Content Include="assets\images\driver-blog-img.jpg" />
-    <Content Include="assets\images\driver-pic.png" />
     <Content Include="assets\images\favicon.png" />
     <Content Include="assets\images\fb.jpg" />
     <Content Include="assets\images\filter-drop-caret.png" />
@@ -355,6 +345,9 @@
       <DependentUpon>RentACarModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Musteri.cs">
+      <DependentUpon>RentACarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Odeme.cs">
       <DependentUpon>RentACarModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\RentACarModel.Context.cs">

@@ -14,6 +14,13 @@ namespace RentACar.Data
     
     public partial class Islem
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Islem()
+        {
+            this.Odemes = new HashSet<Odeme>();
+            RezervasyonTarihi = DateTime.Now;
+        }
+    
         public int Id { get; set; }
         public int MusteriId { get; set; }
         public int AracId { get; set; }
@@ -21,9 +28,11 @@ namespace RentACar.Data
         public System.DateTime AlimTarihi { get; set; }
         public System.DateTime TeslimTarihi { get; set; }
         public int TahminiKm { get; set; }
-        public string Durum { get; set; }
+        public Nullable<System.DateTime> RezervasyonTarihi { get; set; }
     
         public virtual Arac Arac { get; set; }
         public virtual Musteri Musteri { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Odeme> Odemes { get; set; }
     }
 }

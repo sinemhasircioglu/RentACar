@@ -87,7 +87,6 @@ namespace RentACar.Areas.admin.Controllers
             gelenIslem.Tutar = islem.Tutar;
             gelenIslem.AlimTarihi = islem.AlimTarihi;
             gelenIslem.TeslimTarihi = islem.TeslimTarihi;
-            gelenIslem.Durum = islem.Durum;
             gelenIslem.TahminiKm = islem.TahminiKm;
 
             _islemRepository.Save();
@@ -99,7 +98,7 @@ namespace RentACar.Areas.admin.Controllers
         public ActionResult GecmisIslemler(int sayfa = 1)
         {
             int sayfaBoyutu = 5;
-            var gecmisIslemler=_islemRepository.GetMany(x=>x.Durum=="Teslim Alındı").OrderByDescending(x => x.Id).ToPagedList(sayfa, sayfaBoyutu);
+            var gecmisIslemler=_islemRepository.GetAll().OrderByDescending(x => x.Id).ToPagedList(sayfa, sayfaBoyutu);
             return View("Index",gecmisIslemler);
         }
     }

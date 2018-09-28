@@ -40,7 +40,7 @@
                                     <div class="r-best-offer-single">
                                         <div class="r-best-offer-in">
                                             <div class="r-offer-img">
-                                                <a class="d-inline-block" href="#"><img src="~/assets/images/car-1.png" class="img-fluid d-block m-auto" alt=""></a>
+                                                <a class="d-inline-block" href="#"><img src="/Areas/admin/External/@item.Resims.Take(1).Select(x=>x.ResimUrl).ToString()" class="img-fluid d-block m-auto" alt=""></a>
                                                 <div class="r-offer-img-over">
                                                     <i class="fa fa-search"></i>
                                                 </div>
@@ -56,7 +56,14 @@
                                                 </ul>
                                             </div>
                                             <div class="r-offer-rewst-this">
-                                                <a href="@Url.Action("AracDetay","Home", new { Id=item.Id })"><span class="text-uppercase">Bu aracı incele</span></a>
+                                                @if (ViewBag.ArabaSinif == null)
+                                                {
+                                                    <a href="@Url.Action("AracDetay","Home", new { Id=item.Id })"><span class="text-uppercase">Bu aracı incele</span></a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="@Url.Action("KiralamaDetay","Home", new { Id=item.Id })"><span class="text-uppercase">Bu aracı KİRALA</span></a>
+                                                }
                                             </div>
                                         </div>
                                     </div>

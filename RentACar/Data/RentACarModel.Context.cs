@@ -33,5 +33,6 @@ namespace RentACar.Data
         public virtual DbSet<Kullanici> Kullanicis { get; set; }
         public virtual DbSet<Resim> Resims { get; set; }
         public virtual DbSet<Rol> Rols { get; set; }
+        public virtual DbSet<Odeme> Odemes { get; set; }
     }
 }

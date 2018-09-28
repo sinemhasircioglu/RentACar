@@ -94,7 +94,7 @@ namespace RentACar.Controllers
             dbMusteri.Email = musteri.Email;
             if(EskiSifre != null && EskiSifre == dbMusteri.Sifre)
             {
-                if (YeniSifre == YeniSifreTekrar)
+                if (YeniSifre == YeniSifreTekrar && YeniSifre != null)
                 {
                     dbMusteri.Sifre = YeniSifre;
                 }

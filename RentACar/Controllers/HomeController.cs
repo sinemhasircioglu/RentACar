@@ -13,10 +13,14 @@ namespace RentACar.Controllers
     public class HomeController : Controller
     {
         private readonly IAracRepository _aracRepository;
+        private readonly IIslemRepository _islemRepository;
+        private readonly IHizmetRepository _hizmetRepository;
 
-        public HomeController(IAracRepository aracRepository)
+        public HomeController(IAracRepository aracRepository, IIslemRepository islemRepository, IHizmetRepository hizmetRepository)
         {
             _aracRepository = aracRepository;
+            _islemRepository = islemRepository;
+            _hizmetRepository = hizmetRepository;
         }
 
         public ActionResult Index()
@@ -42,27 +46,36 @@ namespace RentACar.Controllers
         [HttpGet]
         public ActionResult OnlineRezarvasyon()
         {
-
             return View();
         }
 
         [HttpPost]
-        public ActionResult OnlineRezarvasyon(string TeslimAlmaNoktasi, string TeslimEtmeNoktasi, string TeslimAlmaTarihi,
-            string TeslimAlmaSaati, string TeslimEtmeTarihi, string TeslimEtmeSaati, string ArabaSinif, string ArabaVites, string Siralama)
+        public ActionResult OnlineRezarvasyon(string TeslimAlmaTarihi, string TeslimEtmeTarihi, string ArabaSinif, string ArabaVites, string ArabaYakit)
         {
-            ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).ToList();
+            ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).Distinct().ToList();
             ViewBag.ArabaSinif = ArabaSinif;
             ViewBag.ArabaVites = ArabaVites;
-            var filtrelenmisAraclar = new List<Arac>();
-            if (Siralama == "Artan")
+            ViewBag.ArabaYakit = ArabaYakit;
+            var musaitAracIdleri = new List<int>();
+            var musaitAraclar = new List<Arac>();
+
+            var ozellikFiltreliAracIdleri = _aracRepository.GetMany(x => x.Sinif == ArabaSinif && x.Vites == ArabaVites && x.Yakit == ArabaYakit).OrderBy(x => x.GunlukFiyat).Select(x => x.Id);
+            var tarihFiltreliIdler = _islemRepository.GetAll().Where(islem => Convert.ToDateTime(islem.AlimTarihi) < Convert.ToDateTime(TeslimAlmaTarihi) && Convert.ToDateTime(islem.TeslimTarihi) < Convert.ToDateTime(TeslimEtmeTarihi)).Select(y => y.AracId);
+
+            foreach (var n in ozellikFiltreliAracIdleri)
             {
-                filtrelenmisAraclar = _aracRepository.GetMany(x => x.Sinif == ArabaSinif && x.Vites == ArabaVites).OrderBy(x => x.GunlukFiyat).ToList();
+                if (tarihFiltreliIdler.Contains(n))
+                {
+                    musaitAracIdleri.Add(n);
+                }
             }
-            else
+            
+            for(int i=0; i<musaitAracIdleri.Count(); i++)
             {
-                filtrelenmisAraclar = _aracRepository.GetMany(x => x.Sinif == ArabaSinif && x.Vites == ArabaVites).OrderByDescending(x => x.GunlukFiyat).ToList();
+                musaitAraclar.Add(_aracRepository.GetById(musaitAracIdleri[i]));
             }
-            return View("Araclar");
+            var Araclar = musaitAraclar.OrderBy(x => x.Id).ToPagedList(1, 6);
+            return View("Araclar",Araclar);
         }
 
         [HttpGet]
@@ -70,14 +83,14 @@ namespace RentACar.Controllers
         {
             int sayfaBoyutu = 6;
             var Araclar = _aracRepository.GetAll().OrderByDescending(x => x.Id).ToPagedList(sayfa, sayfaBoyutu);
-            ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).ToList();
+            ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).Distinct().ToList();
             return View("Araclar", Araclar);
         }
 
         public ActionResult MarkayaGoreAraclar(string marka, int sayfa = 1)
         {
             int sayfaBoyutu = 6;
-            ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).ToList();
+            ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).Distinct().ToList();
             var filtrelenmisAraclar = _aracRepository.GetMany(x => x.Marka == marka).OrderBy(x => x.GunlukFiyat).ToPagedList(sayfa, sayfaBoyutu);
             return View("Araclar", filtrelenmisAraclar);
         }
@@ -87,7 +100,8 @@ namespace RentACar.Controllers
             var model = new KiralamaDetayViewModel()
             {
                 BenzerAraclar = _aracRepository.GetAll().ToList(),
-                Arac = _aracRepository.GetById(id)
+                Arac = _aracRepository.GetById(id),
+                EkHizmetler = _hizmetRepository.GetAll().ToList()
             };
             return View(model);
         }

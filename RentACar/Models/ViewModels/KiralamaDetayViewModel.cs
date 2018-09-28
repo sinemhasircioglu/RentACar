@@ -10,5 +10,6 @@ namespace RentACar.Models.ViewModels
     {
         public IEnumerable<Arac> BenzerAraclar { get; set; }
         public Arac Arac { get; set; }
+        public IEnumerable<Hizmet> EkHizmetler { get; set; }
     }
 }
