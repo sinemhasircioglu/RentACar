@@ -168,7 +168,6 @@
     <Content Include="assets\color-files\color-08.css" />
     <Content Include="assets\css\main.css" />
     <Content Include="assets\css\plugins\animate\animate.css" />
-    <Content Include="assets\css\plugins\datepicker\datepicker.css" />
     <Content Include="assets\css\plugins\owl\owl.carousel.min.css" />
     <Content Include="assets\css\plugins\owl\owl.theme.default.min.css" />
     <Content Include="assets\css\plugins\owl\owl.video.play.html" />
@@ -280,9 +279,6 @@
     <Content Include="assets\js\plugins\appear\appear.js" />
     <Content Include="assets\js\plugins\counter\counter.min.js" />
     <Content Include="assets\js\plugins\counter\jquery.easing.min.js" />
-    <Content Include="assets\js\plugins\datepicker\bootstrap-datepicker.js" />
-    <Content Include="assets\js\plugins\datepicker\moment-timezone.js" />
-    <Content Include="assets\js\plugins\datepicker\moment-with-locales.min.js" />
     <Content Include="assets\js\plugins\lightcase\lightcase.js" />
     <Content Include="assets\js\plugins\owl\owl.carousel.min.js" />
     <Content Include="assets\js\plugins\owl\owl.carousel2.thumbs.js" />
