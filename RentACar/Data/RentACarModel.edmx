@@ -46,6 +46,8 @@
           <Property Name="TeslimTarihi" Type="smalldatetime" Nullable="false" />
           <Property Name="TahminiKm" Type="int" Nullable="false" />
           <Property Name="RezervasyonTarihi" Type="smalldatetime" />
+          <Property Name="TcKimlikNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="Kullanici">
           <Key>
@@ -63,10 +65,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TcKimlikNo" Type="nvarchar" MaxLength="11" />
           <Property Name="AdSoyad" Type="nvarchar" MaxLength="55" Nullable="false" />
           <Property Name="Sifre" Type="nvarchar" MaxLength="16" Nullable="false" />
-          <Property Name="Telefon" Type="nvarchar" MaxLength="15" />
           <Property Name="KayitTarihi" Type="date" />
           <Property Name="Email" Type="nvarchar" MaxLength="40" />
         </EntityType>
@@ -229,8 +229,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="TcKimlikNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Islems" Relationship="RentACarModel.FK_Islem_Musteri" FromRole="Musteri" ToRole="Islem" />
           <Property Name="AdSoyad" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
           <Property Name="KayitTarihi" Type="DateTime" Precision="0" />
@@ -302,6 +300,8 @@
           <NavigationProperty Name="Musteri" Relationship="RentACarModel.FK_Islem_Musteri" FromRole="Islem" ToRole="Musteri" />
           <Property Name="RezervasyonTarihi" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Odemes" Relationship="RentACarModel.FK_Odeme_Islem" FromRole="Islem" ToRole="Odeme" />
+          <Property Name="TcKimlikNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Kullanici">
           <Key>
@@ -438,9 +438,7 @@
                 <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
                 <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TcKimlikNo" ColumnName="TcKimlikNo" />
-                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
@@ -467,6 +465,8 @@
           <EntitySetMapping Name="Islems">
             <EntityTypeMapping TypeName="RentACarModel.Islem">
               <MappingFragment StoreEntitySet="Islem">
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="TcKimlikNo" ColumnName="TcKimlikNo" />
                 <ScalarProperty Name="RezervasyonTarihi" ColumnName="RezervasyonTarihi" />
                 <ScalarProperty Name="TahminiKm" ColumnName="TahminiKm" />
                 <ScalarProperty Name="TeslimTarihi" ColumnName="TeslimTarihi" />

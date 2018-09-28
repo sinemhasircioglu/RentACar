@@ -14,6 +14,11 @@ namespace RentACar.Data
     
     public partial class Kullanici
     {
+        public Kullanici()
+        {
+            KayitTarihi = DateTime.Now;
+        }
+
         public int Id { get; set; }
         public string AdSoyad { get; set; }
         public string Email { get; set; }

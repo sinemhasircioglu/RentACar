@@ -29,6 +29,8 @@ namespace RentACar.Data
         public System.DateTime TeslimTarihi { get; set; }
         public int TahminiKm { get; set; }
         public Nullable<System.DateTime> RezervasyonTarihi { get; set; }
+        public string TcKimlikNo { get; set; }
+        public string Telefon { get; set; }
     
         public virtual Arac Arac { get; set; }
         public virtual Musteri Musteri { get; set; }

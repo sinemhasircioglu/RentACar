@@ -62,7 +62,7 @@
                     <hr>
                 </div>
                 <div class="inner col-12 clearfix">
-                    <button type="submit" class="btn m-auto d-block float-right btn-full">RESERVED CAR</button>
+                    <button type="submit" class="btn m-auto d-block float-right btn-full">Araç bul</button>
                 </div>
             </div>
         }
@@ -83,22 +83,26 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="r-car-showcase">
                             <div class="row clearfix r-best-offer-list">
                                 @foreach (var item in Model)
                                 {
+                                    
+                                        string resim = Model.First().Resims.Where(x => x.AracId == item.Id).Select(x => x.ResimUrl).First().ToString();
+                                    
                                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <div class="r-best-offer-single">
                                             <div class="r-best-offer-in">
                                                 <div class="r-offer-img">
-                                                    <a class="d-inline-block" href="#"><img src="@item.Resims.Take(1)" class="img-fluid d-block m-auto" alt=""></a>
+                                                    <a class="d-inline-block" href="#"><img src="@resim" class="img-fluid d-block m-auto" alt=""></a>
                                                     <div class="r-offer-img-over">
                                                         <i class="fa fa-search"></i>
                                                     </div>
                                                 </div>
                                                 <div class="r-best-offer-content">
                                                     <a href="#"><b>@item.Marka</b> @item.Model</a>
-                                                    <p>Başlayan<b>@item.GunlukFiyat USD</b> günlük</p>
+                                                    <p>Başlayan<b>@item.GunlukFiyat TL</b> günlük</p>
                                                     <ul class="pl-0 mb-0">
                                                         <li><i class="fa fa-car"></i><span>@item.Yil</span></li>
                                                         <li><i class="fa fa-cogs"></i><span>@item.Vites</span></li>
@@ -115,22 +119,7 @@
                                 }
                             </div>
                         </div>
-                        @*<div class="r-filter-pagination-area">
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12">
-                                        <ul class="pagination">
-                                            <li><a href="#">Prev</a></li>
-                                            <li><a href="#">01</a></li>
-                                            <li class="active"><span>02</span></li>
-                                            <li><a href="#">03</a></li>
-                                            <li><a href="#">04</a></li>
-                                            <li><a href="#">...</a></li>
-                                            <li><a href="#">10</a></li>
-                                            <li><a href="#">Next</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>*@
+
                         @Html.PagedListPager(Model, sayfa => Url.Action("OnlineRezarvasyon", new { sayfa }), PagedListRenderOptions.ClassicPlusFirstAndLast)
                     </div>
                 </div>
