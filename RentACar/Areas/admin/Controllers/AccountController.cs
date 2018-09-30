@@ -42,69 +42,31 @@ namespace RentACar.Areas.admin.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Register(Kullanici kullanici)
-        {
-            var KullaniciVarMi = _kullaniciRepository.GetMany(x => x.Email == kullanici.Email).SingleOrDefault();
-            if (KullaniciVarMi != null)
-            {
-                TempData["Bilgi"] = "Bu email kullanılmış !";
-                return View();
-            }
-            Kullanici yeniKullanici = new Kullanici
-            {
-                AdSoyad = kullanici.AdSoyad,
-                Email = kullanici.Email,
-                Sifre = kullanici.Sifre,
-                RolId = 2,
-                KayitTarihi = DateTime.Now
-            };
-
-            try
-            {
-                _kullaniciRepository.Insert(yeniKullanici);
-                _kullaniciRepository.Save();
-                return RedirectToAction("Index", "Home");
-            }
-            catch (Exception)
-            {
-                return View();
-            }
-        }
-
         public ActionResult LogOut()
         {
             Session.Abandon();
             return RedirectToAction("Login", "Account");
         }
 
-        //[HttpGet]
-        //[AdminEditorYazarAuth]
-        //public ActionResult Duzenle(int id)
-        //{
-        //    Kullanici gelenKullanici = _kullaniciRepository.GetById(id);
-        //    if (gelenKullanici == null)
-        //        TempData["Bilgi"] = "Kullanıcı bulunamadı!";
-        //    return View(gelenKullanici);
-        //}
+        [HttpGet]
+        public ActionResult Duzenle(int id)
+        {
+            Kullanici gelenKullanici = _kullaniciRepository.GetById(id);
+            if (gelenKullanici == null)
+                TempData["Bilgi"] = "Kullanıcı bulunamadı!";
+            return View(gelenKullanici);
+        }
 
-        //[HttpPost]
-        //[AdminEditorYazarAuth]
-        //public ActionResult Duzenle(Kullanici kullanici)
-        //{
-        //    Kullanici dbKullanici = _kullaniciRepository.GetById(kullanici.Id);
-        //    dbKullanici.AdSoyad = kullanici.AdSoyad;
-        //    dbKullanici.Email = kullanici.Email;
-        //    dbKullanici.Sifre = kullanici.Sifre;
-        //    _kullaniciRepository.Save();
-        //    TempData["Bilgi"] = "Kullanıcı düzenleme işleminiz başarılı.";
-        //    return RedirectToAction("Duzenle", "Account");
-        //}
+        [HttpPost]
+        public ActionResult Duzenle(Kullanici kullanici)
+        {
+            Kullanici dbKullanici = _kullaniciRepository.GetById(kullanici.Id);
+            dbKullanici.AdSoyad = kullanici.AdSoyad;
+            dbKullanici.Email = kullanici.Email;
+            dbKullanici.Sifre = kullanici.Sifre;
+            _kullaniciRepository.Save();
+            TempData["Bilgi"] = "Kullanıcı düzenleme işleminiz başarılı.";
+            return RedirectToAction("Duzenle", "Account");
+        }
     }
 }

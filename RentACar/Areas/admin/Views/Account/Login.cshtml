@@ -28,21 +28,10 @@
 </head>
 <body class="login-page">
 
-    <!-- Page container -->
-    @*<div class="container">
-            <p class="text-center">
-                MVC HABER SİTESİ
-            </p>
-            <div class="login-buttons">
-                <button class="btn btn-login" data-toggle="modal" data-target="#loginModal">Giriş Yap</button>
-            </div>
-        </div>*@
-    <!-- /Page container -->
     <!-- Login modal -->
     @using (Html.BeginForm("Login", "Account", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-        @*<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">*@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -61,9 +50,6 @@
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Şifre" name="Sifre" required>
                         </div>
-                        <label>
-                            @Html.ActionLink("Bir hesabınız yok mu? Hemen kayıt olun", "Register", "Account", new { area = "admin"}, new { style = "color : navy" })
-                        </label>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -72,7 +58,6 @@
                 </div>
             </div>
         </div>
-        @*</div>*@
     }
     <!-- SCRIPTS -->
     <script src="~/Areas/admin/Scripts/plugins/modernizr.min.js"></script>

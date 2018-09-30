@@ -7,9 +7,10 @@ namespace RentACar.Areas.admin.Models.ViewModels
 {
     public class AdminDashboardViewModel
     {
-        public int MusaitAracSayisi { get; set; }
-        public int DoluAracSayisi { get; set; }
+        public int AracSayisi { get; set; }
+
         public int YeniRezervasyonSayi { get; set; }
+
         public int ToplamKiralamaBuguneKadar { get; set; }
     }
 }

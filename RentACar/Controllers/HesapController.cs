@@ -11,10 +11,12 @@ namespace RentACar.Controllers
     public class HesapController : Controller
     {
         private readonly IMusteriRepository _musteriRepository;
+        private readonly IIslemRepository _islemRepository;
 
-        public HesapController(IMusteriRepository musteriRepository)
+        public HesapController(IMusteriRepository musteriRepository, IIslemRepository islemRepository)
         {
             _musteriRepository = musteriRepository;
+            _islemRepository = islemRepository;
         }
 
         [HttpGet]
@@ -24,47 +26,54 @@ namespace RentACar.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(Musteri musteri) 
+        public ActionResult Login(Musteri musteri)
         {
             var KullaniciVarMi = _musteriRepository.GetMany(x => x.Email == musteri.Email && x.Sifre == musteri.Sifre).SingleOrDefault();
             if (KullaniciVarMi != null)
             {
                 Session["MusteriId"] = KullaniciVarMi.Id;
                 return RedirectToAction("Index", "Home");
-                //$$$$$$$$$$$$
-
             }
             TempData["Bilgi"] = "Geçersiz Email/Şifre girdiniz!";
-            return View();
+            return RedirectToAction("LoginRegister", "Hesap");
         }
 
         [HttpPost]
-        public ActionResult Register(Musteri musteri)
+        public ActionResult Register(Musteri musteri, string SifreTekrar)
         {
             var KullaniciVarMi = _musteriRepository.GetMany(x => x.Email == musteri.Email).SingleOrDefault();
             if (KullaniciVarMi != null)
             {
                 TempData["Bilgi"] = "Bu email kullanılmış !";
-                return View();
-            }
-            Musteri yeniMusteri = new Musteri
-            {
-                AdSoyad = musteri.AdSoyad,
-                Email = musteri.Email,
-                Sifre = musteri.Sifre,
-                KayitTarihi = DateTime.Now,
-            };
-
-            try
-            {
-                _musteriRepository.Insert(yeniMusteri);
-                _musteriRepository.Save();
-                TempData["Bilgi"] = "Kayıt oldunuz lütfen giriş yapın.";
                 return RedirectToAction("LoginRegister", "Hesap");
             }
-            catch (Exception)
+
+            if (musteri.Sifre != null && musteri.Sifre == SifreTekrar)
             {
-                return View();
+                Musteri yeniMusteri = new Musteri
+                {
+                    AdSoyad = musteri.AdSoyad,
+                    Email = musteri.Email,
+                    Sifre = musteri.Sifre,
+                    KayitTarihi = DateTime.Now,
+                };
+                try
+                {
+                    _musteriRepository.Insert(yeniMusteri);
+                    _musteriRepository.Save();
+                    TempData["Bilgi"] = "Kayıt oldunuz lütfen giriş yapın.";
+                    return RedirectToAction("LoginRegister", "Hesap");
+                }
+                catch (Exception)
+                {
+                    TempData["Bilgi"] = "Tüm alanları doğru girdiğinizden emin olun";
+                    return RedirectToAction("LoginRegister", "Hesap");
+                }
+            }
+            else
+            {
+                TempData["Bilgi"] = "Tüm alanları doğru girdiğinizden emin olun";
+                return RedirectToAction("LoginRegister", "Hesap");
             }
         }
 
@@ -90,7 +99,7 @@ namespace RentACar.Controllers
             Musteri dbMusteri = _musteriRepository.GetById(musteri.Id);
             dbMusteri.AdSoyad = musteri.AdSoyad;
             dbMusteri.Email = musteri.Email;
-            if(EskiSifre != null && EskiSifre == dbMusteri.Sifre)
+            if (EskiSifre != null && EskiSifre == dbMusteri.Sifre)
             {
                 if (YeniSifre == YeniSifreTekrar && YeniSifre != null)
                 {
@@ -100,6 +109,13 @@ namespace RentACar.Controllers
             _musteriRepository.Save();
             TempData["Bilgi"] = "Profil düzenleme işleminiz başarılı.";
             return RedirectToAction("Duzenle", "Hesap");
+        }
+
+        public ActionResult Rezervasyonlarim()
+        {
+            int musteri = (int)Session["MusteriId"];
+            var Rezlerim = _islemRepository.GetAll().Where(x => x.MusteriId == musteri);
+            return View(Rezlerim);
         }
     }
 }

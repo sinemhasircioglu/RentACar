@@ -53,32 +53,33 @@ namespace RentACar.Controllers
         }
 
         [HttpPost]
-        public ActionResult OnlineRezarvasyon(string TeslimAlmaTarihi, string TeslimEtmeTarihi, string ArabaSinif, string ArabaVites, string ArabaYakit)
+        public ActionResult OnlineRezarvasyon(DateTime TeslimAlmaTarihi, DateTime TeslimEtmeTarihi, string ArabaSinif, string ArabaVites, string ArabaYakit, int sayfa = 1)
         {
             ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).Distinct().ToList();
             ViewBag.ArabaSinif = ArabaSinif;
             ViewBag.ArabaVites = ArabaVites;
             ViewBag.ArabaYakit = ArabaYakit;
-            var musaitAracIdleri = new List<int>();
+            ViewBag.TeslimEtmeTarihi = TeslimEtmeTarihi;
+            ViewBag.TeslimAlmaTarihi = TeslimAlmaTarihi;
+            int sayfaBoyutu = 20;
+
+            var oTarihteDoluAracIdleri = _islemRepository.GetMany(islem => islem.TeslimTarihi >= TeslimAlmaTarihi
+            && islem.TeslimTarihi <= TeslimEtmeTarihi).Select(islem => islem.AracId).ToList();
+
+            var ozelliklereUygunAracIdleri = _aracRepository.GetMany(x => x.Sinif == ArabaSinif && x.Vites == ArabaVites && x.Yakit == ArabaYakit).Select(x => x.Id).ToList();
+
+            var idler = ozelliklereUygunAracIdleri.Except(oTarihteDoluAracIdleri);
+
             var musaitAraclar = new List<Arac>();
 
-            var ozellikFiltreliAracIdleri = _aracRepository.GetMany(x => x.Sinif == ArabaSinif && x.Vites == ArabaVites && x.Yakit == ArabaYakit).OrderBy(x => x.GunlukFiyat).Select(x => x.Id);
-            var tarihFiltreliIdler = _islemRepository.GetAll().Where(islem => Convert.ToDateTime(islem.AlimTarihi) < Convert.ToDateTime(TeslimAlmaTarihi) && Convert.ToDateTime(islem.TeslimTarihi) < Convert.ToDateTime(TeslimEtmeTarihi)).Select(y => y.AracId);
+            foreach (var n in idler)
+            {
+                musaitAraclar.Add(_aracRepository.GetById(n));
+            }
 
-            foreach (var n in ozellikFiltreliAracIdleri)
-            {
-                if (tarihFiltreliIdler.Contains(n))
-                {
-                    musaitAracIdleri.Add(n);
-                }
-            }
-            
-            for(int i=0; i<musaitAracIdleri.Count(); i++)
-            {
-                musaitAraclar.Add(_aracRepository.GetById(musaitAracIdleri[i]));
-            }
-            var Araclar = musaitAraclar.OrderBy(x => x.Id).ToPagedList(1, 6);
-            return View("Araclar",Araclar);
+            var araclar=musaitAraclar.OrderBy(x => x.Id).ToPagedList(sayfa, sayfaBoyutu);
+
+            return View("Araclar",araclar);
         }
 
         [HttpGet]
@@ -86,7 +87,7 @@ namespace RentACar.Controllers
         {
             int sayfaBoyutu = 6;
             var Araclar = _aracRepository.GetAll().OrderByDescending(x => x.Id).ToPagedList(sayfa, sayfaBoyutu);
-            ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).Distinct().ToList();
+            ViewBag.Markalar = _aracRepository.GetAll().Select(x => x.Marka).Distinct().ToList(); // tekrar edenleri göstermiyoruz.
             return View("Araclar", Araclar);
         }
 
@@ -98,14 +99,16 @@ namespace RentACar.Controllers
             return View("Araclar", filtrelenmisAraclar);
         }
 
-        public ActionResult KiralamaDetay(int id)
+        public ActionResult KiralamaDetay(int id, DateTime TeslimAlma, DateTime TeslimEtme)
         {
             var model = new KiralamaDetayViewModel()
             {
-                BenzerAraclar = _aracRepository.GetAll().ToList(),
                 Arac = _aracRepository.GetById(id),
                 EkHizmetler = _hizmetRepository.GetAll().ToList()
             };
+            ViewBag.TeslimAlmaTarih = TeslimAlma;
+            ViewBag.TeslimEtmeTarih = TeslimEtme;
+            ViewBag.GunSayisi = (TeslimEtme - TeslimAlma).TotalDays;
             return View(model);
         }
 
@@ -113,6 +116,24 @@ namespace RentACar.Controllers
         {
             var arac = _aracRepository.GetById(id);
             return View(arac);
+        }
+
+        [HttpPost]
+        public ActionResult RezervasyonYap(Islem islem )
+        {
+            Islem yeniIslem = new Islem();
+            yeniIslem.RezervasyonTarihi = DateTime.Now;
+            yeniIslem.MusteriId = islem.MusteriId;
+            yeniIslem.AracId = islem.AracId;
+            yeniIslem.TcKimlikNo = islem.TcKimlikNo;
+            yeniIslem.Telefon = islem.Telefon;
+            yeniIslem.Tutar = islem.Tutar;
+            yeniIslem.AlimTarihi = islem.AlimTarihi;
+            yeniIslem.TeslimTarihi = islem.TeslimTarihi;
+            yeniIslem.TahminiKm = islem.TahminiKm;
+            _islemRepository.Insert(yeniIslem);
+            _islemRepository.Save();
+            return RedirectToAction("Rezervasyonlarim", "Hesap");
         }
     }
 }

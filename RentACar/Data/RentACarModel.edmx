@@ -42,8 +42,8 @@
           <Property Name="MusteriId" Type="int" Nullable="false" />
           <Property Name="AracId" Type="int" Nullable="false" />
           <Property Name="Tutar" Type="int" Nullable="false" />
-          <Property Name="AlimTarihi" Type="smalldatetime" Nullable="false" />
-          <Property Name="TeslimTarihi" Type="smalldatetime" Nullable="false" />
+          <Property Name="AlimTarihi" Type="datetime" Nullable="false" />
+          <Property Name="TeslimTarihi" Type="datetime" Nullable="false" />
           <Property Name="TahminiKm" Type="int" Nullable="false" />
           <Property Name="RezervasyonTarihi" Type="smalldatetime" />
           <Property Name="TcKimlikNo" Type="nvarchar" MaxLength="15" />
@@ -78,7 +78,7 @@
           <Property Name="IslemId" Type="int" />
           <Property Name="TeslimAlinmaTarihi" Type="smalldatetime" />
           <Property Name="Tutar" Type="int" />
-          <Property Name="ÖdemeTarihi" Type="smalldatetime" />
+          <Property Name="OdemeTarihi" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Resim">
           <Key>
@@ -118,7 +118,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Islem_Musteri">
-          <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Islem" Type="Self.Islem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Musteri">
@@ -293,8 +295,8 @@
           <Property Name="MusteriId" Type="Int32" Nullable="false" />
           <Property Name="AracId" Type="Int32" Nullable="false" />
           <Property Name="Tutar" Type="Int32" Nullable="false" />
-          <Property Name="AlimTarihi" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="TeslimTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AlimTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TeslimTarihi" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TahminiKm" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Arac" Relationship="RentACarModel.FK_Islem_Arac" FromRole="Islem" ToRole="Arac" />
           <NavigationProperty Name="Musteri" Relationship="RentACarModel.FK_Islem_Musteri" FromRole="Islem" ToRole="Musteri" />
@@ -388,7 +390,7 @@
           <Property Name="IslemId" Type="Int32" />
           <Property Name="TeslimAlinmaTarihi" Type="DateTime" Precision="0" />
           <Property Name="Tutar" Type="Int32" />
-          <Property Name="ÖdemeTarihi" Type="DateTime" Precision="0" />
+          <Property Name="OdemeTarihi" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Islem" Relationship="RentACarModel.FK_Odeme_Islem" FromRole="Odeme" ToRole="Islem" />
         </EntityType>
         <Association Name="FK_Odeme_Islem">
@@ -510,7 +512,7 @@
           <EntitySetMapping Name="Odemes">
             <EntityTypeMapping TypeName="RentACarModel.Odeme">
               <MappingFragment StoreEntitySet="Odeme">
-                <ScalarProperty Name="ÖdemeTarihi" ColumnName="ÖdemeTarihi" />
+                <ScalarProperty Name="OdemeTarihi" ColumnName="OdemeTarihi" />
                 <ScalarProperty Name="Tutar" ColumnName="Tutar" />
                 <ScalarProperty Name="TeslimAlinmaTarihi" ColumnName="TeslimAlinmaTarihi" />
                 <ScalarProperty Name="IslemId" ColumnName="IslemId" />

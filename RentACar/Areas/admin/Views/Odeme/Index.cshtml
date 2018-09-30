@@ -1,7 +1,7 @@
 ﻿@using PagedList.Mvc;
-@model PagedList.IPagedList<RentACar.Data.Kullanici>
+@model PagedList.IPagedList<RentACar.Data.Odeme>
 @{
-    ViewBag.Title = "Kullancı Index";
+    ViewBag.Title = "Index";
     Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -18,11 +18,10 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Ad Soyad</th>
-                            <th>Email</th>
-                            <th>Sifre</th>
-                            <th>Rol</th>
-                            <th>Kayıt Tarihi</th>
+                            <th>İşlem Id</th>
+                            <th>Teslim alınma tarihi</th>
+                            <th>Tutar</th>
+                            <th>Ödeme Tarihi</th>
                             <th>İşlemler</th>
                         </tr>
                     </thead>
@@ -31,13 +30,13 @@
                         {
                             <tr>
                                 <td><span class="label label-success">@item.Id</span></td>
-                                <td>@item.AdSoyad</td>
-                                <td>@item.Email</td>
-                                <td>@item.Sifre</td>
-                                <td>@item.Rol.Ad</td>
-                                <td>@(String.Format("{0:f}", item.KayitTarihi))</td>
+                                <td>@item.IslemId</td>
+                                <td>@(String.Format("{0:f}", item.TeslimAlinmaTarihi))</td>
+                                <td>@item.Tutar</td>
+                                <td>@(String.Format("{0:f}", item.OdemeTarihi))</td>
                                 <td>
-                                    @Html.ActionLink("Sil", "Sil", "Kullanici", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
+                                    @Html.ActionLink("Düzenle", "Duzenle", "Odeme", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
+                                    @Html.ActionLink("Sil", "Sil", "Odeme", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
                                 </td>
                             </tr>
                         }

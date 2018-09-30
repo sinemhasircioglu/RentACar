@@ -173,6 +173,7 @@
     <Content Include="assets\css\plugins\owl\owl.video.play.html" />
     <Content Include="assets\css\plugins\scrollbar\jquery.mCustomScrollbar.css" />
     <Content Include="assets\css\plugins\scrollbar\mCSB_buttons.html" />
+    <Content Include="assets\esh.jpg" />
     <Content Include="assets\fonts\fontawesome\fontawesome-webfont3e6e.html" />
     <Content Include="assets\fonts\fontawesome\fontawesome-webfont3e6e.svg" />
     <Content Include="assets\fonts\lightcaseeead.svg" />
@@ -309,6 +310,7 @@
     <Compile Include="Areas\admin\Controllers\IslemController.cs" />
     <Compile Include="Areas\admin\Controllers\KullaniciController.cs" />
     <Compile Include="Areas\admin\Controllers\MusteriController.cs" />
+    <Compile Include="Areas\admin\Controllers\OdemeController.cs" />
     <Compile Include="Areas\admin\Models\ViewModels\AdminDashboardViewModel.cs" />
     <Compile Include="Class\Bootstrapper.cs" />
     <Compile Include="Controllers\HesapController.cs" />
@@ -420,7 +422,6 @@
     <Content Include="Areas\admin\Views\Musteri\Index.cshtml" />
     <Content Include="Areas\admin\Views\Kullanici\Index.cshtml" />
     <Content Include="Areas\admin\Views\Account\Login.cshtml" />
-    <Content Include="Areas\admin\Views\Account\Register.cshtml" />
     <Content Include="assets\fonts\fontawesome\fontawesome-webfont3e6e.eot" />
     <Content Include="assets\fonts\fontawesome\fontawesome-webfont3e6e.ttf" />
     <Content Include="assets\fonts\fontawesome\fontawesome-webfont3e6e.woff" />
@@ -431,6 +432,13 @@
     <Content Include="assets\fonts\Simple-Line-Icons\Simple-Line-Iconsb26c.eot" />
     <Content Include="assets\fonts\Simple-Line-Icons\Simple-Line-Iconsb26c.ttf" />
     <Content Include="assets\fonts\Simple-Line-Icons\Simple-Line-Iconsb26c.woff" />
+    <Content Include="Areas\admin\Views\Account\Duzenle.cshtml" />
+    <Content Include="Areas\admin\Views\Kullanici\Ekle.cshtml" />
+    <Content Include="Areas\admin\Views\Musteri\Ekle.cshtml" />
+    <Content Include="Areas\admin\Views\Musteri\Duzenle.cshtml" />
+    <Content Include="Areas\admin\Views\Odeme\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Odeme\Ekle.cshtml" />
+    <Content Include="Areas\admin\Views\Odeme\Duzenle.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
@@ -446,6 +454,7 @@
     <Content Include="Views\Home\KiralamaDetay.cshtml" />
     <Content Include="Views\Home\OnlineRezarvasyon.cshtml" />
     <Content Include="Views\Home\AracDetay.cshtml" />
+    <Content Include="Views\Hesap\Rezervasyonlarim.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

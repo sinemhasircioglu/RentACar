@@ -24,6 +24,7 @@
                             <th>Alım Tarihi</th>
                             <th>Teslim Tarihi</th>
                             <th>Tahmini Km</th>
+                            <th>Telefon</th>
                             <th>İşlemler</th>
                         </tr>
                     </thead>
@@ -33,11 +34,12 @@
                             <tr>
                                 <td><span class="label label-success">@item.Id</span></td>
                                 <td>@item.Musteri.AdSoyad</td>
-                                <td>@item.Arac.Plaka</td>
+                                <td>@item.Arac.Marka @item.Arac.Model</td>
                                 <td>@item.Tutar</td>
-                                <td>@item.AlimTarihi</td>
-                                <td>@item.TeslimTarihi</td>
+                                <td>@(String.Format("{0:f}", item.AlimTarihi))</td>
+                                <td>@(String.Format("{0:f}",item.TeslimTarihi))</td>
                                 <td>@item.TahminiKm</td>
+                                <td>@item.Telefon</td>
                                 <td>
                                     @Html.ActionLink("Düzenle", "Duzenle", "Islem", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
                                     @Html.ActionLink("Sil", "Sil", "Islem", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })

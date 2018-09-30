@@ -18,8 +18,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="External/avatar.png" alt="User avatar"></a>
                 <ul class="dropdown-menu dropdown-arrow pull-right">
                     <li>
-                        @Html.ActionLink("Profil düzenle", "Duzenle", "Account", new { area = "admin"}, new { @class = "typcn typcn-edit" })
-                        @*<a href="@Url.Action("Duzenle","Account", new {id=(int)Session["KullaniciId"]})"><span class="typcn typcn-edit"></span> Profil düzenle</a>*@
+                        @Html.ActionLink("Profil düzenle", "Duzenle", "Account", new { area = "admin", id=(int)Session["KullaniciId"]}, new { @class = "typcn typcn-edit" })
                     </li>
                     <li class="divider"></li>
                     <li>

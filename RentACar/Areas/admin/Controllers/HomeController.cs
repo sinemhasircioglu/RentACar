@@ -27,10 +27,9 @@ namespace RentACar.Areas.admin.Controllers
         {           
             AdminDashboardViewModel model = new AdminDashboardViewModel()
             {
-                MusaitAracSayisi = _aracRepository.GetMany(x => x.MusaitMi == true).Count(),
-                DoluAracSayisi = _aracRepository.GetMany(x => x.MusaitMi == false).Count(),
-                YeniRezervasyonSayi = _islemRepository.GetAll().Count(),
-                ToplamKiralamaBuguneKadar = _islemRepository.Count()
+                AracSayisi = _aracRepository.GetAll().Count(),
+                YeniRezervasyonSayi = _islemRepository.GetMany(x=>x.RezervasyonTarihi== DateTime.Today).Count(),
+                ToplamKiralamaBuguneKadar = _islemRepository.GetAll().Count()
             };
             return View(model);
         }

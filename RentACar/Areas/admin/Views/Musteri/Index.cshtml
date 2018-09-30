@@ -33,9 +33,10 @@
                             <td>@item.AdSoyad</td>
                             <td>@item.Email</td>
                             <td>@item.Sifre</td>
-                            <td>@item.KayitTarihi</td>
+                            <td>@(String.Format("{0:f}", item.KayitTarihi))</td>
                             <td>
-                                @Html.ActionLink("Sil", "Sid", "Musteri", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
+                                @Html.ActionLink("Düzenle", "Duzenle", "Musteri", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
+                                @Html.ActionLink("Sil", "Sil", "Musteri", new { area = "admin", Id = item.Id }, new { @class = "btn btn-default btn-sm" })
                             </td>
                         </tr>
                         }

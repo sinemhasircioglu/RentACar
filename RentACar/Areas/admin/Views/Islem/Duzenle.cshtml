@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "İşlem Duzenle";
     Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+    var alim = Model.AlimTarihi;
+    var teslim = Model.TeslimTarihi;
 }
 
 <div class="container-fluid">
@@ -20,7 +22,7 @@
                         </div>
                         <div class="form-group">
                             <label for="AracId">Araç</label>
-                            @Html.DropDownListFor(Model => Model.AracId, new SelectList(ViewBag.Arac, "Id", "Plaka"), ("Seçiniz"), new { @class = "form-control", id = "AracId" })
+                            @Html.DropDownListFor(Model => Model.AracId, new SelectList(ViewBag.Arac, "Id", "Id"), ("Seçiniz"), new { @class = "form-control", id = "AracId" })
                         </div>
                         <div class="form-group">
                             <label for="Aciklama">İşlem tutar</label>
@@ -28,15 +30,23 @@
                         </div>
                         <div>
                             <label for="party-time">Alış Tarihi</label>
-                            <input type="datetime-local" id="AlimTarihi" name="AlimTarihi" min="@DateTime.Now" max="2018-11-14T00:00" class="form-control" />
+                            <input type="datetime" id="AlimTarihi" name="AlimTarihi" min="@DateTime.Now" class="form-control" value="@alim" />
                         </div>
                         <div>
                             <label for="party-time">Teslim Tarihi</label>
-                            <input type="datetime-local" id="TeslimTarihi" name="TeslimTarihi" min="@DateTime.Now" max="2018-11-14T00:00" class="form-control" />
+                            <input type="datetime" id="TeslimTarihi" name="TeslimTarihi" min="@DateTime.Now" class="form-control" value="@teslim"/>
                         </div>
                         <div class="form-group">
                             <label for="Aciklama">Tahmini yapılacak km</label>
                             @Html.TextBoxFor(x => x.TahminiKm, new { @class = "form-control", id = "TahminiKm", placeholder = "Tahmini yapılacak km" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">TC Kimlik No</label>
+                            @Html.TextBoxFor(x => x.TcKimlikNo, new { @class = "form-control", id = "TcKimlikNo", placeholder = "TC kimlik No" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Telefon</label>
+                            @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control", id = "Telefon", placeholder = "Telefon" })
                         </div>
                         <button type="submit" class="btn btn-default">Kaydet</button>
                     </form>

@@ -17,7 +17,7 @@
                 <div class="col-sm-6">
                     <div class="form-group has-icon has-label label" id="datetimepicker2" data-target-input="nearest">
                         <label>Teslim alma tarihi</label>
-                        <input type="datetime-local" class="form-control datepicker" placeholder="dd/mm/yyyy" name="TeslimAlmaTarihi">
+                        <input type="datetime-local" class="form-control datepicker" placeholder="dd/mm/yyyy" name="TeslimAlmaTarihi" required>
                         <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                 <div class="col-sm-6">
                     <div class="form-group has-icon has-label label" id="datetimepicker4" data-target-input="nearest">
                         <label>Teslim etme tarihi</label>
-                        <input type="datetime-local" class="form-control datepicker" placeholder="dd/mm/yyyy" name="TeslimEtmeTarihi">
+                        <input type="datetime-local" class="form-control datepicker" placeholder="dd/mm/yyyy" name="TeslimEtmeTarihi" required>
                         <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                     </div>
                 </div>
@@ -36,8 +36,7 @@
                         @Html.DropDownList("ArabaSinif", (new List<SelectListItem>() {
                                     new SelectListItem { Text = "Ekonomik", Value = "Ekonomik" },
                                     new SelectListItem { Text = "Lüks", Value = "Lüks" },
-                                    new SelectListItem { Text = "Orta", Value = "Orta" },
-                                    new SelectListItem { Text = "Spor", Value = "Spor" } }), "Araba sınıfı seçin", new { @class = "form-control"})
+                                    new SelectListItem { Text = "Orta", Value = "Orta" } }), "Araba sınıfı seçin", new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -45,8 +44,7 @@
                         <label>Araç yakıt</label>
                         @Html.DropDownList("ArabaYakit", (new List<SelectListItem>() {
                                     new SelectListItem { Text = "Benzin", Value = "Benzin" },
-                                    new SelectListItem { Text = "Dizel", Value = "Dizel" },
-                                    new SelectListItem { Text = "Hibrit", Value = "Hibrit" } }), "Araba yakıtı seçin", new { @class = "form-control"})
+                                    new SelectListItem { Text = "Dizel", Value = "Dizel" } }), "Araba yakıtı seçin", new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -54,8 +52,7 @@
                         <label>Araç vites</label>
                         @Html.DropDownList("ArabaVites", (new List<SelectListItem>() {
                                     new SelectListItem { Text = "Otomatik", Value = "Otomatik" },
-                                    new SelectListItem { Text = "Düz", Value = "Düz" },
-                                    new SelectListItem { Text = "Düz-Otomatik", Value = "Düz-Otomatik" } }), "Araba vitesi seçin", new { @class = "form-control"})
+                                    new SelectListItem { Text = "Düz", Value = "Düz" } }), "Araba vitesi seçin", new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="col-12 mb-3">
@@ -83,14 +80,13 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="r-car-showcase">
                             <div class="row clearfix r-best-offer-list">
                                 @foreach (var item in Model)
                                 {
-                                    
-                                        string resim = Model.First().Resims.Where(x => x.AracId == item.Id).Select(x => x.ResimUrl).First().ToString();
-                                    
+                                    string resim = Model.First().Resims.Where(x => x.AracId == item.Id).Select(x => x.ResimUrl).First().ToString();
+
                                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <div class="r-best-offer-single">
                                             <div class="r-best-offer-in">
@@ -111,7 +107,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="r-offer-rewst-this">
-                                                    <a href="@Url.Action("KiralamaDetay","Home", new { Id=item.Id })"><span class="text-uppercase">Bu arabayı kirala</span></a>
+                                                    <a href="@Url.Action("KiralamaDetay","Home", new { Id=item.Id})"><span class="text-uppercase">Bu arabayı kirala</span></a>
                                                 </div>
                                             </div>
                                         </div>

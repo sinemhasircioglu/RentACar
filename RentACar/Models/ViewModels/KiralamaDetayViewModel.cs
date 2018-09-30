@@ -8,8 +8,8 @@ namespace RentACar.Models.ViewModels
 {
     public class KiralamaDetayViewModel
     {
-        public IEnumerable<Arac> BenzerAraclar { get; set; }
         public Arac Arac { get; set; }
+
         public IEnumerable<Hizmet> EkHizmetler { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using PagedList;
 using RentACar.Areas.admin.Class;
 using RentACar.Core.Infrastructure;
+using RentACar.Data;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -24,63 +25,61 @@ namespace RentACar.Areas.admin.Controllers
             return View(musteriListesi);
         }
 
-        //[HttpGet]
-        //[AdminPersonelAuth]
-        //public ActionResult Ekle()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult Ekle()
+        {
+            return View();
+        }
 
-        //[HttpPost]
-        //[ValidateInput(false)]
-        //[AdminPersonelAuth]
-        //public ActionResult Ekle(Hizmet hizmet)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _hizmetRepository.Insert(hizmet);
-        //        _hizmetRepository.Save();
-        //    }
-        //    TempData["Bilgi"] = "Hizmet ekleme işleminiz başarılı";
-        //    return RedirectToAction("Index", "Hizmet");
-        //}
+        [HttpPost]
+        [ValidateInput(false)]
+        [AdminPersonelAuth]
+        public ActionResult Ekle(Musteri musteri)
+        {
+            if (ModelState.IsValid)
+            {
+                _musteriRepository.Insert(musteri);
+                _musteriRepository.Save();
+            }
+            TempData["Bilgi"] = "Müşteri ekleme işleminiz başarılı";
+            return RedirectToAction("Index", "Musteri");
+        }
 
-        //[AdminAuth]
-        //public ActionResult Sil(int id)
-        //{
-        //    Hizmet hizmet = _hizmetRepository.GetById(id);
-        //    if (hizmet == null)
-        //        TempData["Bilgi"] = "Hizmet bulunamadı!";
-        //    _hizmetRepository.Delete(id);
-        //    _hizmetRepository.Save();
-        //    TempData["Bilgi"] = "Hizmet başarıyla silindi";
-        //    return RedirectToAction("Index", "Hizmet");
-        //}
+        [AdminAuth]
+        public ActionResult Sil(int id)
+        {
+            Musteri musteri = _musteriRepository.GetById(id);
+            if (musteri == null)
+                TempData["Bilgi"] = "Müşteri bulunamadı!";
+            _musteriRepository.Delete(id);
+            _musteriRepository.Save();
+            TempData["Bilgi"] = "Müşteri başarıyla silindi";
+            return RedirectToAction("Index", "Musteri");
+        }
 
-        //[HttpGet]
-        //[ValidateInput(false)]
-        //[AdminPersonelAuth]
-        //public ActionResult Duzenle(int id)
-        //{
-        //    Hizmet gelenHizmet = _hizmetRepository.GetById(id);
-        //    if (gelenHizmet == null)
-        //        TempData["Bilgi"] = "Hizmet bulunamadı!";
-        //    return View(gelenHizmet);
-        //}
+        [HttpGet]
+        [ValidateInput(false)]
+        public ActionResult Duzenle(int id)
+        {
+            Musteri gelenMusteri = _musteriRepository.GetById(id);
+            if (gelenMusteri == null)
+                TempData["Bilgi"] = "Müşteri bulunamadı!";
+            return View(gelenMusteri);
+        }
 
-        //[HttpPost]
-        //[ValidateInput(false)]
-        //[AdminPersonelAuth]
-        //public ActionResult Duzenle(Hizmet hizmet)
-        //{
-        //    Hizmet gelenHizmet = _hizmetRepository.GetById(hizmet.Id);
-        //    gelenHizmet.Ad = hizmet.Ad;
-        //    gelenHizmet.Aciklama = hizmet.Aciklama;
-        //    gelenHizmet.Tutar = hizmet.Tutar;
+        [HttpPost]
+        [ValidateInput(false)]
+        [AdminPersonelAuth]
+        public ActionResult Duzenle(Musteri musteri)
+        {
+            Musteri gelenMusteri = _musteriRepository.GetById(musteri.Id);
+            gelenMusteri.AdSoyad = musteri.AdSoyad;
+            gelenMusteri.Email = musteri.Email;
+            gelenMusteri.Sifre = musteri.Sifre;
 
-        //    _hizmetRepository.Save();
-        //    TempData["Bilgi"] = "Hizmet düzenleme işleminiz başarılı.";
-        //    return RedirectToAction("Index", "Hizmet");
-        //}
+            _musteriRepository.Save();
+            TempData["Bilgi"] = "Müşteri düzenleme işleminiz başarılı.";
+            return RedirectToAction("Index", "Musteri");
+        }
     }
 }

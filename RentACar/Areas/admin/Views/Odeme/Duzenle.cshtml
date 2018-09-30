@@ -1,0 +1,41 @@
+﻿@model RentACar.Data.Odeme
+@{
+    ViewBag.Title = "Duzenle";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <header class="panel-heading">@ViewBag.Title</header>
+                <div class="panel-body">
+                    <form role="form" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary()
+                        @Html.HiddenFor(x => x.Id)
+                        <div class="form-group">
+                            <label for="MusteriId">Müşteri</label>
+                            @Html.DropDownListFor(Model => Model.IslemId, new SelectList(ViewBag.Islem, "Id", "Id"), ("Seçiniz"), new { @class = "form-control", id = "IslemId" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Aciklama">Ödeme tutar</label>
+                            @Html.TextBoxFor(x => x.Tutar, new { @class = "form-control", id = "Tutar", placeholder = "Ödeme tutarı" })
+                        </div>
+                        <div>
+                            <label for="party-time">Teslim alınma Tarihi</label>
+                            <input type="datetime" id="TeslimAlinmaTarihi" 
+                                   name="TeslimAlinmaTarihi" value="@ViewBag.AlmaTarih" class="form-control" />
+                        </div>
+                        <div>
+                            <label for="party-time">Ödeme Tarihi</label>
+                            <input type="datetime" id="OdemeTarihi"
+                                   name="OdemeTarihi" value="@ViewBag.OdemeTarih" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-default">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

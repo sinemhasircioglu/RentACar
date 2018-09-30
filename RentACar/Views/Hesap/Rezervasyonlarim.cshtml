@@ -1,0 +1,46 @@
+﻿
+@model IEnumerable<RentACar.Data.Islem>
+
+@{
+    ViewBag.Title = "Rezervasyonlarim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="r-login-register">
+    <div class="r-login-register">
+        <div class="r-login-register-in">
+            <div class="clearfix">
+                <div>
+                    <div class="r-auth-head">
+                        <h2>Rezervasyonlarınız</h2>
+                    </div>
+                    <div class="r-auth-form">
+                      
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Araç Marka Model</th>
+                                            <th>Teslim Alma ve Teslim Etme Tarihiniz</th>
+                                            <th>Kiralama Tutarı</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <tr>
+                                                <td>@item.Arac.Marka - @item.Arac.Model</td>
+                                                <td>@item.AlimTarihi - @item.TeslimTarihi</td>
+                                                <td>@item.Tutar</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

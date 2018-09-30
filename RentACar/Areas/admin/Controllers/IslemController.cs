@@ -2,6 +2,7 @@
 using RentACar.Areas.admin.Class;
 using RentACar.Core.Infrastructure;
 using RentACar.Data;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -45,6 +46,7 @@ namespace RentACar.Areas.admin.Controllers
         {
             islem.MusteriId = MusteriId;
             islem.AracId = AracId;
+            islem.RezervasyonTarihi = DateTime.Now;
             _islemRepository.Insert(islem);
             _islemRepository.Save();
             TempData["Bilgi"] = "İşlem eklemeniz başarılı";
@@ -88,6 +90,8 @@ namespace RentACar.Areas.admin.Controllers
             gelenIslem.AlimTarihi = islem.AlimTarihi;
             gelenIslem.TeslimTarihi = islem.TeslimTarihi;
             gelenIslem.TahminiKm = islem.TahminiKm;
+            gelenIslem.TcKimlikNo = islem.TcKimlikNo;
+            gelenIslem.Telefon = islem.Telefon;
 
             _islemRepository.Save();
             TempData["Bilgi"] = "Kiralama işlem düzenlemeniz başarılı.";
@@ -98,7 +102,7 @@ namespace RentACar.Areas.admin.Controllers
         public ActionResult GecmisIslemler(int sayfa = 1)
         {
             int sayfaBoyutu = 5;
-            var gecmisIslemler=_islemRepository.GetAll().OrderByDescending(x => x.Id).ToPagedList(sayfa, sayfaBoyutu);
+            var gecmisIslemler = _islemRepository.GetMany(x => x.TeslimTarihi < DateTime.Now).OrderByDescending(x => x.Id).ToPagedList(sayfa, sayfaBoyutu);
             return View("Index",gecmisIslemler);
         }
     }

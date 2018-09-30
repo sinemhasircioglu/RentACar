@@ -18,7 +18,6 @@ namespace RentACar.Data
         public Musteri()
         {
             this.Islems = new HashSet<Islem>();
-            KayitTarihi = DateTime.Now;
         }
     
         public int Id { get; set; }

@@ -62,7 +62,7 @@
                                                 }
                                                 else
                                                 {
-                                                    <a href="@Url.Action("KiralamaDetay","Home", new { Id=item.Id })"><span class="text-uppercase">Bu aracı KİRALA</span></a>
+                                                    <a href="@Url.Action("KiralamaDetay","Home", new { Id=item.Id , TeslimEtme=ViewBag.TeslimEtmeTarihi, TeslimAlma=ViewBag.TeslimAlmaTarihi})"><span class="text-uppercase">Bu aracı KİRALA</span></a>
                                                 }
                                             </div>
                                         </div>

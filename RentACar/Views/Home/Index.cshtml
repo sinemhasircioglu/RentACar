@@ -11,9 +11,9 @@
                 <div class="row clearfix">
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="r-logo">
-                            <a href="#" class="d-inline-block"><img src="~/assets/images/logo-white.png" class="img-fluid d-block" alt=""></a>
+                            <a href="/Home" class="d-inline-block"><img src="~/assets/esh.jpg" class="img-fluid d-block" alt="" width="100" height="35"></a>
                         </div>
-                        <a href="javaScript:void(0)" class="menu-icon"> <i class="fa fa-bars"></i> </a>
+                        <a href="" class="menu-icon"> <i class="fa fa-bars"></i> </a>
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
                         <div class="r-header-action float-left">
@@ -24,7 +24,7 @@
                             else
                             {
                                 <a href="@Url.Action("Duzenle","Hesap", new {id=(int)Session["MusteriId"]})"><i class="fa fa-user"></i><span>Profil</span></a>
-                                <a href="/Hesap/LogOut"> <i class="fa fa-lock"></i><span>Çıkış yap</span></a>
+                                <a href="/Hesap/LogOut"> <i class="fa fa-lock"></i><span>Çıkış</span></a>
                             }
                         </div>
                         <div class="r-nav-section float-right">
@@ -37,7 +37,7 @@
                                         @Html.ActionLink("Hakkımızda", "Hakkimizda", "Home", new { area = "" }, null)
                                     </li>
                                     <li>
-                                        @Html.ActionLink("Online Rezarvasyon", "OnlineRezarvasyon", "Home", new { area = "" }, null)
+                                        @Html.ActionLink("Rezervasyon", "OnlineRezarvasyon", "Home", new { area = "" }, null)
                                     </li>
                                     <li>
                                         @Html.ActionLink("Araçlar", "Araclar", "Home", new { area = "" }, null)
@@ -60,9 +60,9 @@
                 <img src="~/assets/images/main-slider-01.jpg" class="img-fluid d-block m-auto" alt="">
                 <div class="container">
                     <div class="r-slider-top-content">
-                        <h1 class="animated fadeInDown">Kia Rio <span>z</span></h1>
-                        <h4 class="animated fadeInLeft">FOR RENT <strong>$50</strong> PER DAY</h4>
-                        <a href="#" class="btn btn-outlined animated fadeInUp"> Reserve Now </a>
+                        <h1 class="animated fadeInDown">Toyota <span>Hilux</span></h1>
+                        <h4 class="animated fadeInLeft">Günlük <strong>310 TL</strong> </h4>
+                        <a href="/Home/AracDetay/5" class="btn btn-outlined animated fadeInUp"> İnceleyin </a>
                     </div>
                 </div>
             </div>
@@ -70,9 +70,9 @@
                 <img src="~/assets/images/main-slider-04.jpg" class="img-fluid d-block m-auto" alt="">
                 <div class="container">
                     <div class="r-slider-top-content">
-                        <h1>BMW <span>3</span></h1>
-                        <h4>FOR RENT <strong>$150</strong> PER DAY</h4>
-                        <a href="#" class="btn btn-outlined"> Reserve Now </a>
+                        <h1>Renault <span>Captur</span></h1>
+                        <h4>Günlük <strong>160 TL</strong></h4>
+                        <a href="/Home/AracDetay/16" class="btn btn-outlined"> İnceleyin </a>
                     </div>
                 </div>
             </div>
@@ -80,9 +80,9 @@
                 <img src="~/assets/images/main-slider-05.jpg" class="img-fluid d-block m-auto" alt="">
                 <div class="container">
                     <div class="r-slider-top-content">
-                        <h1>Audi <span>A4</span></h1>
-                        <h4>FOR RENT <strong>$100</strong> PER DAY</h4>
-                        <a href="#" class="btn btn-outlined"> Reserve Now </a>
+                        <h1>Toyota <span>Yaris</span></h1>
+                        <h4>Günlük <strong>255 TL</strong></h4>
+                        <a href="/Home/AracDetay/21" class="btn btn-outlined"> İnceleyin </a>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
             <div class="advantage-head">
                 <div class="row clearfix">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
-                        <span>120+ CARS TYPE &amp; BRANDS</span>
+                        <span>120+ Araç</span>
                         <h2>ESH Kiralama <b>Avantajları.</b></h2>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-left">
@@ -123,8 +123,8 @@
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
                     <div class="r-advantages-box">
                         <div class="icon"> <img src="assets/images/advantage-icon-3.png" alt=""> </div>
-                        <div class="head">Lots of Picking Locations</div>
-                        <div class="sub-text">250+ Locations</div>
+                        <div class="head">Çok sayıda şube</div>
+                        <div class="sub-text">250'den fazla ofis</div>
                     </div>
                 </div>
             </div>
@@ -138,165 +138,18 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="r-about-info-content">
                         <div class="r-sec-head r-sec-head-left r-sec-head-line r-sec-head-w pt-0">
-                            <span>KNOW MORE ABOUT US</span>
+                            <span>Hakkımızda daha fazla</span>
                             <h2><b>ESH Kiralama</b> kimdir?</h2>
                         </div>
                         <p>
                             Farkın ayrıntıda olduğunu biliyoruz ve bu yüzden araç kiralama hizmetlerimiz, turizm ve iş dünyasında.
                         </p>
                         <ul class="mb-0 pl-0">
-                            <li><i class="fa fa-check-circle"></i> We working since 1980 with 4.000 customers</li>
-                            <li><i class="fa fa-check-circle"></i> All brand &amp; type cars in our garage</li>
-                            <li><i class="fa fa-check-circle"></i> 1.000+ picking locations around the world</li>
+                            <li><i class="fa fa-check-circle"></i> 1980'den beri 4.000 müşteri ile çalışıyoruz.</li>
+                            <li><i class="fa fa-check-circle"></i> Garajımızda tüm marka tipi arabalar</li>
+                            <li><i class="fa fa-check-circle"></i> Türkiyenin her yerinde 250'den fazla ofis</li>
                         </ul>
-                        <a href="#" class="btn-primary">TÜM ARAÇLARI GÖR</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="r-best-offer">
-    <div class="r-best-vehicles">
-        <div class="r-sec-head r-accent-color r-sec-head-v">
-            <span>FEATURED CARS</span>
-            <h2>Our <b>Best Offers.</b></h2>
-        </div>
-        <div class="container">
-            <div class="row clearfix r-best-offer-list owl-theme owl-carousel" id="r-best-offers">
-                <div class="">
-                    <div class="r-best-offer-single">
-                        <div class="r-best-offer-in">
-                            <div class="r-offer-img">
-                                <a class="d-inline-block" href="#"><img src="assets/images/best-01.jpg" class="img-fluid d-block m-auto" alt=""></a>
-                                <a href="car-booking.html" class="d-block">
-                                    <div class="r-offer-img-over">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="r-best-offer-content">
-                                <a href="#"><b>Volk</b> GTR</a>
-                                <p>Start at <b>45.00 USD</b> per day</p>
-                                <ul class="pl-0 mb-0">
-                                    <li><i class="fa fa-car"></i><span>2017</span></li>
-                                    <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                                    <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                                    <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                                </ul>
-                            </div>
-                            <div class="r-offer-rewst-this">
-                                <span class="text-uppercase">Rent this car</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="r-best-offer-single">
-                        <div class="r-best-offer-in">
-                            <div class="r-offer-img">
-                                <a class="d-inline-block" href="#"><img src="assets/images/best-02.jpg" class="img-fluid d-block m-auto" alt=""></a>
-                                <a href="car-booking.html" class="d-block">
-                                    <div class="r-offer-img-over">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="r-best-offer-content">
-                                <a href="#"><b>Hyundai</b> Z.E</a>
-                                <p>Start at <b>45.00 USD</b> per day</p>
-                                <ul class="pl-0 mb-0">
-                                    <li><i class="fa fa-car"></i><span>2017</span></li>
-                                    <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                                    <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                                    <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                                </ul>
-                            </div>
-                            <div class="r-offer-rewst-this">
-                                <span class="text-uppercase">Rent this car</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="r-best-offer-single">
-                        <div class="r-best-offer-in">
-                            <div class="r-offer-img">
-                                <a class="d-inline-block" href="#"><img src="assets/images/best-03.jpg" class="img-fluid d-block m-auto" alt=""></a>
-                                <a href="car-booking.html" class="d-block">
-                                    <div class="r-offer-img-over">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="r-best-offer-content">
-                                <a href="#"><b>Audi</b> R8</a>
-                                <p>Start at <b>45.00 USD</b> per day</p>
-                                <ul class="pl-0 mb-0">
-                                    <li><i class="fa fa-car"></i><span>2017</span></li>
-                                    <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                                    <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                                    <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                                </ul>
-                            </div>
-                            <div class="r-offer-rewst-this">
-                                <span class="text-uppercase">Rent this car</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="r-best-offer-single">
-                        <div class="r-best-offer-in">
-                            <div class="r-offer-img">
-                                <a class="d-inline-block" href="#"><img src="assets/images/best-02.jpg" class="img-fluid d-block m-auto" alt=""></a>
-                                <a href="car-booking.html" class="d-block">
-                                    <div class="r-offer-img-over">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="r-best-offer-content">
-                                <a href="#"><b>Hyundai</b> Z.E</a>
-                                <p>Start at <b>45.00 USD</b> per day</p>
-                                <ul class="pl-0 mb-0">
-                                    <li><i class="fa fa-car"></i><span>2017</span></li>
-                                    <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                                    <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                                    <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                                </ul>
-                            </div>
-                            <div class="r-offer-rewst-this">
-                                <span class="text-uppercase">Rent this car</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="r-best-offer-single">
-                        <div class="r-best-offer-in">
-                            <div class="r-offer-img">
-                                <a class="d-inline-block" href="#"><img src="assets/images/best-03.jpg" class="img-fluid d-block m-auto" alt=""></a>
-                                <a href="car-booking.html" class="d-block">
-                                    <div class="r-offer-img-over">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="r-best-offer-content">
-                                <a href="#"><b>Audi</b> R8</a>
-                                <p>Start at <b>45.00 USD</b> per day</p>
-                                <ul class="pl-0 mb-0">
-                                    <li><i class="fa fa-car"></i><span>2017</span></li>
-                                    <li><i class="fa fa-cogs"></i><span>MANUAL</span></li>
-                                    <li><i class="fa fa-beer"></i><span>PETROL</span></li>
-                                    <li><i class="fa fa-road"></i><span>2.3k CC</span></li>
-                                </ul>
-                            </div>
-                            <div class="r-offer-rewst-this">
-                                <span class="text-uppercase">Rent this car</span>
-                            </div>
-                        </div>
+                        <a href="/Home/Araclar" class="btn-primary">TÜM ARAÇLARI GÖR</a>
                     </div>
                 </div>
             </div>
@@ -310,8 +163,8 @@
             <div class="row v-align-center r-faq-header-wrapper">
                 <div class="col-md-8 col-sm-12">
                     <div class="r-faq-header">
-                        <span>FIND YOUR ANSWER HERE</span>
-                        <h2>Frequenly <strong>Ask &amp; Questions.</strong></h2>
+                        <span>CEVAPINIZI BURADA BULUN</span>
+                        <h2>Sıkça <strong>Sorulan Sorular.</strong></h2>
                     </div>
                 </div>
             </div>
@@ -322,7 +175,7 @@
                             <span class="r-accordion-toggle">
                                 <i class="fa-arrow-circle-down fa"></i>
                             </span>
-                            How to reserved a car here?
+                            Bir araba buraya nasıl ayrılır?
                         </div>
                         <div class="r-accordion-body">
                             <p>
@@ -335,7 +188,7 @@
                             <span class="r-accordion-toggle">
                                 <i class="fa-arrow-circle-down fa"></i>
                             </span>
-                            How can i drop the rental car?
+                            Kiralık arabayı nasıl bırakabilirim?
                         </div>
                         <div class="r-accordion-body">
                             <p>
@@ -348,7 +201,7 @@
                             <span class="r-accordion-toggle">
                                 <i class="fa-arrow-circle-down fa"></i>
                             </span>
-                            What happen if i crash the car?
+                            Arabayı kırarsam ne olur?
                         </div>
                         <div class="r-accordion-body">
                             <p>
@@ -363,7 +216,7 @@
                             <span class="r-accordion-toggle">
                                 <i class="fa-arrow-circle-down fa"></i>
                             </span>
-                            How can i select a car rent?
+                            Araba kiralamayı nasıl seçebilirim?
                         </div>
                         <div class="r-accordion-body" style="display: none;">
                             <p>
@@ -376,7 +229,7 @@
                             <span class="r-accordion-toggle">
                                 <i class="fa-arrow-circle-down fa"></i>
                             </span>
-                            Do you have VIP access to airport?
+                            Havaalanına VIP erişiminiz var mı?
                         </div>
                         <div class="r-accordion-body">
                             <p>
@@ -389,7 +242,7 @@
                             <span class="r-accordion-toggle">
                                 <i class="fa-arrow-circle-down fa"></i>
                             </span>
-                            What happen if i crash the car?
+                            Arabayı kırarsam ne olur?
                         </div>
                         <div class="r-accordion-body">
                             <p>
@@ -399,29 +252,6 @@
                     </div> <!-- /r-accordion -->
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a href="#" class="btn-primary icon-btn"> <i class="fa fa-question-circle icon"></i> MAKE A QUESTIONS </a>
-                </div>
-            </div>
         </div>
     </div>
 </section>
-
-<div id="r-gallery-part">
-    <div class="r-gallery-part r-gallery-part-home py-0">
-        <ul class="clearfix">
-            <li>
-                <a href="assets/images/gallery-img01.jpg" data-rel="lightcase:myCollection">
-                    <img src="assets/images/gallery-img01.jpg" class="d-block img-fluid" alt="">
-                    <div class="gallery-hover">
-                        <div class="gallery-text">
-                            <div class="icon-gallery"><i class="fa fa-search" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-@*-------------------foreach lazım-----------------------*@
-        </ul>
-    </div>
-</div>

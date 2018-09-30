@@ -13,8 +13,9 @@
             }
             <div class="clearfix">               
                 <div>
+                    @Html.ActionLink("Rezervasyonlarımı görüntüle", "Rezervasyonlarim", "Hesap", new { area = "" }, new { @class="btn btn-primary"})
                     <div class="r-auth-head">
-                        <h2>Profiliniz</h2>                        
+                        <h2>Profiliniz</h2>
                     </div>
                     <div class="r-auth-form">
                         @using (Html.BeginForm("Duzenle", "Hesap", FormMethod.Post, new { @class = "comment-form" }))
@@ -40,7 +41,7 @@
                                         <div class="form-group">
                                             <label for="kategoriUrl">Eski şifreniz</label>
                                             <input type="text" class="form-control" placeholder="Eski şifreniz" name="EskiSifre">
-                                            
+
                                         </div>
                                         <div class="form-group">
                                             <label for="kategoriUrl">Yeni şifreniz</label>

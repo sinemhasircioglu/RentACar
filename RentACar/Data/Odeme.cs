@@ -18,7 +18,7 @@ namespace RentACar.Data
         public Nullable<int> IslemId { get; set; }
         public Nullable<System.DateTime> TeslimAlinmaTarihi { get; set; }
         public Nullable<int> Tutar { get; set; }
-        public Nullable<System.DateTime> ÖdemeTarihi { get; set; }
+        public Nullable<System.DateTime> OdemeTarihi { get; set; }
     
         public virtual Islem Islem { get; set; }
     }

@@ -18,7 +18,6 @@ namespace RentACar.Data
         public Islem()
         {
             this.Odemes = new HashSet<Odeme>();
-            RezervasyonTarihi = DateTime.Now;
         }
     
         public int Id { get; set; }
