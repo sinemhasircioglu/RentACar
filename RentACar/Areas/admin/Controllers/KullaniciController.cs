@@ -61,26 +61,5 @@ namespace RentACar.Areas.admin.Controllers
             TempData["Bilgi"] = "Kullanıcı ekleme işleminiz başarılı";
             return RedirectToAction("Index", "Kullanici");
         }
-
-        [HttpGet]
-        public ActionResult Duzenle(int id)
-        {
-            Kullanici gelenKullanici = _kullaniciRepository.GetById(id);
-            if (gelenKullanici == null)
-                TempData["Bilgi"] = "Kullanıcı bulunamadı!";
-            return View(gelenKullanici);
-        }
-
-        [HttpPost]
-        public ActionResult Duzenle(Kullanici kullanici)
-        {
-            Kullanici dbKullanici = _kullaniciRepository.GetById(kullanici.Id);
-            dbKullanici.AdSoyad = kullanici.AdSoyad;
-            dbKullanici.Email = kullanici.Email;
-            dbKullanici.Sifre = kullanici.Sifre;
-            _kullaniciRepository.Save();
-            TempData["Bilgi"] = "Kullanıcı düzenleme işleminiz başarılı.";
-            return RedirectToAction("Duzenle", "Account");
-        }
     }
 }

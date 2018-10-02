@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Iletisim";
+    ViewBag.Title = "İletişim";
     ViewBag.Aciklama = "Bizimle iletişime geçin.";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -9,7 +9,7 @@
     <div class="container clearfix">
         <div class="contact-head">
             <span>Ofisimiz</span>
-            <h2>Contact <b>Royal Cars</b> for<br> More Information. </h2>
+            <h2> <b>ESH Kiralama</b> hakkında<br> daha fazla bilgi. </h2>
         </div>
 
         <div class="row clearfix">
@@ -41,19 +41,19 @@
         <div class="container">
             <div class="r-get-header">
                 <span>Bizimle iletişime geçin.</span>
-                <h2>Keep <b>In Touch.</b></h2>
+                <h2><b>Görüşleriniz</b> bizim için önemli</h2>
             </div>
             <div class="r-get-form">
                 <div class="clearfix">
-                    <div class="form-group"><input required="" name="userName" id="userName" type="text" placeholder="User name"></div>
-                    <div class="form-group"><input required="" name="userEmail" id="userEmail" type="email" placeholder="Email Address"></div>
+                    <div class="form-group"><input required="" name="userName" id="userName" type="text" placeholder="Adınız Soyadınız"></div>
+                    <div class="form-group"><input required="" name="userEmail" id="userEmail" type="email" placeholder="Emailiiz "></div>
                 </div>
-                <div class="form-group"><input type="text" required="" name="subject" id="subject" placeholder="Title Message"></div>
+                
                 <div class="form-group">
-                    <textarea placeholder="Message" name="content" required="" id="content"></textarea>
+                    <textarea placeholder="Mesajınız" name="content" required="" id="content"></textarea>
                 </div>
                 <div class="text-center">
-                    <button onclick="sendContact();" class="btn btn-full">SEND MESSAGE NOW</button>
+                    <button onclick="sendContact();" class="btn btn-full">MESAJ GÖNDERİN</button>
                 </div>
                 <div class="mt-4 text-uppercase text-white text-center" id="mail-status"></div>
             </div>
