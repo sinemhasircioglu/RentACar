@@ -168,9 +168,6 @@
     <Content Include="assets\color-files\color-08.css" />
     <Content Include="assets\css\main.css" />
     <Content Include="assets\css\plugins\animate\animate.css" />
-    <Content Include="assets\css\plugins\owl\owl.carousel.min.css" />
-    <Content Include="assets\css\plugins\owl\owl.theme.default.min.css" />
-    <Content Include="assets\css\plugins\owl\owl.video.play.html" />
     <Content Include="assets\css\plugins\scrollbar\jquery.mCustomScrollbar.css" />
     <Content Include="assets\css\plugins\scrollbar\mCSB_buttons.html" />
     <Content Include="assets\esh.jpg" />
